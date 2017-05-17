@@ -97,7 +97,7 @@ Pre-requisites
 --------------
 
 - Android SDK Preview O
-- Android Build Tools v25.0.2
+- Android Build Tools v25.0.3
 - Android Support Repository
 
 Screenshots

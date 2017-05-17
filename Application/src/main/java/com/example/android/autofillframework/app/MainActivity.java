@@ -19,11 +19,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.example.android.autofillframework.R;
 
-public class MainActivity extends Activity {
+/**
+ * This is used to launch sample activities that showcase autofill.
+ */
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,6 +45,17 @@ public class MainActivity extends Activity {
                 virtualViewSignIn();
             }
         });
+        findViewById(R.id.creditCardCheckoutButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                creditCardCheckout();
+            }
+        });
+    }
+
+    private void creditCardCheckout() {
+        Intent intent = CreditCardActivity.getStartActivityIntent(this);
+        startActivity(intent);
     }
 
     private void standardViewSignIn() {

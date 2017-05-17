@@ -1,0 +1,19 @@
+
+# GOOGLE SAMPLE PACKAGING DATA
+#
+# This file is used by Google as part of our samples packaging process.
+# End users may safely ignore this file. It has no relevance to other systems.
+---
+status:       PUBLISHED
+technologies: [Android]
+categories:   [Input, Android O Preview]
+languages:    [Kotlin]
+solutions:    [Mobile]
+github:       android-AutofillFramework
+level:        ADVANCED
+icon:         screenshots/icon-web.png
+apiRefs:
+    - android:android.view.View
+    - android:android.service.autofill.AutoFillService
+    - android:android.view.autofill.AutoFillManager
+license: apache2
