@@ -15,39 +15,38 @@
  */
 package com.example.android.autofillframework.service.model;
 
-import android.app.assist.AssistStructure;
+import android.app.assist.AssistStructure.ViewNode;
 import android.service.autofill.SaveInfo;
 import android.view.View;
 import android.view.autofill.AutofillId;
-import android.view.autofill.AutofillValue;
 
 /**
- * Class that represents a field that can be autofilled. It will contain a description
- * (what type data the field holds), an AutoFillId (an ID unique to the rest of the ViewStructure),
- * and a value (what data is currently in the field).
+ * A stripped down version of a {@link ViewNode} that contains only autofill-relevant metadata. It
+ * also contains a {@code mSaveType} flag that is calculated based on the {@link ViewNode}]'s
+ * autofill hints.
  */
 public class AutofillField {
     private int mSaveType = 0;
-    private String[] mHints;
-    private AutofillId mId;
+    private String[] mAutofillHints;
+    private AutofillId mAutofillId;
     private int mAutofillType;
     private String[] mAutofillOptions;
     private boolean mFocused;
 
-    public AutofillField(AssistStructure.ViewNode view) {
-        mId = view.getAutofillId();
-        setHints(view.getAutofillHints());
+    public AutofillField(ViewNode view) {
+        mAutofillId = view.getAutofillId();
         mAutofillType = view.getAutofillType();
         mAutofillOptions = view.getAutofillOptions();
         mFocused = view.isFocused();
+        setHints(view.getAutofillHints());
     }
 
     public String[] getHints() {
-        return mHints;
+        return mAutofillHints;
     }
 
     public void setHints(String[] hints) {
-        mHints = hints;
+        mAutofillHints = hints;
         updateSaveTypeFromHints();
     }
 
@@ -56,17 +55,17 @@ public class AutofillField {
     }
 
     public AutofillId getId() {
-        return mId;
-    }
-
-    public void setId(AutofillId id) {
-        mId = id;
+        return mAutofillId;
     }
 
     public int getAutofillType() {
         return mAutofillType;
     }
 
+    /**
+     * When the {@link ViewNode} is a list that the user needs to choose a string from (i.e. a
+     * spinner), this is called to return the index of a specific item in the list.
+     */
     public int getAutofillOptionIndex(String value) {
         for (int i = 0; i < mAutofillOptions.length; i++) {
             if (mAutofillOptions[i].equals(value)) {
@@ -82,10 +81,10 @@ public class AutofillField {
 
     private void updateSaveTypeFromHints() {
         mSaveType = 0;
-        if (mHints == null) {
+        if (mAutofillHints == null) {
             return;
         }
-        for (String hint : mHints) {
+        for (String hint : mAutofillHints) {
             switch (hint) {
                 case View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE:
                 case View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY:

@@ -30,6 +30,12 @@
         android:text="@string/standard_view_sign_in" />
 
     <Button
+        android:id="@+id/standardLoginWithAutoCompleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/standard_view_autocomplete_sign_in"/>
+
+    <Button
         android:id="@+id/virtualViewSignInButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

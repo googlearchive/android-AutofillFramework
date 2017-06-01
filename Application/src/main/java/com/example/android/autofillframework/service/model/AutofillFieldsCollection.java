@@ -22,18 +22,22 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * Data structure that stores a collection of {@code AutofillField}s. Contains all of the client's
+ * {@code View} hierarchy autofill-relevant metadata.
+ */
 public final class AutofillFieldsCollection {
 
     private final List<AutofillId> mAutofillIds = new ArrayList<>();
     private final HashMap<String, List<AutofillField>> mAutofillHintsToFieldsMap = new HashMap<>();
     private final List<String> mAllAutofillHints = new ArrayList<>();
     private final List<String> mFocusedAutofillHints = new ArrayList<>();
-    private int size = 0;
+    private int mSize = 0;
     private int mSaveType = 0;
 
     public void add(AutofillField autofillField) {
         mSaveType |= autofillField.getSaveType();
-        size++;
+        mSize++;
         mAutofillIds.add(autofillField.getId());
         List<String> hintsList = Arrays.asList(autofillField.getHints());
         mAllAutofillHints.addAll(hintsList);
@@ -53,7 +57,7 @@ public final class AutofillFieldsCollection {
     }
 
     public AutofillId[] getAutofillIds() {
-        return mAutofillIds.toArray(new AutofillId[size]);
+        return mAutofillIds.toArray(new AutofillId[mSize]);
     }
 
     public List<AutofillField> getFieldsForHint(String hint) {

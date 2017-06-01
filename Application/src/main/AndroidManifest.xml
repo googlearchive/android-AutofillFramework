@@ -16,9 +16,9 @@
 -->
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.android.autofillframework"
-          android:versionCode="1"
-          android:versionName="1.0">
+    package="com.example.android.autofillframework"
+    android:versionCode="1"
+    android:versionName="1.0">
 
     <application
         android:allowBackup="true"
@@ -32,40 +32,29 @@
             android:taskAffinity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.LoginActivity"
+            android:name=".app.StandardSignInActivity"
             android:label="AF StandardLogin"
-            android:taskAffinity=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:taskAffinity=".StandardSignInActivity">
         </activity>
         <activity
-            android:name=".app.VirtualLoginActivity"
+            android:name=".app.StandardAutoCompleteSignInActivity"
+            android:label="AF StandardLogin"
+            android:taskAffinity=".StandardAutoCompleteSignInActivity" />
+        <activity
+            android:name=".app.VirtualSignInActivity"
             android:label="AF VirtualLogin"
-            android:taskAffinity=".VirtualLoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:taskAffinity=".VirtualSignInActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".app.WelcomeActivity" />
         <activity
             android:name=".app.CreditCardActivity"
             android:label="AF CreditCard"
             android:taskAffinity=".CreditCardActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <!--
         Including launcher icon for Autofill Settings to convenience.
@@ -78,7 +67,6 @@
             android:taskAffinity=".SettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

@@ -16,11 +16,14 @@
 -->
 
 <resources>
+    <string name="app_name">Autofill Sample</string>
     <string name="settings_name">Autofill Settings</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
     <string name="welcome_text">You have successfully signed in!</string>
     <string name="standard_view_sign_in">Sign in using standard views</string>
+    <string name="standard_view_autocomplete_sign_in">Sign in using standard views that
+        trigger AutoComplete dialogs when focused</string>
     <string name="virtual_view_sign_in">Sign in using virtual views</string>
     <string name="credit_card_checkout">Credit Card check out</string>
     <string name="autofill_sign_in_prompt">Tap to sign in.</string>
@@ -101,6 +104,11 @@
         <item>2022</item>
         <item>2023</item>
         <item>2024</item>
+    </string-array>
+
+    <string-array name="mock_autocomplete_sign_in_suggestions">
+        <item>user-1</item>
+        <item>user-2</item>
     </string-array>
 
 </resources>

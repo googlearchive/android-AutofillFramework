@@ -31,13 +31,9 @@ import android.view.autofill.AutofillManager
 import android.view.autofill.AutofillValue
 import android.widget.EditText
 import android.widget.TextView
-
-import com.example.android.autofillframework.R
-
-import java.util.ArrayList
-import java.util.Arrays
-
 import com.example.android.autofillframework.CommonUtil.bundleToString
+import com.example.android.autofillframework.R
+import java.util.Arrays
 
 
 /**
@@ -47,36 +43,23 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
 
     private val mLines = ArrayList<Line>()
     private val mItems = SparseArray<Item>()
-    private val mAfm: AutofillManager
+    private val mAfm: AutofillManager = context.getSystemService(AutofillManager::class.java)
 
     private var mFocusedLine: Line? = null
-    private val mTextPaint: Paint
-    private val mTextHeight: Int
-    private val mTopMargin: Int
-    private val mLeftMargin: Int
-    private val mVerticalGap: Int
-    private val mLineLength: Int
-    private val mFocusedColor: Int
-    private val mUnfocusedColor: Int
+    private val mTextPaint: Paint = Paint()
+    private val mTextHeight: Int = 90
+    private val mTopMargin: Int = 100
+    private val mLeftMargin: Int = 100
+    private val mVerticalGap: Int = 10
+    private val mLineLength: Int = mTextHeight + mVerticalGap
+    private val mFocusedColor: Int = Color.RED
+    private val mUnfocusedColor: Int = Color.BLACK
 
     private val mUsernameLine: Line
     private val mPasswordLine: Line
 
     init {
-
-        mAfm = context.getSystemService(AutofillManager::class.java)
-
-        mTextPaint = Paint()
-
-        mUnfocusedColor = Color.BLACK
-        mFocusedColor = Color.RED
         mTextPaint.style = Style.FILL
-        mTopMargin = 100
-        mLeftMargin = 100
-        mTextHeight = 90
-        mVerticalGap = 10
-
-        mLineLength = mTextHeight + mVerticalGap
         mTextPaint.textSize = mTextHeight.toFloat()
         mUsernameLine = addLine("usernameField", context.getString(R.string.username_label),
                 arrayOf(View.AUTOFILL_HINT_USERNAME), "         ", true)
@@ -87,23 +70,22 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
     }
 
     override fun autofill(values: SparseArray<AutofillValue>) {
-        // User has just selected a Dataset from the list of Autofill suggestions and the Dataset's
-        // AutofillValue gets passed into this method.
-        Log.d(TAG, "autoFill(): " + values)
+        // User has just selected a Dataset from the list of autofill suggestions.
+        // The Dataset is comprised of a list of AutofillValues, with each AutofillValue meant
+        // to fill a specific autofillable view. Now we have to update the UI based on the
+        // AutofillValues in the list.
+        Log.d(TAG, "autofill(): " + values)
         for (i in 0..values.size() - 1) {
             val id = values.keyAt(i)
             val value = values.valueAt(i)
-            val item = mItems.get(id)
-            if (item == null) {
-                Log.w(TAG, "No item for id " + id)
-                return
+            mItems[id]?.let { item ->
+                if (item.editable) {
+                    // Set the item's text to the text wrapped in the AutofillValue.
+                    item.text = value.textValue
+                } else {
+                    Log.w(TAG, "Item for autofillId $id is not editable: $item")
+                }
             }
-            if (!item.editable) {
-                Log.w(TAG, "Item for id $id is not editable: $item")
-                return
-            }
-            // Set the item's text to the text wrapped in the AutofillValue.
-            item.text = value.textValue
         }
         postInvalidate()
     }
@@ -138,9 +120,8 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
         Log.d(TAG, "onDraw: " + mLines.size + " lines; canvas:" + canvas)
         var x: Float
         var y = (mTopMargin + mLineLength).toFloat()
-        for (i in mLines.indices) {
+        for (line in mLines) {
             x = mLeftMargin.toFloat()
-            val line = mLines[i]
             Log.v(TAG, "Drawing '" + line + "' at " + x + "x" + y)
             mTextPaint.color = if (line.fieldTextItem.focused) mFocusedColor else mUnfocusedColor
             val readOnlyText = line.labelItem.text.toString() + ":  ["
@@ -168,13 +149,11 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
             val line = mLines[i]
             Log.d(TAG, "Line $i ranges from $lowerY to $upperY")
             if (lowerY <= y && y <= upperY) {
-                if (mFocusedLine != null) {
-                    Log.d(TAG, "Removing focus from " + mFocusedLine!!)
-                    mFocusedLine!!.changeFocus(false)
-                }
+                Log.d(TAG, "Removing focus from " + mFocusedLine)
+                mFocusedLine?.changeFocus(false)
                 Log.d(TAG, "Changing focus to " + line)
                 mFocusedLine = line
-                mFocusedLine!!.changeFocus(true)
+                mFocusedLine?.changeFocus(true)
                 invalidate()
                 break
             }
@@ -203,7 +182,9 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
         return line
     }
 
-    private class Item internal constructor(val line: Line, val id: Int, val hints: Array<String>?, val type: Int, var text: CharSequence, val editable: Boolean, val sanitized: Boolean) {
+    private class Item internal constructor(val line: Line, val id: Int, val hints: Array<String>?,
+            val type: Int, var text: CharSequence,
+            val editable: Boolean, val sanitized: Boolean) {
         var focused = false
 
         override fun toString(): String {
@@ -217,17 +198,13 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
             get() = if (editable) EditText::class.java.name else TextView::class.java.name
     }
 
-    private inner class Line constructor(val idEntry: String, label: String, hints: Array<String>, text: String, sanitized: Boolean) {
+    private inner class Line constructor(val idEntry: String, label: String, hints: Array<String>,
+            text: String, sanitized: Boolean) {
 
         // Boundaries of the text field, relative to the CustomView
         internal val bounds = Rect()
-        var labelItem: Item
-        var fieldTextItem: Item
-
-        init {
-            this.labelItem = Item(this, ++nextId, null, View.AUTOFILL_TYPE_NONE, label, false, true)
-            this.fieldTextItem = Item(this, ++nextId, hints, View.AUTOFILL_TYPE_TEXT, text, true, sanitized)
-        }
+        var labelItem: Item = Item(this, ++nextId, null, View.AUTOFILL_TYPE_NONE, label, false, true)
+        var fieldTextItem: Item = Item(this, ++nextId, hints, View.AUTOFILL_TYPE_TEXT, text, true, sanitized)
 
         internal fun changeFocus(focused: Boolean) {
             fieldTextItem.focused = focused
@@ -249,7 +226,7 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
                 val absBounds = Rect(bounds.left + offset[0],
                         bounds.top + offset[1],
                         bounds.right + offset[0], bounds.bottom + offset[1])
-                Log.v(TAG, "getAbsCoordinates() for " + fieldTextItem.id + ": bounds=" + bounds
+                Log.v(TAG, "absCoordinates for " + fieldTextItem.id + ": bounds=" + bounds
                         + " offset: " + Arrays.toString(offset) + " absBounds: " + absBounds)
                 return absBounds
             }

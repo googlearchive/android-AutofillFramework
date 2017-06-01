@@ -29,14 +29,13 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.android.autofillframework.R;
-import com.example.android.autofillframework.service.datasource.LocalAutofillRepository;
+import com.example.android.autofillframework.service.datasource.SharedPrefsAutofillRepository;
 
 public class SettingsActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.settings_activity);
         final MyPreferences preferences = MyPreferences.getInstance(this);
         setupSettingsSwitch(R.id.settings_auth_responses_container,
@@ -68,7 +67,6 @@ public class SettingsActivity extends AppCompatActivity {
                         buildClearDataDialog().show();
                     }
                 });
-
         setupSettingsButton(R.id.settings_auth_credentials_container,
                 R.id.settings_auth_credentials_label,
                 R.id.settings_auth_credentials_icon,
@@ -92,7 +90,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        LocalAutofillRepository.getInstance
+                        SharedPrefsAutofillRepository.getInstance
                                 (SettingsActivity.this).clear();
                         MyPreferences.getInstance(SettingsActivity.this)
                                 .clearCredentials();

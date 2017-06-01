@@ -15,7 +15,6 @@
  */
 package com.example.android.autofillframework.app;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,44 +26,37 @@ import com.example.android.autofillframework.R;
 /**
  * This is used to launch sample activities that showcase autofill.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.standardViewSignInButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                standardViewSignIn();
-            }
-        });
-        findViewById(R.id.virtualViewSignInButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                virtualViewSignIn();
-            }
-        });
-        findViewById(R.id.creditCardCheckoutButton).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                creditCardCheckout();
-            }
-        });
+        findViewById(R.id.standardViewSignInButton).setOnClickListener(this);
+        findViewById(R.id.virtualViewSignInButton).setOnClickListener(this);
+        findViewById(R.id.creditCardCheckoutButton).setOnClickListener(this);
+        findViewById(R.id.standardLoginWithAutoCompleteButton).setOnClickListener(this);
     }
 
-    private void creditCardCheckout() {
-        Intent intent = CreditCardActivity.getStartActivityIntent(this);
-        startActivity(intent);
-    }
-
-    private void standardViewSignIn() {
-        Intent intent = LoginActivity.getStartActivityIntent(this);
-        startActivity(intent);
-    }
-
-    private void virtualViewSignIn() {
-        Intent intent = VirtualLoginActivity.getStartActivityIntent(this);
-        startActivity(intent);
+    @Override
+    public void onClick(View view) {
+        Intent intent = null;
+        switch (view.getId()) {
+            case R.id.standardViewSignInButton:
+                intent = StandardSignInActivity.getStartActivityIntent(this);
+                break;
+            case R.id.virtualViewSignInButton:
+                intent = VirtualSignInActivity.getStartActivityIntent(this);
+                break;
+            case R.id.creditCardCheckoutButton:
+                intent = CreditCardActivity.getStartActivityIntent(this);
+                break;
+            case R.id.standardLoginWithAutoCompleteButton:
+                intent = StandardAutoCompleteSignInActivity.getStartActivityIntent(this);
+                break;
+        }
+        if (intent != null) {
+            startActivity(intent);
+        }
     }
 }

@@ -43,15 +43,21 @@ public final class AutofillHelper {
      * client View.
      */
     public static Dataset newDataset(Context context,
-            AutofillFieldsCollection autofillFields, ClientFormData clientFormData) {
-        Dataset.Builder datasetBuilder = new Dataset.Builder
-                (newRemoteViews(context.getPackageName(), clientFormData.getDatasetName()));
-        boolean setValueAtLeastOnce = clientFormData.applyToFields(autofillFields, datasetBuilder);
-        if (setValueAtLeastOnce) {
-            return datasetBuilder.build();
-        } else {
-            return null;
+            AutofillFieldsCollection autofillFields, ClientFormData clientFormData, boolean datasetAuth) {
+        String datasetName = clientFormData.getDatasetName();
+        if (datasetName != null) {
+            Dataset.Builder datasetBuilder = new Dataset.Builder
+                    (newRemoteViews(context.getPackageName(), datasetName));
+            if (datasetAuth) {
+                IntentSender sender = AuthActivity.getAuthIntentSenderForDataset(context, datasetName);
+                datasetBuilder.setAuthentication(sender);
+            }
+            boolean setValueAtLeastOnce = clientFormData.applyToFields(autofillFields, datasetBuilder);
+            if (setValueAtLeastOnce) {
+                return datasetBuilder.build();
+            }
         }
+        return null;
     }
 
     public static RemoteViews newRemoteViews(String packageName, String remoteViewsText) {
@@ -65,32 +71,25 @@ public final class AutofillHelper {
      * be sent back to the client View.
      */
     public static FillResponse newResponse(Context context,
-            boolean datasetAuth, AutofillFieldsCollection autofillFields, int saveType,
+            boolean datasetAuth, AutofillFieldsCollection autofillFields,
             HashMap<String, ClientFormData> clientFormDataMap) {
         FillResponse.Builder responseBuilder = new FillResponse.Builder();
         if (clientFormDataMap != null) {
             Set<String> datasetNames = clientFormDataMap.keySet();
             for (String datasetName : datasetNames) {
                 ClientFormData clientFormData = clientFormDataMap.get(datasetName);
-                if (datasetAuth) {
-                    Dataset.Builder datasetBuilder =
-                            new Dataset.Builder(newRemoteViews
-                                    (context.getPackageName(), clientFormData.getDatasetName()));
-                    IntentSender sender = AuthActivity
-                            .getAuthIntentSenderForDataset(context, clientFormData.getDatasetName());
-                    datasetBuilder.setAuthentication(sender);
-                    responseBuilder.addDataset(datasetBuilder.build());
-                } else {
-                    Dataset dataset = newDataset(context, autofillFields, clientFormData);
+                if (clientFormData != null) {
+                    Dataset dataset = newDataset(context, autofillFields, clientFormData, datasetAuth);
                     if (dataset != null) {
                         responseBuilder.addDataset(dataset);
                     }
                 }
             }
         }
-        if (saveType != 0) {
+        if (autofillFields.getSaveType() != 0) {
             AutofillId[] autofillIds = autofillFields.getAutofillIds();
-            responseBuilder.setSaveInfo(new SaveInfo.Builder(saveType, autofillIds).build());
+            responseBuilder.setSaveInfo
+                    (new SaveInfo.Builder(autofillFields.getSaveType(), autofillIds).build());
             return responseBuilder.build();
         } else {
             Log.d(TAG, "These fields are not meant to be saved by autofill.");

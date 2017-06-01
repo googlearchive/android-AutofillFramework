@@ -19,49 +19,38 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.Spinner
-
 import com.example.android.autofillframework.R
+import kotlinx.android.synthetic.main.credit_card_activity.clear
+import kotlinx.android.synthetic.main.credit_card_activity.expirationDay
+import kotlinx.android.synthetic.main.credit_card_activity.expirationMonth
+import kotlinx.android.synthetic.main.credit_card_activity.expirationYear
+import kotlinx.android.synthetic.main.credit_card_activity.submit
+
 
 class CreditCardActivity : AppCompatActivity() {
 
-    private var mCcExpirationDaySpinner: Spinner? = null
-    private var mCcExpirationMonthSpinner: Spinner? = null
-    private var mCcExpirationYearSpinner: Spinner? = null
-    private var mSubmitButton: Button? = null
-    private var mClearButton: Button? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.credit_card_activity)
-
-        mSubmitButton = findViewById(R.id.submit) as Button
-        mClearButton = findViewById(R.id.clear) as Button
-        mCcExpirationDaySpinner = findViewById(R.id.expirationDay) as Spinner
-        mCcExpirationMonthSpinner = findViewById(R.id.expirationMonth) as Spinner
-        mCcExpirationYearSpinner = findViewById(R.id.expirationYear) as Spinner
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         val dayAdapter = ArrayAdapter.createFromResource(this, R.array.day_array, android.R.layout.simple_spinner_item)
         // Specify the layout to use when the list of choices appears
         dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         // Apply the adapter to the spinner
-        mCcExpirationDaySpinner!!.adapter = dayAdapter
+        expirationDay.adapter = dayAdapter
 
         val monthAdapter = ArrayAdapter.createFromResource(this, R.array.month_array, android.R.layout.simple_spinner_item)
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        mCcExpirationMonthSpinner!!.adapter = monthAdapter
+        expirationMonth.adapter = monthAdapter
 
         val yearAdapter = ArrayAdapter.createFromResource(this, R.array.year_array, android.R.layout.simple_spinner_item)
         yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        mCcExpirationYearSpinner!!.adapter = yearAdapter
+        expirationYear.adapter = yearAdapter
 
-        mSubmitButton!!.setOnClickListener { submit() }
-        mClearButton!!.setOnClickListener { resetFields() }
+        submit.setOnClickListener { submitCcInfo() }
+        clear.setOnClickListener { resetFields() }
     }
 
     private fun resetFields() {
@@ -72,14 +61,13 @@ class CreditCardActivity : AppCompatActivity() {
      * Launches new Activity and finishes, triggering an autofill save request if the user entered
      * any new data.
      */
-    private fun submit() {
-        val intent = WelcomeActivity.getStartActivityIntent(this@CreditCardActivity)
+    private fun submitCcInfo() {
+        val intent = WelcomeActivity.getStartActivityIntent(this)
         startActivity(intent)
         finish()
     }
 
     companion object {
-
         fun getStartActivityIntent(context: Context): Intent {
             val intent = Intent(context, CreditCardActivity::class.java)
             return intent

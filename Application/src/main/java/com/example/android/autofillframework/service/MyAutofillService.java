@@ -30,7 +30,7 @@ import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.example.android.autofillframework.R;
-import com.example.android.autofillframework.service.datasource.LocalAutofillRepository;
+import com.example.android.autofillframework.service.datasource.SharedPrefsAutofillRepository;
 import com.example.android.autofillframework.service.model.AutofillFieldsCollection;
 import com.example.android.autofillframework.service.model.ClientFormData;
 import com.example.android.autofillframework.service.settings.MyPreferences;
@@ -77,10 +77,8 @@ public class MyAutofillService extends AutofillService {
         });
         // Parse AutoFill data in Activity
         StructureParser parser = new StructureParser(structure);
-        parser.parse();
+        parser.parseForFill();
         AutofillFieldsCollection autofillFields = parser.getAutofillFields();
-        int saveTypes = parser.getSaveTypes();
-
         FillResponse.Builder responseBuilder = new FillResponse.Builder();
         // Check user's settings for authenticating Responses and Datasets.
         boolean responseAuth = MyPreferences.getInstance(this).isResponseAuth();
@@ -96,10 +94,10 @@ public class MyAutofillService extends AutofillService {
         } else {
             boolean datasetAuth = MyPreferences.getInstance(this).isDatasetAuth();
             HashMap<String, ClientFormData> clientFormDataMap =
-                    LocalAutofillRepository.getInstance(this).getClientFormData
+                    SharedPrefsAutofillRepository.getInstance(this).getClientFormData
                             (autofillFields.getFocusedHints(), autofillFields.getAllHints());
             FillResponse response = AutofillHelper.newResponse
-                    (this, datasetAuth, autofillFields, saveTypes, clientFormDataMap);
+                    (this, datasetAuth, autofillFields, clientFormDataMap);
             callback.onSuccess(response);
         }
     }
@@ -111,9 +109,9 @@ public class MyAutofillService extends AutofillService {
         final Bundle data = request.getClientState();
         Log.d(TAG, "onSaveRequest(): data=" + bundleToString(data));
         StructureParser parser = new StructureParser(structure);
-        parser.parse();
+        parser.parseForSave();
         ClientFormData clientFormData = parser.getClientFormData();
-        LocalAutofillRepository.getInstance(this).saveClientFormData(clientFormData);
+        SharedPrefsAutofillRepository.getInstance(this).saveClientFormData(clientFormData);
     }
 
     @Override

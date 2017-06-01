@@ -23,14 +23,14 @@ import android.util.Log;
 import com.example.android.autofillframework.service.model.AutofillField;
 import com.example.android.autofillframework.service.model.AutofillFieldsCollection;
 import com.example.android.autofillframework.service.model.ClientFormData;
-import com.example.android.autofillframework.service.model.SavedAutofillValue;
+import com.example.android.autofillframework.service.model.SavableAutofillData;
 
 import static com.example.android.autofillframework.CommonUtil.TAG;
 
 /**
  * Parser for an AssistStructure object. This is invoked when the Autofill Service receives an
- * AssistStructure from the client Activity, representing its View hierarchy. In this
- * sample, it parses the hierarchy and records
+ * AssistStructure from the client Activity, representing its View hierarchy. In this sample, it
+ * parses the hierarchy and collects autofill metadata from {@link ViewNode}s along the way.
  */
 final class StructureParser {
     private final AutofillFieldsCollection mAutofillFields = new AutofillFieldsCollection();
@@ -42,41 +42,48 @@ final class StructureParser {
 
     }
 
+    public void parseForFill() {
+        parse(true);
+    }
+
+    public void parseForSave() {
+        parse(false);
+    }
+
     /**
      * Traverse AssistStructure and add ViewNode metadata to a flat list.
      */
-    void parse() {
+    private void parse(boolean forFill) {
         Log.d(TAG, "Parsing structure for " + mStructure.getActivityComponent());
         int nodes = mStructure.getWindowNodeCount();
         mClientFormData = new ClientFormData();
         for (int i = 0; i < nodes; i++) {
             WindowNode node = mStructure.getWindowNodeAt(i);
             ViewNode view = node.getRootViewNode();
-            parseLocked(view);
+            parseLocked(forFill, view);
         }
     }
 
-    private void parseLocked(ViewNode viewNode) {
+    private void parseLocked(boolean forFill, ViewNode viewNode) {
         if (viewNode.getAutofillHints() != null && viewNode.getAutofillHints().length > 0) {
             //TODO check to make sure hints are supported by service.
-            mAutofillFields.add(new AutofillField(viewNode));
-            mClientFormData
-                    .set(viewNode.getAutofillHints(), SavedAutofillValue.fromViewNode(viewNode));
+            if (forFill) {
+                mAutofillFields.add(new AutofillField(viewNode));
+            } else {
+                mClientFormData.setAutofillValuesForHints
+                        (viewNode.getAutofillHints(), new SavableAutofillData(viewNode));
+            }
         }
         int childrenSize = viewNode.getChildCount();
         if (childrenSize > 0) {
             for (int i = 0; i < childrenSize; i++) {
-                parseLocked(viewNode.getChildAt(i));
+                parseLocked(forFill, viewNode.getChildAt(i));
             }
         }
     }
 
     public AutofillFieldsCollection getAutofillFields() {
         return mAutofillFields;
-    }
-
-    public int getSaveTypes() {
-        return mAutofillFields.getSaveType();
     }
 
     public ClientFormData getClientFormData() {

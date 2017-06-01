@@ -29,12 +29,11 @@ import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.android.autofillframework.R;
-import com.example.android.autofillframework.service.datasource.LocalAutofillRepository;
+import com.example.android.autofillframework.service.datasource.SharedPrefsAutofillRepository;
 import com.example.android.autofillframework.service.model.AutofillFieldsCollection;
 import com.example.android.autofillframework.service.model.ClientFormData;
 import com.example.android.autofillframework.service.settings.MyPreferences;
@@ -58,8 +57,6 @@ public class AuthActivity extends Activity {
     private static int sDatasetPendingIntentId = 0;
 
     private EditText mMasterPassword;
-    private Button mCancel;
-    private Button mLogin;
     private Intent mReplyIntent;
 
     static IntentSender getAuthIntentSenderForResponse(Context context) {
@@ -79,20 +76,16 @@ public class AuthActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.auth_activity);
-        mCancel = findViewById(R.id.cancel);
-        mLogin = findViewById(R.id.login);
         mMasterPassword = findViewById(R.id.master_password);
-        mLogin.setOnClickListener(new OnClickListener() {
+        findViewById(R.id.login).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 login();
             }
 
         });
-
-        mCancel.setOnClickListener(new OnClickListener() {
+        findViewById(R.id.cancel).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 onFailure();
@@ -133,20 +126,20 @@ public class AuthActivity extends Activity {
         boolean forResponse = intent.getBooleanExtra(EXTRA_FOR_RESPONSE, true);
         AssistStructure structure = intent.getParcelableExtra(EXTRA_ASSIST_STRUCTURE);
         StructureParser parser = new StructureParser(structure);
-        parser.parse();
+        parser.parseForFill();
         AutofillFieldsCollection autofillFields = parser.getAutofillFields();
-        int saveTypes = parser.getSaveTypes();
+        int saveTypes = autofillFields.getSaveType();
         mReplyIntent = new Intent();
         HashMap<String, ClientFormData> clientFormDataMap =
-                LocalAutofillRepository.getInstance(this).getClientFormData
+                SharedPrefsAutofillRepository.getInstance(this).getClientFormData
                         (autofillFields.getFocusedHints(), autofillFields.getAllHints());
         if (forResponse) {
             setResponseIntent(AutofillHelper.newResponse
-                    (this, false, autofillFields, saveTypes, clientFormDataMap));
+                    (this, false, autofillFields, clientFormDataMap));
         } else {
             String datasetName = intent.getStringExtra(EXTRA_DATASET_NAME);
             setDatasetIntent(AutofillHelper.newDataset
-                    (this, autofillFields, clientFormDataMap.get(datasetName)));
+                    (this, autofillFields, clientFormDataMap.get(datasetName), false));
         }
     }
 
