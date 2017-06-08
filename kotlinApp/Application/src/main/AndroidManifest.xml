@@ -61,7 +61,7 @@
         Not necessary for a real service.
         -->
         <activity
-            android:name=".service.settings.SettingsActivity"
+            android:name=".multidatasetservice.settings.SettingsActivity"
             android:exported="true"
             android:label="@string/settings_name"
             android:taskAffinity=".SettingsActivity">
@@ -77,19 +77,19 @@
         Settings Activity based on what the meta-data resource points to.
         -->
         <service
-            android:name=".service.MyAutofillService"
+            android:name=".multidatasetservice.MyAutofillService"
             android:permission="android.permission.BIND_AUTOFILL"
-            android:label="Sample Autofill Service">
+            android:label="Multi-Dataset Autofill Service">
             <meta-data
                 android:name="android.autofill"
-                android:resource="@xml/autofill_service" />
+                android:resource="@xml/multidataset_service" />
 
             <intent-filter>
                 <action android:name="android.service.autofill.AutofillService" />
             </intent-filter>
         </service>
 
-        <activity android:name=".service.AuthActivity" />
+        <activity android:name=".multidatasetservice.AuthActivity" />
     </application>
 
 </manifest>

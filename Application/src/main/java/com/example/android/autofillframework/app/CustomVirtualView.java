@@ -117,7 +117,7 @@ public class CustomVirtualView extends View {
             Item item = mVirtualViews.valueAt(i);
             Log.d(TAG, "Adding new child at index " + index + ": " + item);
             ViewStructure child = structure.newChild(index);
-            child.setAutofillId(structure, item.id);
+            child.setAutofillId(structure.getAutofillId(), item.id);
             child.setAutofillHints(item.hints);
             child.setAutofillType(item.type);
             child.setDataIsSensitive(!item.sanitized);

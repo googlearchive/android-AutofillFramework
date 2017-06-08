@@ -130,7 +130,7 @@ public void autofill(SparseArray<AutofillValue> values) {
 Pre-requisites
 --------------
 
-- Android SDK Preview O
+- Android SDK 26
 - Android Build Tools v25.0.3
 - Android Support Repository
 

@@ -101,7 +101,7 @@ class CustomVirtualView(context: Context, attrs: AttributeSet) : View(context, a
             val item = mItems.valueAt(i)
             Log.d(TAG, "Adding new child at index $index: $item")
             val child = structure.newChild(index)
-            child.setAutofillId(structure, item.id)
+            child.setAutofillId(structure.getAutofillId(), item.id)
             child.setAutofillHints(item.hints)
             child.setAutofillType(item.type)
             child.setDataIsSensitive(!item.sanitized)

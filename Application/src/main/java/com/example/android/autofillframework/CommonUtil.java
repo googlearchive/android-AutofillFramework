@@ -23,7 +23,7 @@ import java.util.Set;
 public final class CommonUtil {
 
     public static final String TAG = "AutofillSample";
-
+    public static final boolean DEBUG = true;
     public static final String EXTRA_DATASET_NAME = "dataset_name";
     public static final String EXTRA_FOR_RESPONSE = "for_response";
 
