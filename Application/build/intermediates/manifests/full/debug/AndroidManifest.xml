@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2017 The Android Open Source Project
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.autofillframework"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="26" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light" >
+        <activity
+            android:name="com.example.android.autofillframework.app.MainActivity"
+            android:label="AF Main"
+            android:taskAffinity=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.android.autofillframework.app.StandardSignInActivity"
+            android:label="AF StandardLogin"
+            android:taskAffinity=".StandardSignInActivity" >
+        </activity>
+        <activity
+            android:name="com.example.android.autofillframework.app.StandardAutoCompleteSignInActivity"
+            android:label="AF StandardLogin"
+            android:taskAffinity=".StandardAutoCompleteSignInActivity" />
+        <activity
+            android:name="com.example.android.autofillframework.app.VirtualSignInActivity"
+            android:label="AF VirtualLogin"
+            android:taskAffinity=".VirtualSignInActivity" >
+        </activity>
+        <activity android:name="com.example.android.autofillframework.app.WelcomeActivity" />
+        <activity
+            android:name="com.example.android.autofillframework.app.CreditCardActivity"
+            android:label="AF CreditCard"
+            android:taskAffinity=".CreditCardActivity" >
+        </activity>
+        <!--
+        Including launcher icon for Autofill Settings to convenience.
+        Not necessary for a real service.
+        -->
+        <activity
+            android:name="com.example.android.autofillframework.multidatasetservice.settings.SettingsActivity"
+            android:exported="true"
+            android:label="@string/settings_name"
+            android:taskAffinity=".SettingsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--
+        Declare AutofillService implementation; only needed for a small number of apps that will
+        be implementing an AutofillService. Framework parses meta-data and sets the service's
+        Settings Activity based on what the meta-data resource points to.
+        -->
+        <service
+            android:name="com.example.android.autofillframework.multidatasetservice.MyAutofillService"
+            android:label="Multi-Dataset Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL" >
+            <meta-data
+                android:name="android.autofill"
+                android:resource="@xml/multidataset_service" />
+
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="com.example.android.autofillframework.multidatasetservice.AuthActivity" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.0.0-beta1" />
+    </application>
+
+</manifest>

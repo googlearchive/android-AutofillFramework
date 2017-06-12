@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Base.V26.Widget.AppCompat.Toolbar" parent="Base.V7.Widget.AppCompat.Toolbar">
+        <item name="android:touchscreenBlocksFocus">true</item>
+        <item name="android:keyboardNavigationCluster">true</item>
+    </style>
+    <style name="Base.Widget.AppCompat.Toolbar" parent="Base.V26.Widget.AppCompat.Toolbar"/>
+</resources>

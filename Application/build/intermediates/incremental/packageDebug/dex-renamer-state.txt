@@ -1,0 +1,4 @@
+#Mon Jun 12 14:48:22 PDT 2017
+base.0=/Users/sigelbaum/android-AutofillFramework/Application/build/intermediates/transforms/dexMerger/debug/0
+renamed.0=classes.dex
+file.0=/Users/sigelbaum/android-AutofillFramework/Application/build/intermediates/transforms/dexMerger/debug/0/classes.dex
