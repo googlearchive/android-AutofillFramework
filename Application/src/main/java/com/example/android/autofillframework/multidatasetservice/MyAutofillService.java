@@ -50,13 +50,6 @@ public class MyAutofillService extends AutofillService {
         final Bundle data = request.getClientState();
         Log.d(TAG, "onFillRequest(): data=" + bundleToString(data));
 
-        // Temporary hack for disabling autofill for components in this autofill service.
-        // i.e. we don't want to autofill components in AuthActivity.
-        if (structure.getActivityComponent().toShortString()
-                .contains("com.example.android.autofillframework.service")) {
-            callback.onSuccess(null);
-            return;
-        }
         cancellationSignal.setOnCancelListener(new CancellationSignal.OnCancelListener() {
             @Override
             public void onCancel() {

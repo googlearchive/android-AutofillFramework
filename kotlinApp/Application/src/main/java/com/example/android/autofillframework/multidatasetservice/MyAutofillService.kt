@@ -36,14 +36,6 @@ class MyAutofillService : AutofillService() {
         val structure = request.getFillContexts().get(request.getFillContexts().size - 1).structure
         val data = request.clientState
         Log.d(TAG, "onFillRequest(): data=" + bundleToString(data))
-
-        // Temporary hack for disabling autofill for components in this autofill service.
-        // i.e. we don't want to autofill components in AuthActivity.
-        if (structure.activityComponent.toShortString()
-                .contains("com.example.android.autofillframework.service")) {
-            callback.onSuccess(null)
-            return
-        }
         cancellationSignal.setOnCancelListener { Log.w(TAG, "Cancel autofill not implemented in this sample.") }
         // Parse AutoFill data in Activity
         val parser = StructureParser(structure)
