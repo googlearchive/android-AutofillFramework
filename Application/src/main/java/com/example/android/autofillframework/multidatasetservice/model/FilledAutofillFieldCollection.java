@@ -69,14 +69,16 @@ public final class FilledAutofillFieldCollection {
      */
     public void add(@NonNull FilledAutofillField filledAutofillField) {
         String[] autofillHints = filledAutofillField.getAutofillHints();
-        for (int i = 0; i < autofillHints.length; i++) {
-            mHintMap.put(autofillHints[i], filledAutofillField);
+        for (String hint : autofillHints) {
+            mHintMap.put(hint, filledAutofillField);
         }
     }
 
     /**
      * Populates a {@link Dataset.Builder} with appropriate values for each {@link AutofillId}
-     * in a {@code AutofillFieldMetadataCollection}. In other words, it constructs an autofill
+     * in a {@code AutofillFieldMetadataCollection}.
+     *
+     * In other words, it constructs an autofill
      * {@link Dataset.Builder} by applying saved values (from this {@code FilledAutofillFieldCollection})
      * to Views specified in a {@code AutofillFieldMetadataCollection}, which represents the current
      * page the user is on.
@@ -140,9 +142,9 @@ public final class FilledAutofillFieldCollection {
     }
 
     /**
-     * @param autofillHints List of autofill hints, usually associated with a View or set of Views.
-     * @return whether any of the filled fields on the page have at least 1 autofillHint that is
-     * in the provided autofillHints.
+     * Takes in a list of autofill hints (`autofillHints`), usually associated with a View or set of
+     * Views. Returns whether any of the filled fields on the page have at least 1 of these
+     * `autofillHint`s.
      */
     public boolean helpsWithHints(List<String> autofillHints) {
         for (int i = 0; i < autofillHints.size(); i++) {

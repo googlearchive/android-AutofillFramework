@@ -67,8 +67,7 @@ final class StructureParser {
             if (forFill) {
                 mAutofillFields.add(new AutofillFieldMetadata(viewNode));
             } else {
-                mFilledAutofillFieldCollection.add
-                        (new FilledAutofillField(viewNode));
+                mFilledAutofillFieldCollection.add(new FilledAutofillField(viewNode));
             }
         }
         int childrenSize = viewNode.getChildCount();

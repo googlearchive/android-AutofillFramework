@@ -37,7 +37,7 @@ public class InfoButton extends AppCompatImageButton {
         super(context, attrs, defStyleAttr);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.InfoButton,
                 defStyleAttr, 0);
-        final String infoText = typedArray.getString(R.styleable.InfoButton_dialogText);
+        String infoText = typedArray.getString(R.styleable.InfoButton_dialogText);
         typedArray.recycle();
         setInfoText(infoText);
     }

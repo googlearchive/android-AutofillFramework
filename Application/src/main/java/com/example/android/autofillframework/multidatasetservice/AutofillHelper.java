@@ -108,13 +108,18 @@ public final class AutofillHelper {
     }
 
     public static String[] filterForSupportedHints(String[] hints) {
-        ArrayList<String> supportedHints = new ArrayList<>(hints.length);
-        for (int i = 0; i < hints.length; i++) {
-            if (AutofillHelper.isValidHint(hints[i])) {
-                supportedHints.add(hints[i]);
+        String[] filteredHints = new String[hints.length];
+        int i = 0;
+        for (String hint : hints) {
+            if (AutofillHelper.isValidHint(hint)) {
+                filteredHints[i++] = hint;
+            } else {
+                Log.d(TAG, "Invalid autofill hint: " + hint);
             }
         }
-        return supportedHints.toArray(new String[supportedHints.size()]);
+        String[] finalFilteredHints = new String[i];
+        System.arraycopy(filteredHints, 0, finalFilteredHints, 0, i);
+        return finalFilteredHints;
     }
 
     public static boolean isValidHint(String hint) {

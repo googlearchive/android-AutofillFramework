@@ -138,7 +138,7 @@ Pre-requisites
 Screenshots
 -------------
 
-<img src="screenshots/1_HomePage.png" height="400" alt="Screenshot"/> <img src="screenshots/2_StandardViewAutofillable.png" height="400" alt="Screenshot"/> <img src="screenshots/3_StandardViewAutofilled.png" height="400" alt="Screenshot"/> <img src="screenshots/4_WelcomeActivity.png" height="400" alt="Screenshot"/> <img src="screenshots/5_CustomViewAutofillable.png" height="400" alt="Screenshot"/> <img src="screenshots/6_CustomViewAutofilled.png" height="400" alt="Screenshot"/> <img src="screenshots/7_SettingsActivity.png" height="400" alt="Screenshot"/> <img src="screenshots/8_AuthNeeded.png" height="400" alt="Screenshot"/> <img src="screenshots/9_AuthActivity.png" height="400" alt="Screenshot"/> 
+<img src="screenshots/1_MainPage.png" height="400" alt="Screenshot"/> <img src="screenshots/2_SampleLoginEditTexts.png" height="400" alt="Screenshot"/> <img src="screenshots/3_SampleLoginEditTextsAutofilled.png" height="400" alt="Screenshot"/> <img src="screenshots/4_WelcomeActivity.png" height="400" alt="Screenshot"/> <img src="screenshots/5_SampleLoginCustomVirtualView.png" height="400" alt="Screenshot"/> <img src="screenshots/6_SampleLoginCustomVirtualViewAutofilled.png" height="400" alt="Screenshot"/> <img src="screenshots/7_SampleCheckOutSpinnersAutofillable.png" height="400" alt="Screenshot"/> <img src="screenshots/8_SampleCheckOutSpinnersAutofilled.png" height="400" alt="Screenshot"/> <img src="screenshots/9_SettingsActivity.png" height="400" alt="Screenshot"/> <img src="screenshots/10_AuthNeeded.png" height="400" alt="Screenshot"/> <img src="screenshots/11_AuthActivity.png" height="400" alt="Screenshot"/> 
 
 Getting Started
 ---------------

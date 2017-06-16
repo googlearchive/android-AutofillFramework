@@ -23,11 +23,13 @@ import android.service.autofill.FillResponse
 import android.service.autofill.SaveCallback
 import android.service.autofill.SaveRequest
 import android.util.Log
+import android.view.autofill.AutofillId
 import com.example.android.autofillframework.CommonUtil.TAG
 import com.example.android.autofillframework.CommonUtil.bundleToString
 import com.example.android.autofillframework.R
 import com.example.android.autofillframework.multidatasetservice.datasource.SharedPrefsAutofillRepository
 import com.example.android.autofillframework.multidatasetservice.settings.MyPreferences
+import java.util.Arrays
 
 class MyAutofillService : AutofillService() {
 
@@ -45,7 +47,7 @@ class MyAutofillService : AutofillService() {
         val responseBuilder = FillResponse.Builder()
         // Check user's settings for authenticating Responses and Datasets.
         val responseAuth = MyPreferences.isResponseAuth(this)
-        if (responseAuth) {
+        if (responseAuth && autofillFields.autofillIds.size > 0) {
             // If the entire Autofill Response is authenticated, AuthActivity is used
             // to generate Response.
             val sender = AuthActivity.getAuthIntentSenderForResponse(this)

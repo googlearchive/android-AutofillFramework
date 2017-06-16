@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
+<?xml version="1.0" encoding="UTF-8"?><!--
  Copyright 2017 The Android Open Source Project
 
  Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,21 +35,20 @@
         </activity>
         <activity
             android:name=".app.StandardSignInActivity"
-            android:taskAffinity=".StandardSignInActivity">
-        </activity>
+            android:taskAffinity=".StandardSignInActivity" />
         <activity
             android:name=".app.StandardAutoCompleteSignInActivity"
             android:taskAffinity=".StandardAutoCompleteSignInActivity" />
         <activity
             android:name=".app.VirtualSignInActivity"
-            android:taskAffinity=".VirtualSignInActivity">
-
-        </activity>
+            android:taskAffinity=".VirtualSignInActivity" />
         <activity android:name=".app.WelcomeActivity" />
         <activity
             android:name=".app.CreditCardActivity"
-            android:taskAffinity=".CreditCardActivity">
-        </activity>
+            android:taskAffinity=".CreditCardActivity" />
+        <activity
+            android:name=".app.EmailComposeActivity"
+            android:taskAffinity=".EmailComposeActivity" />
         <!--
         Including launcher icon for Autofill Settings to convenience.
         Not necessary for a real service.
@@ -73,8 +71,8 @@
         -->
         <service
             android:name=".multidatasetservice.MyAutofillService"
-            android:permission="android.permission.BIND_AUTOFILL"
-            android:label="Multi-Dataset Autofill Service">
+            android:label="Multi-Dataset Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL">
             <meta-data
                 android:name="android.autofill"
                 android:resource="@xml/multidataset_service" />

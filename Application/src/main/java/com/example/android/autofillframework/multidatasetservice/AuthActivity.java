@@ -25,6 +25,7 @@ import android.os.Bundle;
 import android.service.autofill.Dataset;
 import android.service.autofill.FillResponse;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.util.Log;
 import android.view.View;
@@ -50,7 +51,7 @@ import static com.example.android.autofillframework.CommonUtil.TAG;
  * It is launched when an Autofill Response or specific Dataset within the Response requires
  * authentication to access. It bundles the result in an Intent.
  */
-public class AuthActivity extends Activity {
+public class AuthActivity extends AppCompatActivity {
 
     // Unique id for dataset intents.
     private static int sDatasetPendingIntentId = 0;

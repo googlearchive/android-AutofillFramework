@@ -22,9 +22,10 @@
     <string name="navigation_button_spinners_credit_card_label">Sample Credit Card Check Out Using Spinners</string>
     <string name="navigation_button_edittext_login_label">Sample Login Using EditTexts</string>
     <string name="navigation_button_autocomplete_login_label">Sample Login Using AutoCompleteTextViews</string>
+    <string name="navigation_button_email_compose_label">Sample Email Compose Using EditTexts</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
-    <string name="welcome_text">You have successfully signed in!</string>
+    <string name="welcome_text">Success!</string>
     <string name="standard_view_sign_in">Sign in using standard views</string>
     <string name="standard_view_autocomplete_sign_in">Sign in using standard views that
         trigger AutoComplete dialogs when focused</string>
@@ -51,6 +52,8 @@
     <string name="settings_auth_change_credentials_title">Change credentials</string>
     <string name="clear_label">Clear</string>
     <string name="login_label">Login</string>
+    <string name="to_label">To</string>
+    <string name="body_label">Body</string>
     <string name="autofill_master_login_label">Autofill Master Login</string>
     <string name="submit_label">Submit</string>
     <string name="edittext_login_info">This is a sample login page that uses standard EditTexts
@@ -72,6 +75,14 @@
         box, Spinners can require a small amount of work when using a custom array adapter.
         In that case, you need to tell the Autofill framework which values in the adapter map to
         which indices.
+    </string>
+    <string name="email_compose_info">
+        This is a sample email compose page that uses EditTexts to compose the email. Since none of
+        the fields on the page are important to autofill, it is necessary to set the
+        android:importantForAutofill XML property appropriately for each View. You can either set it
+        to &quot;no&quot; on all non-autofillable Views, or set &quot;noExcludeDescendants&quot;
+        on the root View if all Views in the hierarchy should not be autofilled. In this case, we
+        did the latter.
     </string>
     <plurals name="welcome_page_countdown">
         <item quantity="one">Automatically return to main page in %d second.</item>

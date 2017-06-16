@@ -47,22 +47,25 @@ public class NavigationItem extends FrameLayout {
         this(context, attrs, defStyleAttr, 0);
     }
 
-    public NavigationItem(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public NavigationItem(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr,
+            int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NavigationItem,
                 defStyleAttr, defStyleRes);
         String labelText = typedArray.getString(R.styleable.NavigationItem_labelText);
-        final String infoText = typedArray.getString(R.styleable.NavigationItem_infoText);
+        String infoText = typedArray.getString(R.styleable.NavigationItem_infoText);
         Drawable logoDrawable = typedArray.getDrawable(R.styleable.NavigationItem_itemLogo);
         @ColorRes int colorRes = typedArray.getResourceId(R.styleable.NavigationItem_imageColor, 0);
         int imageColor = ContextCompat.getColor(getContext(), colorRes);
         typedArray.recycle();
         View rootView = LayoutInflater.from(context).inflate(R.layout.navigation_item, this);
-        logoDrawable.setColorFilter(imageColor, PorterDuff.Mode.SRC_IN);
+        if (logoDrawable != null) {
+            logoDrawable.setColorFilter(imageColor, PorterDuff.Mode.SRC_IN);
+        }
         TextView buttonLabel = rootView.findViewById(R.id.buttonLabel);
         buttonLabel.setText(labelText);
-        buttonLabel.setCompoundDrawablesRelativeWithIntrinsicBounds
-                (logoDrawable, null, null, null);
+        buttonLabel.setCompoundDrawablesRelativeWithIntrinsicBounds(logoDrawable, null,
+                null, null);
         InfoButton infoButton = rootView.findViewById(R.id.infoButton);
         infoButton.setInfoText(infoText);
         infoButton.setColorFilter(imageColor);

@@ -63,5 +63,14 @@
             app:itemLogo="@drawable/ic_spinners_logo_24dp"
             app:imageColor="@android:color/holo_orange_dark"/>
 
+        <com.example.android.autofillframework.app.NavigationItem
+            android:id="@+id/emailComposeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:infoText="@string/email_compose_info"
+            app:labelText="@string/navigation_button_email_compose_label"
+            app:itemLogo="@drawable/ic_email_black_24dp"
+            app:imageColor="@android:color/holo_purple"/>
+
     </LinearLayout>
 </ScrollView>
