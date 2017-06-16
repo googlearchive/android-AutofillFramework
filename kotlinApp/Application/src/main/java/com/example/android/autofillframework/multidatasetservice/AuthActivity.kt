@@ -24,6 +24,7 @@ import android.content.IntentSender
 import android.os.Bundle
 import android.service.autofill.Dataset
 import android.service.autofill.FillResponse
+import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.autofill.AutofillManager.EXTRA_ASSIST_STRUCTURE
 import android.view.autofill.AutofillManager.EXTRA_AUTHENTICATION_RESULT
@@ -43,7 +44,7 @@ import kotlinx.android.synthetic.main.multidataset_service_auth_activity.master_
  * It is launched when an Autofill Response or specific Dataset within the Response requires
  * authentication to access. It bundles the result in an Intent.
  */
-class AuthActivity : Activity() {
+class AuthActivity : AppCompatActivity() {
 
     private var mReplyIntent: Intent? = null
 
@@ -91,7 +92,7 @@ class AuthActivity : Activity() {
         val autofillFields = parser.autofillFields
         mReplyIntent = Intent()
         val clientFormDataMap = SharedPrefsAutofillRepository
-                .getClientFormData(this, autofillFields.focusedAutofillHints, autofillFields.allAutofillHints)
+                .getFilledAutofillFieldCollection(this, autofillFields.focusedAutofillHints, autofillFields.allAutofillHints)
         if (forResponse) {
             AutofillHelper.newResponse(this, false, autofillFields, clientFormDataMap)?.let(this::setResponseIntent)
         } else {

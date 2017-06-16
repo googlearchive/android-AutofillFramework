@@ -20,6 +20,7 @@ import android.content.SharedPreferences
 import android.util.ArraySet
 import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
 
@@ -37,14 +38,15 @@ object SharedPrefsAutofillRepository : AutofillRepository {
         return context.applicationContext.getSharedPreferences(SHARED_PREF_KEY, Context.MODE_PRIVATE)
     }
 
-    override fun getClientFormData(context: Context, focusedAutofillHints: List<String>,
+    override fun getFilledAutofillFieldCollection(context: Context, focusedAutofillHints: List<String>,
             allAutofillHints: List<String>): HashMap<String, FilledAutofillFieldCollection>? {
         var hasDataForFocusedAutofillHints = false
         val clientFormDataMap = HashMap<String, FilledAutofillFieldCollection>()
         val clientFormDataStringSet = getAllAutofillDataStringSet(context)
         for (clientFormDataString in clientFormDataStringSet) {
             val type = object : TypeToken<FilledAutofillFieldCollection>() {}.type
-            Gson().fromJson<FilledAutofillFieldCollection>(clientFormDataString, type)?.let { clientFormData ->
+            val gson: Gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create()
+            gson.fromJson<FilledAutofillFieldCollection>(clientFormDataString, type)?.let { clientFormData ->
                 if (clientFormData.helpsWithHints(focusedAutofillHints)) {
                     // Saved data has data relevant to at least 1 of the hints associated with the
                     // View in focus.
@@ -66,11 +68,12 @@ object SharedPrefsAutofillRepository : AutofillRepository {
         }
     }
 
-    override fun saveClientFormData(context: Context, filledAutofillFieldCollection: FilledAutofillFieldCollection) {
+    override fun saveFilledAutofillFieldCollection(context: Context, filledAutofillFieldCollection: FilledAutofillFieldCollection) {
         val datasetName = "dataset-" + getDatasetNumber(context)
         filledAutofillFieldCollection.datasetName = datasetName
         val allAutofillData = getAllAutofillDataStringSet(context)
-        allAutofillData.add(Gson().toJson(filledAutofillFieldCollection).toString())
+        val gson: Gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create()
+        allAutofillData.add(gson.toJson(filledAutofillFieldCollection).toString())
         saveAllAutofillDataStringSet(context, allAutofillData)
         incrementDatasetNumber(context)
     }

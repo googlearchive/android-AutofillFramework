@@ -22,13 +22,19 @@ import android.support.v7.app.AppCompatActivity
 import android.widget.ArrayAdapter
 import com.example.android.autofillframework.R
 import kotlinx.android.synthetic.main.credit_card_activity.clear
+import kotlinx.android.synthetic.main.credit_card_activity.creditCardNumberField
 import kotlinx.android.synthetic.main.credit_card_activity.expirationDay
 import kotlinx.android.synthetic.main.credit_card_activity.expirationMonth
 import kotlinx.android.synthetic.main.credit_card_activity.expirationYear
 import kotlinx.android.synthetic.main.credit_card_activity.submit
+import java.util.Calendar
 
 
 class CreditCardActivity : AppCompatActivity() {
+
+    private val CC_EXP_YEARS_COUNT = 5
+
+    private val years: Array<CharSequence?> = arrayOfNulls<CharSequence>(CC_EXP_YEARS_COUNT)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,16 +51,25 @@ class CreditCardActivity : AppCompatActivity() {
         monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         expirationMonth.adapter = monthAdapter
 
-        val yearAdapter = ArrayAdapter.createFromResource(this, R.array.year_array, android.R.layout.simple_spinner_item)
-        yearAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        expirationYear.adapter = yearAdapter
-
+        val year = Calendar.getInstance().get(Calendar.YEAR)
+        for (i in years.indices) {
+            years[i] = Integer.toString(year + i)
+        }
+        expirationYear.adapter =
+                object : ArrayAdapter<CharSequence?>(this, android.R.layout.simple_spinner_item, years) {
+                    override fun getAutofillOptions(): Array<CharSequence?> {
+                        return years
+                    }
+                }
         submit.setOnClickListener { submitCcInfo() }
         clear.setOnClickListener { resetFields() }
     }
 
     private fun resetFields() {
-        //TODO
+        creditCardNumberField.setText("")
+        expirationDay.setSelection(0)
+        expirationMonth.setSelection(0)
+        expirationYear.setSelection(0)
     }
 
     /**

@@ -15,7 +15,6 @@
  */
 package com.example.android.autofillframework.app;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -26,37 +25,40 @@ import com.example.android.autofillframework.R;
 /**
  * This is used to launch sample activities that showcase autofill.
  */
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViewById(R.id.standardViewSignInButton).setOnClickListener(this);
-        findViewById(R.id.virtualViewSignInButton).setOnClickListener(this);
-        findViewById(R.id.creditCardCheckoutButton).setOnClickListener(this);
-        findViewById(R.id.standardLoginWithAutoCompleteButton).setOnClickListener(this);
-    }
+        NavigationItem loginEditTexts = findViewById(R.id.standardViewSignInButton);
+        NavigationItem loginCustomVirtual = findViewById(R.id.virtualViewSignInButton);
+        NavigationItem creditCardSpinners = findViewById(R.id.creditCardCheckoutButton);
+        NavigationItem loginAutoComplete = findViewById(R.id.standardLoginWithAutoCompleteButton);
 
-    @Override
-    public void onClick(View view) {
-        Intent intent = null;
-        switch (view.getId()) {
-            case R.id.standardViewSignInButton:
-                intent = StandardSignInActivity.getStartActivityIntent(this);
-                break;
-            case R.id.virtualViewSignInButton:
-                intent = VirtualSignInActivity.getStartActivityIntent(this);
-                break;
-            case R.id.creditCardCheckoutButton:
-                intent = CreditCardActivity.getStartActivityIntent(this);
-                break;
-            case R.id.standardLoginWithAutoCompleteButton:
-                intent = StandardAutoCompleteSignInActivity.getStartActivityIntent(this);
-                break;
-        }
-        if (intent != null) {
-            startActivity(intent);
-        }
+        loginEditTexts.setNavigationButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(StandardSignInActivity.getStartActivityIntent(MainActivity.this));
+            }
+        });
+        loginCustomVirtual.setNavigationButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(VirtualSignInActivity.getStartActivityIntent(MainActivity.this));
+            }
+        });
+        creditCardSpinners.setNavigationButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(CreditCardActivity.getStartActivityIntent(MainActivity.this));
+            }
+        });
+        loginAutoComplete.setNavigationButtonClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(StandardAutoCompleteSignInActivity.getStartActivityIntent(MainActivity.this));
+            }
+        });
     }
 }

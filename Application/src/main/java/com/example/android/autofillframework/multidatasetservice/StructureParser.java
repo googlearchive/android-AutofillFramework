@@ -20,8 +20,8 @@ import android.app.assist.AssistStructure.ViewNode;
 import android.app.assist.AssistStructure.WindowNode;
 import android.util.Log;
 
-import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection;
 import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillField;
+import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection;
 
 import static com.example.android.autofillframework.CommonUtil.TAG;
 
@@ -64,12 +64,11 @@ final class StructureParser {
 
     private void parseLocked(boolean forFill, ViewNode viewNode) {
         if (viewNode.getAutofillHints() != null && viewNode.getAutofillHints().length > 0) {
-            //TODO check to make sure hints are supported by service.
             if (forFill) {
                 mAutofillFields.add(new AutofillFieldMetadata(viewNode));
             } else {
-                mFilledAutofillFieldCollection.setAutofillValuesForHints
-                        (viewNode.getAutofillHints(), new FilledAutofillField(viewNode));
+                mFilledAutofillFieldCollection.add
+                        (new FilledAutofillField(viewNode));
             }
         }
         int childrenSize = viewNode.getChildCount();

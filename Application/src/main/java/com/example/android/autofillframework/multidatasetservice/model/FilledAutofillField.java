@@ -18,15 +18,27 @@ package com.example.android.autofillframework.multidatasetservice.model;
 import android.app.assist.AssistStructure;
 import android.view.autofill.AutofillValue;
 
+import com.example.android.autofillframework.multidatasetservice.AutofillHelper;
+import com.google.gson.annotations.Expose;
+
 /**
  * JSON serializable data class containing the same data as an {@link AutofillValue}.
  */
 public class FilledAutofillField {
+    @Expose
     private String mTextValue = null;
+    @Expose
     private Long mDateValue = null;
+    @Expose
     private Boolean mToggleValue = null;
 
+    /**
+     * Does not need to be serialized into persistent storage, so it's not exposed.
+     */
+    private String[] mAutofillHints = null;
+
     public FilledAutofillField(AssistStructure.ViewNode viewNode) {
+        mAutofillHints = AutofillHelper.filterForSupportedHints(viewNode.getAutofillHints());
         AutofillValue autofillValue = viewNode.getAutofillValue();
         if (autofillValue != null) {
             if (autofillValue.isList()) {
@@ -43,6 +55,10 @@ public class FilledAutofillField {
                 mTextValue = autofillValue.getTextValue().toString();
             }
         }
+    }
+
+    public String[] getAutofillHints() {
+        return mAutofillHints;
     }
 
     public String getTextValue() {

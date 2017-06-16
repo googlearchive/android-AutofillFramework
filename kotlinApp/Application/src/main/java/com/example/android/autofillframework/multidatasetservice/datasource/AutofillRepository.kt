@@ -25,13 +25,13 @@ interface AutofillRepository {
      * Gets saved FilledAutofillFieldCollection that contains some objects that can autofill fields with these
      * `autofillHints`.
      */
-    fun getClientFormData(context: Context, focusedAutofillHints: List<String>,
+    fun getFilledAutofillFieldCollection(context: Context, focusedAutofillHints: List<String>,
             allAutofillHints: List<String>): HashMap<String, FilledAutofillFieldCollection>?
 
     /**
      * Saves LoginCredential under this datasetName.
      */
-    fun saveClientFormData(context: Context, filledAutofillFieldCollection: FilledAutofillFieldCollection)
+    fun saveFilledAutofillFieldCollection(context: Context, filledAutofillFieldCollection: FilledAutofillFieldCollection)
 
     /**
      * Clears all data.

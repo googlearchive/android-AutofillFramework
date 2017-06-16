@@ -15,14 +15,18 @@
  */
 package com.example.android.autofillframework.app;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 
 import com.example.android.autofillframework.R;
 
-public class WelcomeActivity extends Activity {
+import static java.lang.Math.toIntExact;
+
+public class WelcomeActivity extends AppCompatActivity {
 
     public static Intent getStartActivityIntent(Context context) {
         return new Intent(context, WelcomeActivity.class);
@@ -32,5 +36,21 @@ public class WelcomeActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.welcome_activity);
+        final TextView countdownText = findViewById(R.id.countdownText);
+        new CountDownTimer(5000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                int secondsRemaining = toIntExact(millisUntilFinished / 1000);
+                countdownText.setText(getResources().getQuantityString
+                        (R.plurals.welcome_page_countdown, secondsRemaining, secondsRemaining));
+            }
+
+            @Override
+            public void onFinish() {
+                if (!WelcomeActivity.this.isFinishing()) {
+                    finish();
+                }
+            }
+        }.start();
     }
 }

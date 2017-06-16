@@ -38,7 +38,7 @@ public class AutofillFieldMetadata {
         mAutofillType = view.getAutofillType();
         mAutofillOptions = view.getAutofillOptions();
         mFocused = view.isFocused();
-        setHints(view.getAutofillHints());
+        setHints(AutofillHelper.filterForSupportedHints(view.getAutofillHints()));
     }
 
     public String[] getHints() {

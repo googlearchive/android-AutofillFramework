@@ -17,14 +17,24 @@ package com.example.android.autofillframework.multidatasetservice.model
 
 import android.app.assist.AssistStructure
 import android.view.autofill.AutofillValue
+import com.example.android.autofillframework.multidatasetservice.AutofillHelper
+import com.google.gson.annotations.Expose
 
 /**
  * JSON serializable data class containing the same data as an [AutofillValue].
  */
 class FilledAutofillField(viewNode: AssistStructure.ViewNode) {
-    var textValue: CharSequence? = null
+    @Expose
+    var textValue: String? = null
+
+    @Expose
     var dateValue: Long? = null
+
+    @Expose
     var toggleValue: Boolean? = null
+
+    val autofillHints: Array<String> =
+            viewNode.autofillHints.filter(AutofillHelper::isValidHint).toTypedArray()
 
     init {
         viewNode.autofillValue?.let { autofillValue ->
@@ -32,7 +42,7 @@ class FilledAutofillField(viewNode: AssistStructure.ViewNode) {
                 val index = autofillValue.listValue
                 viewNode.autofillOptions?.let { autofillOptions ->
                     if (autofillOptions.size > index) {
-                        textValue = autofillOptions[index]
+                        textValue = autofillOptions[index].toString()
                     }
                 }
             } else if (autofillValue.isDate) {

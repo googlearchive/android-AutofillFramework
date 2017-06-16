@@ -25,4 +25,6 @@
     <dimen name="padding_normal_button">12dp</dimen>
     <dimen name="spacing_large">32dp</dimen>
     <dimen name="a11y_min_touch_target_dimen">48dp</dimen>
+    <dimen name="text_field_width">250sp</dimen>
+    <dimen name="custom_view_height">150dp</dimen>
 </resources>

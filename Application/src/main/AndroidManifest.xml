@@ -28,7 +28,6 @@
         android:theme="@style/Theme.AppCompat.Light">
         <activity
             android:name=".app.MainActivity"
-            android:label="AF Main"
             android:taskAffinity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,23 +36,19 @@
         </activity>
         <activity
             android:name=".app.StandardSignInActivity"
-            android:label="AF StandardLogin"
             android:taskAffinity=".StandardSignInActivity">
         </activity>
         <activity
             android:name=".app.StandardAutoCompleteSignInActivity"
-            android:label="AF StandardLogin"
             android:taskAffinity=".StandardAutoCompleteSignInActivity" />
         <activity
             android:name=".app.VirtualSignInActivity"
-            android:label="AF VirtualLogin"
             android:taskAffinity=".VirtualSignInActivity">
 
         </activity>
         <activity android:name=".app.WelcomeActivity" />
         <activity
             android:name=".app.CreditCardActivity"
-            android:label="AF CreditCard"
             android:taskAffinity=".CreditCardActivity">
         </activity>
         <!--

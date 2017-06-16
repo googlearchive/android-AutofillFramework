@@ -19,8 +19,8 @@ import android.app.assist.AssistStructure
 import android.app.assist.AssistStructure.ViewNode
 import android.util.Log
 import com.example.android.autofillframework.CommonUtil.TAG
-import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection
 import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillField
+import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection
 
 /**
  * Parser for an AssistStructure object. This is invoked when the Autofill Service receives an
@@ -61,8 +61,7 @@ internal class StructureParser(private val mStructure: AssistStructure) {
                 if (forFill) {
                     autofillFields.add(AutofillFieldMetadata(viewNode))
                 } else {
-                    filledAutofillFieldCollection.setAutofillValuesForHints(viewNode.autofillHints,
-                            FilledAutofillField(viewNode))
+                    filledAutofillFieldCollection.add(FilledAutofillField(viewNode))
                 }
             }
         }

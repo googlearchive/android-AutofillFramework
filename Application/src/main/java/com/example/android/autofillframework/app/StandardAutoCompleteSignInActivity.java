@@ -24,7 +24,6 @@ import android.view.View;
 import android.view.autofill.AutofillManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,8 +34,8 @@ import static com.example.android.autofillframework.CommonUtil.TAG;
 public class StandardAutoCompleteSignInActivity extends AppCompatActivity {
     private AutoCompleteTextView mUsernameAutoCompleteField;
     private TextView mPasswordField;
-    private Button mLoginButton;
-    private Button mClearButton;
+    private TextView mLoginButton;
+    private TextView mClearButton;
     private boolean mAutofillReceived = false;
     private AutofillManager.AutofillCallback mAutofillCallback;
     private AutofillManager mAutofillManager;

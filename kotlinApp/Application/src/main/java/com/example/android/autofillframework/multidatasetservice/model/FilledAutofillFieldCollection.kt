@@ -20,7 +20,9 @@ import android.util.Log
 import android.view.View
 import android.view.autofill.AutofillId
 import android.view.autofill.AutofillValue
+import com.example.android.autofillframework.CommonUtil.TAG
 import com.example.android.autofillframework.multidatasetservice.AutofillFieldMetadataCollection
+import com.google.gson.annotations.Expose
 import java.util.HashMap
 
 
@@ -28,23 +30,24 @@ import java.util.HashMap
  * FilledAutofillFieldCollection is the model that represents all of the form data on a client app's page, plus the
  * dataset name associated with it.
  */
-class FilledAutofillFieldCollection constructor(var datasetName: String? = null,
-        private val hintMap: HashMap<String, FilledAutofillField> = HashMap<String, FilledAutofillField>()) {
-
-    private val TAG = "FilledAutofillFieldCollection"
+class FilledAutofillFieldCollection constructor(@Expose var datasetName: String? = null,
+        @Expose private val hintMap: HashMap<String, FilledAutofillField> = HashMap<String, FilledAutofillField>()) {
 
     /**
      * Sets values for a list of autofillHints.
      */
-    fun setAutofillValuesForHints(autofillHints: Array<String>, autofillField: FilledAutofillField) {
-        autofillHints.forEach { hint ->
-            hintMap[hint] = autofillField
+    fun add(autofillField: FilledAutofillField) {
+        autofillField.autofillHints.forEach { autofillHint ->
+            hintMap[autofillHint] = autofillField
         }
     }
 
     /**
      * Populates a [Dataset.Builder] with appropriate values for each [AutofillId]
-     * in a `AutofillFieldMetadataCollection`.
+     * in a `AutofillFieldMetadataCollection`. In other words, it builds an Autofill dataset
+     * by applying saved values (from this `FilledAutofillFieldCollection`) to Views specified
+     * in a `AutofillFieldMetadataCollection`, which represents the current page the user is
+     * on.
      */
     fun applyToFields(autofillFieldMetadataCollection: AutofillFieldMetadataCollection,
             datasetBuilder: Dataset.Builder): Boolean {
@@ -88,8 +91,9 @@ class FilledAutofillFieldCollection constructor(var datasetName: String? = null,
     }
 
     /**
-     * Returns whether this model contains autofill data that is relevant to any of the
-     * autofillHints that are passed in.
+     * @param autofillHints List of autofill hints, usually associated with a View or set of Views.
+     * @return whether any of the filled fields on the page have at least 1 autofillHint that is
+     * in the provided autofillHints.
      */
     fun helpsWithHints(autofillHints: List<String>): Boolean {
         for (autofillHint in autofillHints) {

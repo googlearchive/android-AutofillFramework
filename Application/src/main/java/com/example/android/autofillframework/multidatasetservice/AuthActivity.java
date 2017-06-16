@@ -130,7 +130,7 @@ public class AuthActivity extends Activity {
         int saveTypes = autofillFields.getSaveType();
         mReplyIntent = new Intent();
         HashMap<String, FilledAutofillFieldCollection> clientFormDataMap =
-                SharedPrefsAutofillRepository.getInstance(this).getClientFormData
+                SharedPrefsAutofillRepository.getInstance(this).getFilledAutofillFieldCollection
                         (autofillFields.getFocusedHints(), autofillFields.getAllHints());
         if (forResponse) {
             setResponseIntent(AutofillHelper.newResponse

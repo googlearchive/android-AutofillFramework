@@ -26,13 +26,13 @@ public interface AutofillRepository {
      * Gets saved FilledAutofillFieldCollection that contains some objects that can autofill fields with these
      * {@code autofillHints}.
      */
-    HashMap<String, FilledAutofillFieldCollection> getClientFormData(List<String> focusedAutofillHints,
+    HashMap<String, FilledAutofillFieldCollection> getFilledAutofillFieldCollection(List<String> focusedAutofillHints,
             List<String> allAutofillHints);
 
     /**
      * Saves LoginCredential under this datasetName.
      */
-    void saveClientFormData(FilledAutofillFieldCollection filledAutofillFieldCollection);
+    void saveFilledAutofillFieldCollection(FilledAutofillFieldCollection filledAutofillFieldCollection);
 
     /**
      * Clears all data.

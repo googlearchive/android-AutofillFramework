@@ -19,12 +19,15 @@ import android.content.Context
 import android.service.autofill.Dataset
 import android.service.autofill.FillResponse
 import android.service.autofill.SaveInfo
+import android.support.annotation.DrawableRes
 import android.util.Log
+import android.view.View
 import android.widget.RemoteViews
 import com.example.android.autofillframework.CommonUtil.TAG
 import com.example.android.autofillframework.R
 import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection
 import java.util.HashMap
+
 
 /**
  * This is a class containing helper methods for building Autofill Datasets and Responses.
@@ -36,14 +39,21 @@ object AutofillHelper {
      * client View.
      */
     fun newDataset(context: Context, autofillFieldMetadata: AutofillFieldMetadataCollection,
-            filledAutofillFieldCollection: FilledAutofillFieldCollection, datasetAuth: Boolean): Dataset? {
+            filledAutofillFieldCollection: FilledAutofillFieldCollection,
+            datasetAuth: Boolean): Dataset? {
         filledAutofillFieldCollection.datasetName?.let { datasetName ->
-            val datasetBuilder = Dataset.Builder(newRemoteViews(context.packageName, datasetName))
-            val setValueAtLeastOnce = filledAutofillFieldCollection.applyToFields(autofillFieldMetadata, datasetBuilder)
+            val datasetBuilder: Dataset.Builder
             if (datasetAuth) {
+                datasetBuilder = Dataset.Builder(newRemoteViews(context.packageName, datasetName,
+                        R.drawable.ic_lock_black_24dp))
                 val sender = AuthActivity.getAuthIntentSenderForDataset(context, datasetName)
                 datasetBuilder.setAuthentication(sender)
+            } else {
+                datasetBuilder = Dataset.Builder(newRemoteViews(context.packageName, datasetName,
+                        R.drawable.ic_person_black_24dp))
             }
+            val setValueAtLeastOnce = filledAutofillFieldCollection
+                    .applyToFields(autofillFieldMetadata, datasetBuilder)
             if (setValueAtLeastOnce) {
                 return datasetBuilder.build()
             }
@@ -51,9 +61,11 @@ object AutofillHelper {
         return null
     }
 
-    fun newRemoteViews(packageName: String, remoteViewsText: String): RemoteViews {
+    fun newRemoteViews(packageName: String, remoteViewsText: String,
+            @DrawableRes drawableId: Int): RemoteViews {
         val presentation = RemoteViews(packageName, R.layout.multidataset_service_list_item)
-        presentation.setTextViewText(R.id.text1, remoteViewsText)
+        presentation.setTextViewText(R.id.text, remoteViewsText)
+        presentation.setImageViewResource(R.id.icon, drawableId)
         return presentation
     }
 
@@ -81,6 +93,27 @@ object AutofillHelper {
         } else {
             Log.d(TAG, "These fields are not meant to be saved by autofill.")
             return null
+        }
+    }
+
+    fun isValidHint(hint: String): Boolean {
+        when (hint) {
+            View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE,
+            View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY,
+            View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH,
+            View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR,
+            View.AUTOFILL_HINT_CREDIT_CARD_NUMBER,
+            View.AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE,
+            View.AUTOFILL_HINT_EMAIL_ADDRESS,
+            View.AUTOFILL_HINT_PHONE,
+            View.AUTOFILL_HINT_NAME,
+            View.AUTOFILL_HINT_PASSWORD,
+            View.AUTOFILL_HINT_POSTAL_ADDRESS,
+            View.AUTOFILL_HINT_POSTAL_CODE,
+            View.AUTOFILL_HINT_USERNAME ->
+                return true
+            else ->
+                return false
         }
     }
 }

@@ -18,14 +18,34 @@ package com.example.android.autofillframework.app
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.support.v7.app.AppCompatActivity
 import com.example.android.autofillframework.R
+import kotlinx.android.synthetic.main.welcome_activity.countdownText
+import java.lang.Math.toIntExact
+
 
 class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.welcome_activity)
+        object : CountDownTimer(5000, 1000) {
+
+            override fun onTick(millisUntilFinished: Long) {
+                val secondsRemaining = toIntExact(millisUntilFinished / 1000)
+                countdownText.text = getResources()
+                        .getQuantityString(R.plurals.welcome_page_countdown, secondsRemaining,
+                                secondsRemaining)
+            }
+
+            override fun onFinish() {
+                if (!this@WelcomeActivity.isFinishing) {
+                    finish()
+                }
+            }
+
+        }.start()
     }
 
     companion object {

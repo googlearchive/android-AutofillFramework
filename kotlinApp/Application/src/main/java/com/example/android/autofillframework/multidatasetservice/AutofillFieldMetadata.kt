@@ -28,7 +28,7 @@ class AutofillFieldMetadata(view: ViewNode) {
     var saveType = 0
         private set
 
-    val autofillHints: Array<String> = view.autofillHints
+    val autofillHints: Array<String> = view.autofillHints.filter(AutofillHelper::isValidHint).toTypedArray()
     val autofillId: AutofillId = view.autofillId
     val autofillType: Int = view.autofillType
     val autofillOptions: Array<CharSequence>? = view.autofillOptions
