@@ -41,9 +41,7 @@
             android:taskAffinity=".StandardAutoCompleteSignInActivity" />
         <activity
             android:name=".app.VirtualSignInActivity"
-            android:taskAffinity=".VirtualSignInActivity">
-
-        </activity>
+            android:taskAffinity=".VirtualSignInActivity" />
         <activity android:name=".app.WelcomeActivity" />
         <activity
             android:name=".app.CreditCardActivity"
@@ -51,6 +49,9 @@
         <activity
             android:name=".app.EmailComposeActivity"
             android:taskAffinity=".EmailComposeActivity" />
+        <activity
+            android:name=".app.CreditCardCompoundViewActivity"
+            android:taskAffinity=".CreditCardCompoundViewActivity" />
         <!--
         Including launcher icon for Autofill Settings to convenience.
         Not necessary for a real service.

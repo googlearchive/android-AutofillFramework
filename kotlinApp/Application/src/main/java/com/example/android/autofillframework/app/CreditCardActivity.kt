@@ -34,33 +34,32 @@ class CreditCardActivity : AppCompatActivity() {
 
     private val CC_EXP_YEARS_COUNT = 5
 
-    private val years: Array<CharSequence?> = arrayOfNulls<CharSequence>(CC_EXP_YEARS_COUNT)
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.credit_card_activity)
 
         // Create an ArrayAdapter using the string array and a default spinner layout
-        val dayAdapter = ArrayAdapter.createFromResource(this, R.array.day_array, android.R.layout.simple_spinner_item)
-        // Specify the layout to use when the list of choices appears
-        dayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        // Apply the adapter to the spinner
-        expirationDay.adapter = dayAdapter
+        expirationDay.adapter = ArrayAdapter.createFromResource(this, R.array.day_array,
+                android.R.layout.simple_spinner_item).apply {
+            // Specify the layout to use when the list of choices appears
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
 
-        val monthAdapter = ArrayAdapter.createFromResource(this, R.array.month_array, android.R.layout.simple_spinner_item)
-        monthAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        expirationMonth.adapter = monthAdapter
+        expirationMonth.adapter = ArrayAdapter.createFromResource(this, R.array.month_array,
+                android.R.layout.simple_spinner_item).apply {
+            setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        }
 
         val year = Calendar.getInstance().get(Calendar.YEAR)
-        for (i in years.indices) {
-            years[i] = Integer.toString(year + i)
+
+        val years = (0 until CC_EXP_YEARS_COUNT)
+                .map { Integer.toString(year + it) }
+                .toTypedArray<CharSequence>()
+
+        expirationYear.adapter = object : ArrayAdapter<CharSequence?>(this,
+                android.R.layout.simple_spinner_item, years) {
+            override fun getAutofillOptions() = years
         }
-        expirationYear.adapter =
-                object : ArrayAdapter<CharSequence?>(this, android.R.layout.simple_spinner_item, years) {
-                    override fun getAutofillOptions(): Array<CharSequence?> {
-                        return years
-                    }
-                }
         submit.setOnClickListener { submitCcInfo() }
         clear.setOnClickListener { resetFields() }
     }
@@ -77,15 +76,12 @@ class CreditCardActivity : AppCompatActivity() {
      * any new data.
      */
     private fun submitCcInfo() {
-        val intent = WelcomeActivity.getStartActivityIntent(this)
-        startActivity(intent)
+        startActivity(WelcomeActivity.getStartActivityIntent(this))
         finish()
     }
 
     companion object {
-        fun getStartActivityIntent(context: Context): Intent {
-            val intent = Intent(context, CreditCardActivity::class.java)
-            return intent
-        }
+        fun getStartActivityIntent(context: Context) =
+                Intent(context, CreditCardActivity::class.java)
     }
 }

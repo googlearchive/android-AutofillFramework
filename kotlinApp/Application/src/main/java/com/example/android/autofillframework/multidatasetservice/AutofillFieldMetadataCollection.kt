@@ -21,11 +21,13 @@ import android.view.autofill.AutofillId
  * Data structure that stores a collection of `AutofillFieldMetadata`s. Contains all of the client's `View`
  * hierarchy autofill-relevant metadata.
  */
-data class AutofillFieldMetadataCollection(val autofillIds: java.util.ArrayList<AutofillId> = java.util.ArrayList<AutofillId>(),
-        val allAutofillHints: java.util.ArrayList<String> = java.util.ArrayList<String>(),
-        val focusedAutofillHints: java.util.ArrayList<String> = java.util.ArrayList<String>()) {
+data class AutofillFieldMetadataCollection @JvmOverloads constructor(
+        val autofillIds: ArrayList<AutofillId> = ArrayList<AutofillId>(),
+        val allAutofillHints: ArrayList<String> = ArrayList<String>(),
+        val focusedAutofillHints: ArrayList<String> = ArrayList<String>()
+) {
 
-    private val autofillHintsToFieldsMap = java.util.HashMap<String, MutableList<AutofillFieldMetadata>>()
+    private val autofillHintsToFieldsMap = HashMap<String, MutableList<AutofillFieldMetadata>>()
     var saveType = 0
         private set
 
@@ -37,9 +39,10 @@ data class AutofillFieldMetadataCollection(val autofillIds: java.util.ArrayList<
         if (autofillFieldMetadata.isFocused) {
             focusedAutofillHints.addAll(hintsList)
         }
-        autofillFieldMetadata.autofillHints.forEach { autofillHint ->
-            autofillHintsToFieldsMap[autofillHint] = autofillHintsToFieldsMap[autofillHint] ?: java.util.ArrayList<AutofillFieldMetadata>()
-            autofillHintsToFieldsMap[autofillHint]?.add(autofillFieldMetadata)
+        autofillFieldMetadata.autofillHints.forEach {
+            val fields = autofillHintsToFieldsMap[it] ?: ArrayList<AutofillFieldMetadata>()
+            autofillHintsToFieldsMap[it] = fields
+            fields.add(autofillFieldMetadata)
         }
     }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
  * Copyright (C) 2017 The Android Open Source Project
  *
@@ -23,6 +23,7 @@
     <string name="navigation_button_edittext_login_label">Sample Login Using EditTexts</string>
     <string name="navigation_button_autocomplete_login_label">Sample Login Using AutoCompleteTextViews</string>
     <string name="navigation_button_email_compose_label">Sample Email Compose Using EditTexts</string>
+    <string name="navigation_button_compound_view_credit_card_label">Sample Credit Card Check Out Using Compound Views</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
     <string name="welcome_text">Success!</string>
@@ -43,6 +44,7 @@
     </string>
     <string name="settings_clear_data_confirmation_title">Confirmation</string>
     <string name="ok">OK</string>
+    <string name="slash">/</string>
     <string name="cancel">Cancel</string>
     <string name="settings_authentication_header">Authentication</string>
     <string name="settings_data_header">Data</string>
@@ -56,6 +58,9 @@
     <string name="body_label">Body</string>
     <string name="autofill_master_login_label">Autofill Master Login</string>
     <string name="submit_label">Submit</string>
+    <string name="cc_exp_month_description">Credit Card Expiration Month</string>
+    <string name="cc_exp_year_description">Credit Card Expiration Year</string>
+    <string name="invalid_package_signature">Invalid package signature</string>
     <string name="edittext_login_info">This is a sample login page that uses standard EditTexts
         from the UI toolkit. EditTexts are already optimized for autofill so extra autofill-specific
         code is almost never needed.
@@ -83,6 +88,12 @@
         to &quot;no&quot; on all non-autofillable Views, or set &quot;noExcludeDescendants&quot;
         on the root View if all Views in the hierarchy should not be autofilled. In this case, we
         did the latter.
+    </string>
+    <string name="compound_view_credit_card_info">
+        This is a sample credit card checkout page that uses a custom compound View to input the credit
+        card\'s expiration date and an EditText to input the credit card number. While the EditText is
+        optimized out of the box for autofill, this example shows how to implement certain Autofill-
+        specific methods and XML properties for the custom compound view.
     </string>
     <plurals name="welcome_page_countdown">
         <item quantity="one">Automatically return to main page in %d second.</item>

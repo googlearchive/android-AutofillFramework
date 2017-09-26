@@ -16,6 +16,8 @@
 package com.example.android.autofillframework
 
 import android.os.Bundle
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import java.util.Arrays
 
 object CommonUtil {
@@ -48,5 +50,9 @@ object CommonUtil {
         val builder = StringBuilder()
         bundleToString(builder, data)
         return builder.toString()
+    }
+
+    fun createGson(): Gson {
+        return GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create()
     }
 }

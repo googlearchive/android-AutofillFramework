@@ -27,4 +27,5 @@
     <dimen name="a11y_min_touch_target_dimen">48dp</dimen>
     <dimen name="text_field_width">250sp</dimen>
     <dimen name="custom_view_height">150dp</dimen>
+    <dimen name="multiple_partitions_height">450dp</dimen>
 </resources>

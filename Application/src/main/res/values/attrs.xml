@@ -24,4 +24,7 @@
     <declare-styleable name="InfoButton">
         <attr name="dialogText" format="string" />
     </declare-styleable>
+    <declare-styleable name="CustomVirtualView">
+        <attr name="internalTextSize" format="dimension" />
+    </declare-styleable>
 </resources>

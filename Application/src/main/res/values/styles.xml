@@ -41,4 +41,12 @@
         <item name="android:paddingStart">?android:listPreferredItemPaddingStart</item>
         <item name="android:paddingBottom">@dimen/spacing_normal</item>
     </style>
+
+    <style name="CustomDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
+        <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
+    </style>
+
+    <style name="MyDatePickerStyle" parent="@android:style/Widget.Material.DatePicker">
+        <item name="android:datePickerMode">spinner</item>
+    </style>
 </resources>

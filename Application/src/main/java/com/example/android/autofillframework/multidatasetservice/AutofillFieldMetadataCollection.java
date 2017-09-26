@@ -45,8 +45,8 @@ public final class AutofillFieldMetadataCollection {
             mFocusedAutofillHints.addAll(hintsList);
         }
         for (String hint : autofillFieldMetadata.getHints()) {
-            if (mAutofillHintsToFieldsMap.get(hint) == null) {
-                mAutofillHintsToFieldsMap.put(hint, new ArrayList<AutofillFieldMetadata>());
+            if (!mAutofillHintsToFieldsMap.containsKey(hint)) {
+                mAutofillHintsToFieldsMap.put(hint, new ArrayList<>());
             }
             mAutofillHintsToFieldsMap.get(hint).add(autofillFieldMetadata);
         }

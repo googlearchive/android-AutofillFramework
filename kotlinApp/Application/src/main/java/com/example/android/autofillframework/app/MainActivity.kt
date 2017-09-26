@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View
 import com.example.android.autofillframework.R
 import kotlinx.android.synthetic.main.activity_main.creditCardCheckoutButton
+import kotlinx.android.synthetic.main.activity_main.creditCardCompoundViewButton
 import kotlinx.android.synthetic.main.activity_main.emailComposeButton
 import kotlinx.android.synthetic.main.activity_main.standardLoginWithAutoCompleteButton
 import kotlinx.android.synthetic.main.activity_main.standardViewSignInButton
@@ -33,35 +34,23 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        standardViewSignInButton.setNavigationButtonClickListener(View.OnClickListener { standardViewSignIn() })
-        virtualViewSignInButton.setNavigationButtonClickListener(View.OnClickListener { virtualViewSignIn() })
-        creditCardCheckoutButton.setNavigationButtonClickListener(View.OnClickListener { creditCardCheckout() })
-        standardLoginWithAutoCompleteButton.setNavigationButtonClickListener(View.OnClickListener { standardAutoCompleteSignIn() })
-        emailComposeButton.setNavigationButtonClickListener(View.OnClickListener { emailCompose() })
-    }
-
-    private fun creditCardCheckout() {
-        val intent = CreditCardActivity.getStartActivityIntent(this)
-        startActivity(intent)
-    }
-
-    private fun standardViewSignIn() {
-        val intent = StandardSignInActivity.getStartActivityIntent(this)
-        startActivity(intent)
-    }
-
-    private fun standardAutoCompleteSignIn() {
-        val intent = StandardAutoCompleteSignInActivity.getStartActivityIntent(this)
-        startActivity(intent)
-    }
-
-    private fun virtualViewSignIn() {
-        val intent = VirtualSignInActivity.getStartActivityIntent(this)
-        startActivity(intent)
-    }
-
-    private fun emailCompose() {
-        val intent = EmailComposeActivity.getStartActivityIntent(this)
-        startActivity(intent)
+        standardViewSignInButton.setNavigationButtonClickListener(View.OnClickListener {
+            startActivity(StandardSignInActivity.getStartActivityIntent(this@MainActivity))
+        })
+        virtualViewSignInButton.setNavigationButtonClickListener(View.OnClickListener {
+            startActivity(VirtualSignInActivity.getStartActivityIntent(this@MainActivity))
+        })
+        creditCardCheckoutButton.setNavigationButtonClickListener(View.OnClickListener {
+            startActivity(CreditCardActivity.getStartActivityIntent(this@MainActivity))
+        })
+        standardLoginWithAutoCompleteButton.setNavigationButtonClickListener(View.OnClickListener {
+            startActivity(StandardAutoCompleteSignInActivity.getStartActivityIntent(this@MainActivity))
+        })
+        emailComposeButton.setNavigationButtonClickListener(View.OnClickListener {
+            startActivity(EmailComposeActivity.getStartActivityIntent(this@MainActivity))
+        })
+        creditCardCompoundViewButton.setNavigationButtonClickListener(View.OnClickListener {
+            startActivity(CreditCardCompoundViewActivity.getStartActivityIntent(this@MainActivity))
+        })
     }
 }

@@ -30,8 +30,11 @@ import java.util.HashMap
  * FilledAutofillFieldCollection is the model that represents all of the form data on a client app's page, plus the
  * dataset name associated with it.
  */
-class FilledAutofillFieldCollection constructor(@Expose var datasetName: String? = null,
-        @Expose private val hintMap: HashMap<String, FilledAutofillField> = HashMap<String, FilledAutofillField>()) {
+class FilledAutofillFieldCollection @JvmOverloads constructor(
+        @Expose var datasetName: String? = null,
+        @Expose private val hintMap: HashMap<String, FilledAutofillField> = HashMap<String,
+                FilledAutofillField>()
+) {
 
     /**
      * Sets values for a list of autofillHints.
@@ -60,9 +63,12 @@ class FilledAutofillFieldCollection constructor(@Expose var datasetName: String?
                 val savedAutofillValue = hintMap[hint]
                 when (autofillType) {
                     View.AUTOFILL_TYPE_LIST -> {
-                        savedAutofillValue?.textValue?.let(autofillField::getAutofillOptionIndex)?.let { index ->
-                            datasetBuilder.setValue(autofillId, AutofillValue.forList(index))
-                            setValueAtLeastOnce = true
+                        savedAutofillValue?.textValue?.let {
+                            val index = autofillField.getAutofillOptionIndex(it)
+                            if (index != -1) {
+                                datasetBuilder.setValue(autofillId, AutofillValue.forList(index))
+                                setValueAtLeastOnce = true
+                            }
                         }
                     }
                     View.AUTOFILL_TYPE_DATE -> {

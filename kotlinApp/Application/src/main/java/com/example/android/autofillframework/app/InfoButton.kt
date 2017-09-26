@@ -21,8 +21,11 @@ import android.support.v7.widget.AppCompatImageButton
 import android.util.AttributeSet
 import com.example.android.autofillframework.R
 
-class InfoButton @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0) : AppCompatImageButton(context, attrs, defStyleAttr) {
+class InfoButton @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : AppCompatImageButton(context, attrs, defStyleAttr) {
 
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.InfoButton,
@@ -34,8 +37,7 @@ class InfoButton @JvmOverloads constructor(context: Context, attrs: AttributeSet
 
     fun setInfoText(infoText: String) {
         setOnClickListener {
-            AlertDialog.Builder(this@InfoButton.context)
-                    .setMessage(infoText).create().show()
+            AlertDialog.Builder(this@InfoButton.context).setMessage(infoText).create().show()
         }
     }
 }

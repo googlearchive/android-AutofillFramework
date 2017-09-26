@@ -23,19 +23,24 @@ import android.service.autofill.FillResponse
 import android.service.autofill.SaveCallback
 import android.service.autofill.SaveRequest
 import android.util.Log
-import android.view.autofill.AutofillId
+import android.widget.Toast
 import com.example.android.autofillframework.CommonUtil.TAG
 import com.example.android.autofillframework.CommonUtil.bundleToString
 import com.example.android.autofillframework.R
 import com.example.android.autofillframework.multidatasetservice.datasource.SharedPrefsAutofillRepository
 import com.example.android.autofillframework.multidatasetservice.settings.MyPreferences
-import java.util.Arrays
 
 class MyAutofillService : AutofillService() {
 
     override fun onFillRequest(request: FillRequest, cancellationSignal: CancellationSignal,
             callback: FillCallback) {
-        val structure = request.getFillContexts().get(request.getFillContexts().size - 1).structure
+        val structure = request.fillContexts[request.fillContexts.size - 1].structure
+        val packageName = structure.activityComponent.packageName
+        if (!PackageVerifier.isValidPackage(applicationContext, packageName)) {
+            Toast.makeText(applicationContext, R.string.invalid_package_signature,
+                    Toast.LENGTH_SHORT).show()
+            return
+        }
         val data = request.clientState
         Log.d(TAG, "onFillRequest(): data=" + bundleToString(data))
         cancellationSignal.setOnCancelListener { Log.w(TAG, "Cancel autofill not implemented in this sample.") }
@@ -68,6 +73,12 @@ class MyAutofillService : AutofillService() {
     override fun onSaveRequest(request: SaveRequest, callback: SaveCallback) {
         val context = request.fillContexts
         val structure = context[context.size - 1].structure
+        val packageName = structure.activityComponent.packageName
+        if (!PackageVerifier.isValidPackage(applicationContext, packageName)) {
+            Toast.makeText(applicationContext, R.string.invalid_package_signature,
+                    Toast.LENGTH_SHORT).show()
+            return
+        }
         val data = request.clientState
         Log.d(TAG, "onSaveRequest(): data=" + bundleToString(data))
         val parser = StructureParser(structure)

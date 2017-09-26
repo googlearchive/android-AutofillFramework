@@ -46,7 +46,7 @@ import kotlinx.android.synthetic.main.multidataset_service_auth_activity.master_
  */
 class AuthActivity : AppCompatActivity() {
 
-    private var mReplyIntent: Intent? = null
+    private var replyIntent: Intent? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -70,8 +70,8 @@ class AuthActivity : AppCompatActivity() {
     }
 
     override fun finish() {
-        if (mReplyIntent != null) {
-            setResult(Activity.RESULT_OK, mReplyIntent)
+        if (replyIntent != null) {
+            setResult(Activity.RESULT_OK, replyIntent)
         } else {
             setResult(Activity.RESULT_CANCELED)
         }
@@ -80,7 +80,7 @@ class AuthActivity : AppCompatActivity() {
 
     private fun onFailure() {
         Log.w(TAG, "Failed auth.")
-        mReplyIntent = null
+        replyIntent = null
     }
 
     private fun onSuccess() {
@@ -90,7 +90,7 @@ class AuthActivity : AppCompatActivity() {
         val parser = StructureParser(structure)
         parser.parseForFill()
         val autofillFields = parser.autofillFields
-        mReplyIntent = Intent()
+        replyIntent = Intent()
         val clientFormDataMap = SharedPrefsAutofillRepository
                 .getFilledAutofillFieldCollection(this, autofillFields.focusedAutofillHints, autofillFields.allAutofillHints)
         if (forResponse) {
@@ -106,11 +106,11 @@ class AuthActivity : AppCompatActivity() {
     }
 
     private fun setResponseIntent(fillResponse: FillResponse) {
-        mReplyIntent?.putExtra(EXTRA_AUTHENTICATION_RESULT, fillResponse)
+        replyIntent?.putExtra(EXTRA_AUTHENTICATION_RESULT, fillResponse)
     }
 
     private fun setDatasetIntent(dataset: Dataset) {
-        mReplyIntent?.putExtra(EXTRA_AUTHENTICATION_RESULT, dataset)
+        replyIntent?.putExtra(EXTRA_AUTHENTICATION_RESULT, dataset)
     }
 
     companion object {

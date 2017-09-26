@@ -15,27 +15,21 @@
  */
 package com.example.android.autofillframework.multidatasetservice.datasource;
 
-import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection;
+import android.content.Context;
 
-import java.util.HashMap;
-import java.util.List;
-
-public interface AutofillRepository {
-
-    /**
-     * Gets saved FilledAutofillFieldCollection that contains some objects that can autofill fields with these
-     * {@code autofillHints}.
-     */
-    HashMap<String, FilledAutofillFieldCollection> getFilledAutofillFieldCollection(List<String> focusedAutofillHints,
-            List<String> allAutofillHints);
+/**
+ * Helper format
+ * <a href="https://developers.google.com/digital-asset-links/">Digital Asset Links</a> needs.
+ */
+public interface DigitalAssetLinksDataSource {
 
     /**
-     * Saves LoginCredential under this datasetName.
+     * Checks if the association between a web domain and a package is valid.
      */
-    void saveFilledAutofillFieldCollection(FilledAutofillFieldCollection filledAutofillFieldCollection);
+    boolean isValid(Context context, String webDomain, String packageName);
 
     /**
-     * Clears all data.
+     * Clears all cached data.
      */
-    void clear();
+    void clear(Context context);
 }

@@ -1,3 +1,18 @@
+/*
+ * Copyright (C) 2017 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.android.autofillframework.app
 
 import android.content.Context
@@ -14,8 +29,11 @@ import kotlinx.android.synthetic.main.navigation_item.view.buttonLabel
 import kotlinx.android.synthetic.main.navigation_item.view.cardView
 import kotlinx.android.synthetic.main.navigation_item.view.infoButton
 
-class NavigationItem @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
-        defStyleAttr: Int = 0) : FrameLayout(context, attrs, defStyleAttr) {
+class NavigationItem @JvmOverloads constructor(
+        context: Context,
+        attrs: AttributeSet? = null,
+        defStyleAttr: Int = 0
+) : FrameLayout(context, attrs, defStyleAttr) {
 
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.NavigationItem,
@@ -28,13 +46,17 @@ class NavigationItem @JvmOverloads constructor(context: Context, attrs: Attribut
         typedArray.recycle()
         LayoutInflater.from(context).inflate(R.layout.navigation_item, this)
         logoDrawable?.setColorFilter(imageColor, PorterDuff.Mode.SRC_IN)
-        buttonLabel.text = labelText
-        buttonLabel.setCompoundDrawablesRelativeWithIntrinsicBounds(logoDrawable, null, null, null)
-        infoButton.setOnClickListener {
-            AlertDialog.Builder(this@NavigationItem.context)
-                    .setMessage(infoText).create().show()
+        buttonLabel.apply {
+            text = labelText
+            setCompoundDrawablesRelativeWithIntrinsicBounds(logoDrawable, null, null, null)
         }
-        infoButton.setColorFilter(imageColor)
+        infoButton.apply {
+            setOnClickListener {
+                AlertDialog.Builder(this@NavigationItem.context)
+                        .setMessage(infoText).create().show()
+            }
+            setColorFilter(imageColor)
+        }
     }
 
     fun setNavigationButtonClickListener(l: View.OnClickListener?) {

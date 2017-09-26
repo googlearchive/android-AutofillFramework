@@ -72,14 +72,14 @@ order to provide this view hierarchy data to the Autofill service.
 override fun onProvideAutofillVirtualStructure(structure: ViewStructure, flags: Int) {
     // Build a ViewStructure to pack in AutoFillService requests.
     structure.setClassName(javaClass.name)
-    val childrenSize = mItems.size()
+    val childrenSize = items.size()
     Log.d(TAG, "onProvideAutofillVirtualStructure(): flags = " + flags + ", items = "
             + childrenSize + ", extras: " + bundleToString(structure.extras))
     var index = structure.addChildCount(childrenSize)
     // Traverse through the view hierarchy, including virtual child views. For each view, we
     // need to set the relevant autofill metadata and add it to the ViewStructure.
     for (i in 0..childrenSize - 1) {
-        val item = mItems.valueAt(i)
+        val item = items.valueAt(i)
         Log.d(TAG, "Adding new child at index $index: $item")
         val child = structure.newChild(index)
         child.setAutofillId(structure, item.id)
@@ -113,7 +113,7 @@ override fun autofill(values: SparseArray<AutofillValue>) {
     for (i in 0..values.size() - 1) {
         val id = values.keyAt(i)
         val value = values.valueAt(i)
-        mItems[id]?.let { item ->
+        items[id]?.let { item ->
             if (item.editable) {
                 // Set the item's text to the text wrapped in the AutofillValue.
                 item.text = value.textValue

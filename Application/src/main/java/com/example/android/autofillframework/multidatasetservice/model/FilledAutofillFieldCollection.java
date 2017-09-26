@@ -24,11 +24,14 @@ import android.view.autofill.AutofillValue;
 
 import com.example.android.autofillframework.multidatasetservice.AutofillFieldMetadata;
 import com.example.android.autofillframework.multidatasetservice.AutofillFieldMetadataCollection;
+import com.example.android.autofillframework.multidatasetservice.AutofillHints;
+import com.example.android.autofillframework.multidatasetservice.W3cHints;
 import com.google.gson.annotations.Expose;
 
 import java.util.HashMap;
 import java.util.List;
 
+import static com.example.android.autofillframework.CommonUtil.DEBUG;
 import static com.example.android.autofillframework.CommonUtil.TAG;
 
 /**
@@ -50,6 +53,48 @@ public final class FilledAutofillFieldCollection {
         mDatasetName = datasetName;
     }
 
+    private static boolean isW3cSectionPrefix(String hint) {
+        return hint.startsWith(W3cHints.PREFIX_SECTION);
+    }
+
+    private static boolean isW3cAddressType(String hint) {
+        switch (hint) {
+            case W3cHints.SHIPPING:
+            case W3cHints.BILLING:
+                return true;
+        }
+        return false;
+    }
+
+    private static boolean isW3cTypePrefix(String hint) {
+        switch (hint) {
+            case W3cHints.PREFIX_WORK:
+            case W3cHints.PREFIX_FAX:
+            case W3cHints.PREFIX_HOME:
+            case W3cHints.PREFIX_PAGER:
+                return true;
+        }
+        return false;
+    }
+
+    private static boolean isW3cTypeHint(String hint) {
+        switch (hint) {
+            case W3cHints.TEL:
+            case W3cHints.TEL_COUNTRY_CODE:
+            case W3cHints.TEL_NATIONAL:
+            case W3cHints.TEL_AREA_CODE:
+            case W3cHints.TEL_LOCAL:
+            case W3cHints.TEL_LOCAL_PREFIX:
+            case W3cHints.TEL_LOCAL_SUFFIX:
+            case W3cHints.TEL_EXTENSION:
+            case W3cHints.EMAIL:
+            case W3cHints.IMPP:
+                return true;
+        }
+        Log.w(TAG, "Invalid W3C type hint: " + hint);
+        return false;
+    }
+
     /**
      * Returns the name of the {@link Dataset}.
      */
@@ -69,8 +114,39 @@ public final class FilledAutofillFieldCollection {
      */
     public void add(@NonNull FilledAutofillField filledAutofillField) {
         String[] autofillHints = filledAutofillField.getAutofillHints();
-        for (String hint : autofillHints) {
-            mHintMap.put(hint, filledAutofillField);
+        String nextHint = null;
+        for (int i = 0; i < autofillHints.length; i++) {
+            String hint = autofillHints[i];
+            if (i < autofillHints.length - 1) {
+                nextHint = autofillHints[i + 1];
+            }
+            // First convert the compound W3C autofill hints
+            if (isW3cSectionPrefix(hint) && i < autofillHints.length - 1) {
+                hint = autofillHints[++i];
+                if (DEBUG) Log.d(TAG, "Hint is a W3C section prefix; using " + hint + " instead");
+                if (i < autofillHints.length - 1) {
+                    nextHint = autofillHints[i + 1];
+                }
+            }
+            if (isW3cTypePrefix(hint) && nextHint != null && isW3cTypeHint(nextHint)) {
+                hint = nextHint;
+                i++;
+                if (DEBUG) Log.d(TAG, "Hint is a W3C type prefix; using " + hint + " instead");
+            }
+            if (isW3cAddressType(hint) && nextHint != null) {
+                hint = nextHint;
+                i++;
+                if (DEBUG) Log.d(TAG, "Hint is a W3C address prefix; using " + hint + " instead");
+            }
+
+            // Then check if the "actual" hint is supported.
+
+
+            if (AutofillHints.isValidHint(hint)) {
+                mHintMap.put(hint, filledAutofillField);
+            } else {
+                Log.e(TAG, "Invalid hint: " + autofillHints[i]);
+            }
         }
     }
 
@@ -142,9 +218,9 @@ public final class FilledAutofillFieldCollection {
     }
 
     /**
-     * Takes in a list of autofill hints (`autofillHints`), usually associated with a View or set of
+     * Takes in a list of autofill hints (autofillHints), usually associated with a View or set of
      * Views. Returns whether any of the filled fields on the page have at least 1 of these
-     * `autofillHint`s.
+     * autofillHints.
      */
     public boolean helpsWithHints(List<String> autofillHints) {
         for (int i = 0; i < autofillHints.size(); i++) {

@@ -33,9 +33,9 @@ import kotlinx.android.synthetic.main.login_with_autocomplete_activity.passwordF
 import kotlinx.android.synthetic.main.login_with_autocomplete_activity.usernameField
 
 class StandardAutoCompleteSignInActivity : AppCompatActivity() {
-    private var mAutofillReceived = false
-    private var mAutofillCallback: AutofillManager.AutofillCallback? = null
-    private var mAutofillManager: AutofillManager? = null
+    private var autofillReceived = false
+    private lateinit var autofillCallback: AutofillManager.AutofillCallback
+    private lateinit var autofillManager: AutofillManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,8 +44,8 @@ class StandardAutoCompleteSignInActivity : AppCompatActivity() {
 
         login.setOnClickListener { submitLogin() }
         clear.setOnClickListener { resetFields() }
-        mAutofillCallback = MyAutofillCallback()
-        mAutofillManager = getSystemService(AutofillManager::class.java)
+        autofillCallback = MyAutofillCallback()
+        autofillManager = getSystemService(AutofillManager::class.java)
         val mockAutocompleteAdapter = ArrayAdapter.createFromResource(this, R.array.mock_autocomplete_sign_in_suggestions,
                 android.R.layout.simple_dropdown_item_1line)
         usernameField.setAdapter(mockAutocompleteAdapter)
@@ -53,12 +53,12 @@ class StandardAutoCompleteSignInActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        mAutofillManager?.registerCallback(mAutofillCallback)
+        autofillManager.registerCallback(autofillCallback)
     }
 
     override fun onPause() {
         super.onPause()
-        mAutofillManager?.unregisterCallback(mAutofillCallback)
+        autofillManager.unregisterCallback(autofillCallback)
     }
 
     private fun resetFields() {
@@ -96,11 +96,13 @@ class StandardAutoCompleteSignInActivity : AppCompatActivity() {
             if (view is AutoCompleteTextView) {
                 when (event) {
                     AutofillManager.AutofillCallback.EVENT_INPUT_UNAVAILABLE,
-                    AutofillManager.AutofillCallback.EVENT_INPUT_HIDDEN -> if (!mAutofillReceived) {
-                        view.showDropDown()
+                    AutofillManager.AutofillCallback.EVENT_INPUT_HIDDEN -> {
+                        if (!autofillReceived) {
+                            view.showDropDown()
+                        }
                     }
                     AutofillManager.AutofillCallback.EVENT_INPUT_SHOWN -> {
-                        mAutofillReceived = true
+                        autofillReceived = true
                         view.setAdapter(null)
                     }
                     else -> Log.d(TAG, "Unexpected callback: " + event)

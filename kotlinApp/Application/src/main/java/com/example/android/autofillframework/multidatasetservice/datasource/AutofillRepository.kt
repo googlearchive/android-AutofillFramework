@@ -31,7 +31,8 @@ interface AutofillRepository {
     /**
      * Saves LoginCredential under this datasetName.
      */
-    fun saveFilledAutofillFieldCollection(context: Context, filledAutofillFieldCollection: FilledAutofillFieldCollection)
+    fun saveFilledAutofillFieldCollection(context: Context,
+            filledAutofillFieldCollection: FilledAutofillFieldCollection)
 
     /**
      * Clears all data.

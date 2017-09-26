@@ -32,6 +32,7 @@ import android.widget.RemoteViews;
 
 import com.example.android.autofillframework.R;
 import com.example.android.autofillframework.multidatasetservice.datasource.SharedPrefsAutofillRepository;
+import com.example.android.autofillframework.multidatasetservice.datasource.SharedPrefsPackageVerificationRepository;
 import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection;
 import com.example.android.autofillframework.multidatasetservice.settings.MyPreferences;
 
@@ -40,7 +41,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import static com.example.android.autofillframework.CommonUtil.TAG;
+import static com.example.android.autofillframework.CommonUtil.VERBOSE;
 import static com.example.android.autofillframework.CommonUtil.bundleToString;
+import static com.example.android.autofillframework.CommonUtil.dumpStructure;
 
 public class MyAutofillService extends AutofillService {
 
@@ -49,8 +52,18 @@ public class MyAutofillService extends AutofillService {
             FillCallback callback) {
         AssistStructure structure = request.getFillContexts()
                 .get(request.getFillContexts().size() - 1).getStructure();
+        String packageName = structure.getActivityComponent().getPackageName();
+        if (!SharedPrefsPackageVerificationRepository.getInstance()
+                .putPackageSignatures(getApplicationContext(), packageName)) {
+            callback.onFailure(
+                    getApplicationContext().getString(R.string.invalid_package_signature));
+            return;
+        }
         final Bundle data = request.getClientState();
-        Log.d(TAG, "onFillRequest(): data=" + bundleToString(data));
+        if (VERBOSE) {
+            Log.v(TAG, "onFillRequest(): data=" + bundleToString(data));
+            dumpStructure(structure);
+        }
 
         cancellationSignal.setOnCancelListener(new CancellationSignal.OnCancelListener() {
             @Override
@@ -59,8 +72,17 @@ public class MyAutofillService extends AutofillService {
             }
         });
         // Parse AutoFill data in Activity
-        StructureParser parser = new StructureParser(structure);
-        parser.parseForFill();
+        StructureParser parser = new StructureParser(getApplicationContext(), structure);
+        // TODO: try / catch on other places (onSave, auth activity, etc...)
+        try {
+            parser.parseForFill();
+        } catch (SecurityException e) {
+            // TODO: handle cases where DAL didn't pass by showing a custom UI asking the user
+            // to confirm the mapping. Might require subclassing SecurityException.
+            Log.w(TAG, "Security exception handling " + request, e);
+            callback.onFailure(e.getMessage());
+            return;
+        }
         AutofillFieldMetadataCollection autofillFields = parser.getAutofillFields();
         FillResponse.Builder responseBuilder = new FillResponse.Builder();
         // Check user's settings for authenticating Responses and Datasets.
@@ -79,8 +101,8 @@ public class MyAutofillService extends AutofillService {
         } else {
             boolean datasetAuth = MyPreferences.getInstance(this).isDatasetAuth();
             HashMap<String, FilledAutofillFieldCollection> clientFormDataMap =
-                    SharedPrefsAutofillRepository.getInstance(this).getFilledAutofillFieldCollection
-                            (autofillFields.getFocusedHints(), autofillFields.getAllHints());
+                    SharedPrefsAutofillRepository.getInstance().getFilledAutofillFieldCollection(
+                            this, autofillFields.getFocusedHints(), autofillFields.getAllHints());
             FillResponse response = AutofillHelper.newResponse
                     (this, datasetAuth, autofillFields, clientFormDataMap);
             callback.onSuccess(response);
@@ -91,12 +113,23 @@ public class MyAutofillService extends AutofillService {
     public void onSaveRequest(SaveRequest request, SaveCallback callback) {
         List<FillContext> context = request.getFillContexts();
         final AssistStructure structure = context.get(context.size() - 1).getStructure();
+        String packageName = structure.getActivityComponent().getPackageName();
+        if (!SharedPrefsPackageVerificationRepository.getInstance()
+                .putPackageSignatures(getApplicationContext(), packageName)) {
+            callback.onFailure(
+                    getApplicationContext().getString(R.string.invalid_package_signature));
+            return;
+        }
         final Bundle data = request.getClientState();
-        Log.d(TAG, "onSaveRequest(): data=" + bundleToString(data));
-        StructureParser parser = new StructureParser(structure);
+        if (VERBOSE) {
+            Log.v(TAG, "onSaveRequest(): data=" + bundleToString(data));
+            dumpStructure(structure);
+        }
+        StructureParser parser = new StructureParser(getApplicationContext(), structure);
         parser.parseForSave();
         FilledAutofillFieldCollection filledAutofillFieldCollection = parser.getClientFormData();
-        SharedPrefsAutofillRepository.getInstance(this).saveFilledAutofillFieldCollection(filledAutofillFieldCollection);
+        SharedPrefsAutofillRepository.getInstance()
+                .saveFilledAutofillFieldCollection(this, filledAutofillFieldCollection);
     }
 
     @Override

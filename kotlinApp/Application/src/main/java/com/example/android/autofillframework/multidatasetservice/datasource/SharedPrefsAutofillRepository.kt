@@ -18,8 +18,8 @@ package com.example.android.autofillframework.multidatasetservice.datasource
 import android.content.Context
 import android.content.SharedPreferences
 import android.util.ArraySet
+import com.example.android.autofillframework.CommonUtil
 import com.example.android.autofillframework.multidatasetservice.model.FilledAutofillFieldCollection
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 
@@ -43,19 +43,19 @@ object SharedPrefsAutofillRepository : AutofillRepository {
         var hasDataForFocusedAutofillHints = false
         val clientFormDataMap = HashMap<String, FilledAutofillFieldCollection>()
         val clientFormDataStringSet = getAllAutofillDataStringSet(context)
+        val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create()
+        val type = object : TypeToken<FilledAutofillFieldCollection>() {}.type
         for (clientFormDataString in clientFormDataStringSet) {
-            val type = object : TypeToken<FilledAutofillFieldCollection>() {}.type
-            val gson: Gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create()
-            gson.fromJson<FilledAutofillFieldCollection>(clientFormDataString, type)?.let { clientFormData ->
-                if (clientFormData.helpsWithHints(focusedAutofillHints)) {
+            gson.fromJson<FilledAutofillFieldCollection>(clientFormDataString, type)?.let {
+                if (it.helpsWithHints(focusedAutofillHints)) {
                     // Saved data has data relevant to at least 1 of the hints associated with the
                     // View in focus.
                     hasDataForFocusedAutofillHints = true
-                    clientFormData.datasetName?.let { datasetName ->
-                        if (clientFormData.helpsWithHints(allAutofillHints)) {
+                    it.datasetName?.let { datasetName ->
+                        if (it.helpsWithHints(allAutofillHints)) {
                             // Saved data has data relevant to at least 1 of these hints associated with any
                             // of the Views in the hierarchy.
-                            clientFormDataMap.put(datasetName, clientFormData)
+                            clientFormDataMap.put(datasetName, it)
                         }
                     }
                 }
@@ -72,7 +72,7 @@ object SharedPrefsAutofillRepository : AutofillRepository {
         val datasetName = "dataset-" + getDatasetNumber(context)
         filledAutofillFieldCollection.datasetName = datasetName
         val allAutofillData = getAllAutofillDataStringSet(context)
-        val gson: Gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation().setPrettyPrinting().create()
+        val gson = CommonUtil.createGson()
         allAutofillData.add(gson.toJson(filledAutofillFieldCollection).toString())
         saveAllAutofillDataStringSet(context, allAutofillData)
         incrementDatasetNumber(context)
@@ -86,7 +86,8 @@ object SharedPrefsAutofillRepository : AutofillRepository {
         return getPrefs(context).getStringSet(CLIENT_FORM_DATA_KEY, ArraySet<String>())
     }
 
-    private fun saveAllAutofillDataStringSet(context: Context, allAutofillDataStringSet: Set<String>) {
+    private fun saveAllAutofillDataStringSet(context: Context,
+            allAutofillDataStringSet: Set<String>) {
         getPrefs(context).edit().putStringSet(CLIENT_FORM_DATA_KEY, allAutofillDataStringSet).apply()
     }
 

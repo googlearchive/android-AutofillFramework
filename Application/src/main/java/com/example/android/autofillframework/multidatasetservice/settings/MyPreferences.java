@@ -22,12 +22,9 @@ import android.service.autofill.FillResponse;
 import android.support.annotation.NonNull;
 
 public class MyPreferences {
-    private static final String TAG = "MyPreferences";
-
     private static final String RESPONSE_AUTH_KEY = "response_auth";
     private static final String DATASET_AUTH_KEY = "dataset_auth";
     private static final String MASTER_PASSWORD_KEY = "master_password";
-
     private static MyPreferences sInstance;
     private final SharedPreferences mPrefs;
 

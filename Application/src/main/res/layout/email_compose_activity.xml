@@ -14,7 +14,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -24,7 +25,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
-
 
     <TextView
         android:id="@+id/email_compose_header"
@@ -84,10 +84,10 @@
         android:layout_marginEnd="@dimen/spacing_normal"
         android:layout_marginStart="@dimen/spacing_normal"
         android:text="@string/body_label"
+        app:layout_constraintBottom_toBottomOf="@+id/placeholder"
         app:layout_constraintEnd_toStartOf="@+id/bodyText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/placeholder"
-        app:layout_constraintBottom_toBottomOf="@+id/placeholder"/>
+        app:layout_constraintTop_toTopOf="@+id/placeholder" />
 
     <EditText
         android:id="@+id/bodyText"
@@ -105,9 +105,9 @@
         android:id="@+id/placeholder"
         android:layout_width="match_parent"
         android:layout_height="36sp"
-        app:layout_constraintTop_toTopOf="@+id/bodyText"
+        android:layout_marginStart="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginStart="8dp" />
+        app:layout_constraintTop_toTopOf="@+id/bodyText" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/sendButton"

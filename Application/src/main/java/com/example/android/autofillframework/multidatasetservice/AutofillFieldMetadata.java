@@ -16,9 +16,10 @@
 package com.example.android.autofillframework.multidatasetservice;
 
 import android.app.assist.AssistStructure.ViewNode;
-import android.service.autofill.SaveInfo;
-import android.view.View;
 import android.view.autofill.AutofillId;
+
+import static com.example.android.autofillframework.multidatasetservice.AutofillHints.convertToStoredHintNames;
+import static com.example.android.autofillframework.multidatasetservice.AutofillHints.filterForSupportedHints;
 
 /**
  * A stripped down version of a {@link ViewNode} that contains only autofill-relevant metadata. It
@@ -38,7 +39,11 @@ public class AutofillFieldMetadata {
         mAutofillType = view.getAutofillType();
         mAutofillOptions = view.getAutofillOptions();
         mFocused = view.isFocused();
-        setHints(AutofillHelper.filterForSupportedHints(view.getAutofillHints()));
+        String[] hints = filterForSupportedHints(view.getAutofillHints());
+        if (hints != null) {
+            convertToStoredHintNames(hints);
+            setHints(hints);
+        }
     }
 
     public String[] getHints() {
@@ -47,7 +52,7 @@ public class AutofillFieldMetadata {
 
     public void setHints(String[] hints) {
         mAutofillHints = hints;
-        updateSaveTypeFromHints();
+        mSaveType = AutofillHints.getSaveTypeForHints(hints);
     }
 
     public int getSaveType() {
@@ -77,43 +82,5 @@ public class AutofillFieldMetadata {
 
     public boolean isFocused() {
         return mFocused;
-    }
-
-    private void updateSaveTypeFromHints() {
-        mSaveType = 0;
-        if (mAutofillHints == null) {
-            return;
-        }
-        for (String hint : mAutofillHints) {
-            switch (hint) {
-                case View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE:
-                case View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DAY:
-                case View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_MONTH:
-                case View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_YEAR:
-                case View.AUTOFILL_HINT_CREDIT_CARD_NUMBER:
-                case View.AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE:
-                    mSaveType |= SaveInfo.SAVE_DATA_TYPE_CREDIT_CARD;
-                    break;
-                case View.AUTOFILL_HINT_EMAIL_ADDRESS:
-                    mSaveType |= SaveInfo.SAVE_DATA_TYPE_EMAIL_ADDRESS;
-                    break;
-                case View.AUTOFILL_HINT_PHONE:
-                case View.AUTOFILL_HINT_NAME:
-                    mSaveType |= SaveInfo.SAVE_DATA_TYPE_GENERIC;
-                    break;
-                case View.AUTOFILL_HINT_PASSWORD:
-                    mSaveType |= SaveInfo.SAVE_DATA_TYPE_PASSWORD;
-                    mSaveType &= ~SaveInfo.SAVE_DATA_TYPE_EMAIL_ADDRESS;
-                    mSaveType &= ~SaveInfo.SAVE_DATA_TYPE_USERNAME;
-                    break;
-                case View.AUTOFILL_HINT_POSTAL_ADDRESS:
-                case View.AUTOFILL_HINT_POSTAL_CODE:
-                    mSaveType |= SaveInfo.SAVE_DATA_TYPE_ADDRESS;
-                    break;
-                case View.AUTOFILL_HINT_USERNAME:
-                    mSaveType |= SaveInfo.SAVE_DATA_TYPE_USERNAME;
-                    break;
-            }
-        }
     }
 }
