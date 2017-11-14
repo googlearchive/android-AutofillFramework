@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +16,8 @@
 
 <resources>
     <string name="app_name">Autofill Sample</string>
-    <string name="settings_name">Autofill Settings</string>
+    <string name="edge_cases_page_title">Edge Cases</string>
+    <string name="common_cases_page_title">Common Cases</string>
     <string name="navigation_button_custom_virtual_view_login_label">Sample Login Using a Custom Virtual View</string>
     <string name="navigation_button_credit_card_label">Sample Credit Card Check Out Using EditTexts</string>
     <string name="navigation_button_spinners_credit_card_label">Sample Credit Card Check Out Using Spinners</string>
@@ -29,13 +29,14 @@
     <string name="navigation_button_multiple_partitions_label">Sample Page with Multiple Data Partitions</string>
     <string name="navigation_button_web_view_login_label">Sample Login Using a WebView</string>
     <string name="navigation_button_anti_pattern_credit_card_label">Sample Credit Card Anti Pattern</string>
+    <string name="navigation_button_multistep_signin_label">Multi-Step Sign In</string>
+    <string name="navigation_button_multistep_cc_label">Multi-Step Credit Card Check Out</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
     <string name="welcome_text">Success!</string>
     <string name="standard_view_sign_in">Sign in using standard views</string>
     <string name="standard_view_autocomplete_sign_in">Sign in using standard views that
         trigger AutoComplete dialogs when focused</string>
-    <string name="autofill_sign_in_prompt">Tap to sign in.</string>
     <string name="credit_card_number_label">CC Number</string>
     <string name="credit_card_expiration_label">CC Expiration</string>
     <string name="credit_card_expiration_date_label">CC Exp Date</string>
@@ -44,42 +45,16 @@
     <string name="credit_card_expiration_year_label">CC Exp Year</string>
     <string name="credit_card_security_code_label">CC Security Code</string>
     <string name="credit_card_security_code_abbrev_label">CSC</string>
-    <string name="settings_cancel">Cancel</string>
-    <string name="settings_save">Save</string>
-    <string name="settings_authenticate_responses">Authenticate responses</string>
-    <string name="settings_authenticate_datasets">Authenticate Datasets</string>
-    <string name="settings_add_data_label">Add fake Autofill data</string>
-    <string name="settings_add_data_title">Add Autofill Datasets</string>
-    <string name="settings_select_number_of_datasets">Select number of Datasets.</string>
-    <plurals name="settings_add_data_success">
-        <item quantity="one">Added %d Dataset.</item>
-        <item quantity="other">Added %d Datasets.</item>
-    </plurals>
-    <string name="settings_clear_data_label">Clear all autofill data (including credentials)</string>
-    <string name="settings_clear_data_confirmation">Are you sure you want to delete all autofill
-        data from the sample service?
-    </string>
-    <string name="settings_clear_data_confirmation_title">Confirmation</string>
     <string name="ok">OK</string>
     <string name="slash">/</string>
     <string name="cancel">Cancel</string>
-    <string name="settings_authentication_header">Authentication</string>
-    <string name="settings_data_header">Data</string>
-    <string name="settings_auth_credentials_label">Update credentials</string>
-    <string name="settings_auth_enter_current_password">Enter current password</string>
-    <string name="settings_auth_enter_new_password">Enter new password</string>
-    <string name="settings_auth_change_credentials_title">Change credentials</string>
-    <string name="settings_number_of_datasets_label">Number of Datasets</string>
     <string name="clear_label">Clear</string>
     <string name="login_label">Login</string>
     <string name="to_label">To</string>
     <string name="body_label">Body</string>
-    <string name="autofill_master_login_label">Autofill Master Login</string>
     <string name="submit_label">Submit</string>
     <string name="cc_exp_month_description">Credit Card Expiration Month</string>
     <string name="cc_exp_year_description">Credit Card Expiration Year</string>
-    <string name="invalid_package_signature">Invalid package signature</string>
-    <string name="invalid_link_association">Could not associate web domain %1$s with app %2$s</string>
     <string name="edittext_login_info">This is a sample login page that uses standard EditTexts
         from the UI toolkit. EditTexts are already optimized for autofill so extra autofill-specific
         code is almost never needed.
@@ -145,6 +120,14 @@
         activities use.
     </string>
 
+    <string name="multi_step_signin_info">
+        <!--TODO-->
+    </string>
+
+    <string name="multi_step_cc_info">
+        <!--TODO-->
+    </string>
+
     <string name="partition_credentials">Credentials</string>
     <string name="partition_credit_card">Credit Card</string>
 
@@ -155,10 +138,24 @@
     <string name="message_autofill_invalid">INVALID</string>
     <string name="message_credit_card_expiration_type">Representing expiration dates as %1$s</string>
 
+    <string name="message_finished">Finished</string>
+    <string name="message_showing_step">Showing step %1$d</string>
+    <string name="message_step_description">%1$s: %2$s</string>
+
+    <string name="previous_label">Prev</string>
+    <string name="next_label">Next</string>
+    <string name="finish_label">Finish</string>
+
     <plurals name="welcome_page_countdown">
         <item quantity="one">Automatically return to main page in %d second.</item>
         <item quantity="other">Automatically return to main page in %d seconds.</item>
     </plurals>
+
+    <string-array name="mock_autocomplete_sign_in_suggestions">
+        <item>user-1</item>
+        <item>user-2</item>
+    </string-array>
+
     <string-array name="month_array">
         <item>1</item>
         <item>2</item>
@@ -202,11 +199,6 @@
         <item>25</item>
         <item>26</item>
         <item>27</item>
-    </string-array>
-
-    <string-array name="mock_autocomplete_sign_in_suggestions">
-        <item>user-1</item>
-        <item>user-2</item>
     </string-array>
 
 </resources>

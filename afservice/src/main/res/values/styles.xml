@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="Settings.Label" parent="@style/TextAppearance.AppCompat.Body1">
+        <item name="android:ellipsize">end</item>
+        <item name="android:lines">1</item>
+        <item name="android:paddingBottom">@dimen/spacing_normal</item>
+        <item name="android:paddingTop">@dimen/spacing_normal</item>
+    </style>
+
+    <style name="Settings.Container" parent="">
+        <item name="android:background">?android:selectableItemBackground</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:minHeight">?android:listPreferredItemHeightSmall</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingEnd">?android:listPreferredItemPaddingEnd</item>
+        <item name="android:paddingStart">?android:listPreferredItemPaddingStart</item>
+    </style>
+
+    <style name="Settings.Switch" parent="">
+        <!-- We make the parent view clickable instead for better touch feedback -->
+        <item name="android:background">@null</item>
+        <item name="android:clickable">false</item>
+    </style>
+
+    <style name="Settings.Header" parent="@style/TextAppearance.AppCompat.Large">
+        <item name="android:paddingStart">?android:listPreferredItemPaddingStart</item>
+        <item name="android:paddingBottom">@dimen/spacing_normal</item>
+        <item name="android:paddingTop">@dimen/spacing_large</item>
+
+    </style>
+</resources>

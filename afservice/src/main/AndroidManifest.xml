@@ -1,0 +1,44 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.autofill.service">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <!--
+    Declare AutofillService implementation; only needed for a small number of apps that will
+    be implementing an AutofillService. Framework parses meta-data and sets the service's
+    Settings Activity based on what the meta-data resource points to.
+    -->
+        <service
+            android:name=".MyAutofillService"
+            android:label="Multi-Dataset Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE">
+            <meta-data
+                android:name="android.autofill"
+                android:resource="@xml/multidataset_service" />
+
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+
+        <activity android:name=".AuthActivity" />
+        <!-- Including launcher icon for Autofill Settings to convenience. Not necessary for a
+        real service. -->
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:exported="true"
+            android:label="@string/settings_name"
+            android:taskAffinity=".SettingsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>
