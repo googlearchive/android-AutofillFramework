@@ -144,7 +144,6 @@ public final class AutofillHelper {
                     bundleToString(previousClientState));
         }
 
-
         // TODO: this should be more generic, but for now it's hardcode to support just activities
         // that have an username and a password in separate steps (like MultipleStepsSigninActivity)
         if ((saveType != SaveInfo.SAVE_DATA_TYPE_USERNAME
