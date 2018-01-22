@@ -13,9 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.autofill.service.datasource;
-
-import android.content.Context;
+package com.example.android.autofill.service.data.source;
 
 public interface PackageVerificationDataSource {
 
@@ -29,10 +27,10 @@ public interface PackageVerificationDataSource {
      * {@code false} if the signatures in the passed {@code Context} do not match what is
      * currently in storage or if an {@code Exception} was thrown while generating the signatures.
      */
-    boolean putPackageSignatures(Context context, String packageName);
+    boolean putPackageSignatures(String packageName);
 
     /**
      * Clears all signature data currently in storage.
      */
-    void clear(Context context);
+    void clear();
 }

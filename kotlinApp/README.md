@@ -1,6 +1,6 @@
 
-Android AutofillFramework Sample
-===================================
+Android AutofillFramework Sample (Kotlin)
+=========================================
 
 This sample demonstrates the use of the Autofill Framework. It includes implementations of client
 Activities with views that should be autofilled, and a Service that can provide autofill data to

@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.autofill.service;
+
+package com.example.android.autofill.service.util;
 
 import android.app.assist.AssistStructure;
 import android.app.assist.AssistStructure.ViewNode;
@@ -36,15 +37,12 @@ import java.util.Set;
 
 public final class Util {
 
-    private static final String TAG = "AutofillSample";
     public static final String EXTRA_DATASET_NAME = "dataset_name";
     public static final String EXTRA_FOR_RESPONSE = "for_response";
     public static final NodeFilter AUTOFILL_ID_FILTER = (node, id) ->
             id.equals(node.getAutofillId());
-
-    public enum LogLevel { OFF, DEBUG, VERBOSE }
-
-    public static LogLevel sLoggingLevel = LogLevel.OFF;
+    private static final String TAG = "AutofillSample";
+    public static LogLevel sLoggingLevel = LogLevel.Off;
 
     private static void bundleToString(StringBuilder builder, Bundle data) {
         final Set<String> keySet = data.keySet();
@@ -254,11 +252,11 @@ public final class Util {
     }
 
     public static boolean logDebugEnabled() {
-        return sLoggingLevel.ordinal() >= LogLevel.DEBUG.ordinal();
+        return sLoggingLevel.ordinal() >= LogLevel.Debug.ordinal();
     }
 
     public static boolean logVerboseEnabled() {
-        return sLoggingLevel.ordinal() >= LogLevel.VERBOSE.ordinal();
+        return sLoggingLevel.ordinal() >= LogLevel.Verbose.ordinal();
     }
 
     public static void logw(String message, Object... params) {
@@ -280,6 +278,27 @@ public final class Util {
     public static void setLoggingLevel(LogLevel level) {
         sLoggingLevel = level;
     }
+
+    /**
+     * Helper method for getting the index of a CharSequence object in an array.
+     */
+    public static int indexOf(@NonNull CharSequence[] array, CharSequence charSequence) {
+        int index = -1;
+        if (charSequence == null) {
+            return index;
+        }
+        for (int i = 0; i < array.length; i++) {
+            if (charSequence.equals(array[i])) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
+    public enum LogLevel {Off, Debug, Verbose}
+
+    public enum DalCheckRequirement {Disabled, LoginOnly, AllUrls}
 
     /**
      * Helper interface used to filter Assist nodes.

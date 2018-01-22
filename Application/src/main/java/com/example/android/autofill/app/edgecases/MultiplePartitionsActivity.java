@@ -15,7 +15,6 @@
  */
 package com.example.android.autofill.app.edgecases;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -48,19 +47,14 @@ public class MultiplePartitionsActivity extends AppCompatActivity {
 
     private ScrollableCustomVirtualView mCustomVirtualView;
     private AutofillManager mAutofillManager;
-
     private CustomVirtualView.Partition mCredentialsPartition;
     private CustomVirtualView.Partition mCcPartition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.multiple_partitions_activity);
-
         mCustomVirtualView = findViewById(R.id.custom_view);
-
-
         mCredentialsPartition =
                 mCustomVirtualView.addPartition(getString(R.string.partition_credentials));
         mCredentialsPartition.addLine("username", View.AUTOFILL_TYPE_TEXT,
@@ -69,7 +63,6 @@ public class MultiplePartitionsActivity extends AppCompatActivity {
         mCredentialsPartition.addLine("password", View.AUTOFILL_TYPE_TEXT,
                 getString(R.string.password_label),
                 "         ", true, View.AUTOFILL_HINT_PASSWORD);
-
         int ccExpirationType = View.AUTOFILL_TYPE_DATE;
         // TODO: add a checkbox to switch between text / date instead
         Intent intent = getIntent();
@@ -83,7 +76,6 @@ public class MultiplePartitionsActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), typeMessage, Toast.LENGTH_LONG).show();
             }
         }
-
         mCcPartition = mCustomVirtualView.addPartition(getString(R.string.partition_credit_card));
         mCcPartition.addLine("ccNumber", View.AUTOFILL_TYPE_TEXT,
                 getString(R.string.credit_card_number_label),
@@ -103,7 +95,7 @@ public class MultiplePartitionsActivity extends AppCompatActivity {
         mCcPartition.addLine("ccSecurityCode", View.AUTOFILL_TYPE_TEXT,
                 getString(R.string.credit_card_security_code_label),
                 "         ", true, View.AUTOFILL_HINT_CREDIT_CARD_SECURITY_CODE);
-
+        mAutofillManager = getSystemService(AutofillManager.class);
         findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,7 +104,6 @@ public class MultiplePartitionsActivity extends AppCompatActivity {
                 mAutofillManager.cancel();
             }
         });
-        mAutofillManager = getSystemService(AutofillManager.class);
     }
 
     private void resetFields() {

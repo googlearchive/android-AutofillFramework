@@ -49,7 +49,10 @@ public class CreditCardAntiPatternActivity extends AppCompatActivity {
         findViewById(R.id.clearButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getSystemService(AutofillManager.class).cancel();
+                AutofillManager afm = getSystemService(AutofillManager.class);
+                if (afm != null) {
+                    afm.cancel();
+                }
                 resetFields();
             }
         });

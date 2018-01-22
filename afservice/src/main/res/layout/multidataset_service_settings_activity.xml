@@ -163,6 +163,44 @@
             style="@style/Settings.Header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@string/settings_dal_header" />
+
+        <RadioGroup
+            android:id="@+id/dalCheckRequirementContainer"
+            style="@style/Settings.Container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/dalDisabled"
+                style="@style/Settings.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/a11y_min_touch_target_dimen"
+                android:text="@string/settings_dal_disabled" />
+
+            <RadioButton
+                android:id="@+id/dalLoginOnly"
+                style="@style/Settings.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/a11y_min_touch_target_dimen"
+                android:text="@string/settings_dal_login_only" />
+
+            <RadioButton
+                android:id="@+id/dalAllUrls"
+                style="@style/Settings.Label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/a11y_min_touch_target_dimen"
+                android:text="@string/settings_dal_all_urls" />
+        </RadioGroup>
+
+        <TextView
+            style="@style/Settings.Header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/settings_logging_header" />
 
         <RadioGroup

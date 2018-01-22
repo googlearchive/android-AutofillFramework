@@ -61,6 +61,10 @@ public class StandardAutoCompleteSignInActivity extends AppCompatActivity {
         mClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AutofillManager afm = getSystemService(AutofillManager.class);
+                if (afm != null) {
+                    afm.cancel();
+                }
                 resetFields();
             }
         });

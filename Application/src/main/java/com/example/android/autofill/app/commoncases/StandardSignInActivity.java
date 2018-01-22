@@ -20,6 +20,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.autofill.AutofillManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -47,6 +48,10 @@ public class StandardSignInActivity extends AppCompatActivity {
         findViewById(R.id.clear).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AutofillManager afm = getSystemService(AutofillManager.class);
+                if (afm != null) {
+                    afm.cancel();
+                }
                 resetFields();
             }
         });

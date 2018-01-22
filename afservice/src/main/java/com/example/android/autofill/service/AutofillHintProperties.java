@@ -15,6 +15,8 @@
  */
 package com.example.android.autofill.service;
 
+import android.view.View;
+
 import com.example.android.autofill.service.model.FilledAutofillField;
 
 import java.util.Arrays;
@@ -44,8 +46,8 @@ public final class AutofillHintProperties {
     /**
      * Generates dummy autofill field data that is relevant to the autofill hint.
      */
-    public FilledAutofillField generateFakeField(int seed) {
-        return mFakeFieldGenerator.generate(seed);
+    public FilledAutofillField generateFakeField(int seed, String datasetId) {
+        return mFakeFieldGenerator.generate(seed, datasetId);
     }
 
     /**
@@ -77,10 +79,14 @@ public final class AutofillHintProperties {
     /**
      * Sometimes, data for a hint should only be stored as a certain AutofillValue type. For
      * example, it is recommended that data representing a Credit Card Expiration date, annotated
-     * with the hint {@link android.view.View.AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE}, should
-     * only be stored as {@link android.view.View.AUTOFILL_TYPE_DATE}.
+     * with the hint {@link View#AUTOFILL_HINT_CREDIT_CARD_EXPIRATION_DATE}, should
+     * only be stored as {@link View#AUTOFILL_TYPE_DATE}.
      */
     public boolean isValidType(int type) {
         return mValidTypes.contains(type);
+    }
+
+    public Set<Integer> getTypes() {
+        return mValidTypes;
     }
 }

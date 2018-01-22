@@ -15,97 +15,115 @@
  */
 package com.example.android.autofill.service.model;
 
-import android.util.Log;
-import android.view.View;
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
+import android.arch.persistence.room.Ignore;
+import android.support.annotation.NonNull;
 
-import com.example.android.autofill.service.AutofillHints;
-import com.google.common.base.Preconditions;
-import com.google.gson.annotations.Expose;
+import javax.annotation.Nullable;
 
-import java.util.Arrays;
-
-import static com.example.android.autofill.service.AutofillHints.convertToStoredHintNames;
-import static com.example.android.autofill.service.AutofillHints.filterForSupportedHints;
-import static com.example.android.autofill.service.Util.logw;
-import android.view.autofill.AutofillValue;
-
-/**
- * JSON serializable data class containing the same data as an {@link AutofillValue}.
- */
+@Entity(primaryKeys = {"datasetId", "fieldTypeName"}, foreignKeys = {
+        @ForeignKey(entity = AutofillDataset.class, parentColumns = "id",
+                childColumns = "datasetId", onDelete = ForeignKey.CASCADE),
+        @ForeignKey(entity = FieldType.class, parentColumns = "typeName",
+                childColumns = "fieldTypeName", onDelete = ForeignKey.CASCADE)
+})
 public class FilledAutofillField {
-    @Expose
-    private String mTextValue = null;
-    @Expose
-    private Long mDateValue = null;
-    @Expose
-    private Boolean mToggleValue = null;
 
-    //TODO add explicit mListValue
+    @NonNull
+    @ColumnInfo(name = "datasetId")
+    private final String mDatasetId;
 
-    /**
-     * Does not need to be serialized into persistent storage, so it's not exposed.
-     */
-    private String[] mAutofillHints = null;
+    @Nullable
+    @ColumnInfo(name = "textValue")
+    private final String mTextValue;
 
-    public FilledAutofillField(String... hints) {
-        mAutofillHints = filterForSupportedHints(hints);
-        convertToStoredHintNames(mAutofillHints);
+    @Nullable
+    @ColumnInfo(name = "dateValue")
+    private final Long mDateValue;
+
+    @Nullable
+    @ColumnInfo(name = "toggleValue")
+    private final Boolean mToggleValue;
+
+    @NonNull
+    @ColumnInfo(name = "fieldTypeName")
+    private final String mFieldTypeName;
+
+    @NonNull
+    @ColumnInfo(name = "packageName")
+    private final String mPackageName;
+
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
+            @NonNull String fieldTypeName, @Nullable String textValue, @Nullable Long dateValue,
+            @Nullable Boolean toggleValue) {
+        mDatasetId = datasetId;
+        mPackageName = packageName;
+        mFieldTypeName = fieldTypeName;
+        mTextValue = textValue;
+        mDateValue = dateValue;
+        mToggleValue = toggleValue;
     }
 
-    public void setListValue(CharSequence[] autofillOptions, int listValue) {
-        /* Only set list value when a hint is allowed to store list values. */
-        Preconditions.checkArgument(
-                AutofillHints.isValidTypeForHints(mAutofillHints, View.AUTOFILL_TYPE_LIST),
-                "List is invalid autofill type for hint(s) - %s",
-                Arrays.toString(mAutofillHints));
-        if (autofillOptions != null && autofillOptions.length > 0) {
-            mTextValue = autofillOptions[listValue].toString();
-        } else {
-            logw("autofillOptions should have at least one entry.");
-        }
+    @Ignore
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
+            @NonNull String fieldTypeName, @Nullable String textValue, @Nullable Long dateValue) {
+        this(datasetId, packageName, fieldTypeName, textValue, dateValue, null);
     }
 
-    public String[] getAutofillHints() {
-        return mAutofillHints;
+    @Ignore
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
+            @NonNull String fieldTypeName, @Nullable String textValue) {
+        this(datasetId, packageName, fieldTypeName, textValue, null, null);
     }
 
+    @Ignore
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
+            @NonNull String fieldTypeName, @Nullable Long dateValue) {
+        this(datasetId, packageName, fieldTypeName, null, dateValue, null);
+    }
+
+    @Ignore
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
+            @NonNull String fieldTypeName, @Nullable Boolean toggleValue) {
+        this(datasetId, packageName, fieldTypeName, null, null, toggleValue);
+    }
+
+    @Ignore
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
+            @NonNull String fieldTypeName) {
+        this(datasetId, packageName, fieldTypeName, null, null, null);
+    }
+
+    @NonNull
+    public String getDatasetId() {
+        return mDatasetId;
+    }
+
+    @Nullable
     public String getTextValue() {
         return mTextValue;
     }
 
-    public void setTextValue(CharSequence textValue) {
-        /* Only set text value when a hint is allowed to store text values. */
-        Preconditions.checkArgument(
-                AutofillHints.isValidTypeForHints(mAutofillHints, View.AUTOFILL_TYPE_TEXT),
-                "Text is invalid autofill type for hint(s) - %s",
-                Arrays.toString(mAutofillHints));
-        mTextValue = textValue.toString();
-    }
-
+    @Nullable
     public Long getDateValue() {
         return mDateValue;
     }
 
-    public void setDateValue(Long dateValue) {
-        /* Only set date value when a hint is allowed to store date values. */
-        Preconditions.checkArgument(
-                AutofillHints.isValidTypeForHints(mAutofillHints, View.AUTOFILL_TYPE_DATE),
-                "Date is invalid autofill type for hint(s) - %s"
-                , Arrays.toString(mAutofillHints));
-        mDateValue = dateValue;
-    }
-
+    @Nullable
     public Boolean getToggleValue() {
         return mToggleValue;
     }
 
-    public void setToggleValue(Boolean toggleValue) {
-        /* Only set toggle value when a hint is allowed to store toggle values. */
-        Preconditions.checkArgument(
-                AutofillHints.isValidTypeForHints(mAutofillHints, View.AUTOFILL_TYPE_TOGGLE),
-                "Toggle is invalid autofill type for hint(s) - %s",
-                Arrays.toString(mAutofillHints));
-        mToggleValue = toggleValue;
+    @NonNull
+    public String getFieldTypeName() {
+        return mFieldTypeName;
+    }
+
+    @NonNull
+    public String getPackageName() {
+        return mPackageName;
     }
 
     public boolean isNull() {
@@ -119,19 +137,25 @@ public class FilledAutofillField {
 
         FilledAutofillField that = (FilledAutofillField) o;
 
+        if (!mDatasetId.equals(that.mDatasetId)) return false;
         if (mTextValue != null ? !mTextValue.equals(that.mTextValue) : that.mTextValue != null)
             return false;
         if (mDateValue != null ? !mDateValue.equals(that.mDateValue) : that.mDateValue != null)
             return false;
-        return mToggleValue != null ? mToggleValue.equals(that.mToggleValue) :
-                that.mToggleValue == null;
+        if (mToggleValue != null ? !mToggleValue.equals(that.mToggleValue) : that.mToggleValue != null)
+            return false;
+        if (!mFieldTypeName.equals(that.mFieldTypeName)) return false;
+        return mPackageName.equals(that.mPackageName);
     }
 
     @Override
     public int hashCode() {
-        int result = mTextValue != null ? mTextValue.hashCode() : 0;
+        int result = mDatasetId.hashCode();
+        result = 31 * result + (mTextValue != null ? mTextValue.hashCode() : 0);
         result = 31 * result + (mDateValue != null ? mDateValue.hashCode() : 0);
         result = 31 * result + (mToggleValue != null ? mToggleValue.hashCode() : 0);
+        result = 31 * result + mFieldTypeName.hashCode();
+        result = 31 * result + mPackageName.hashCode();
         return result;
     }
 }

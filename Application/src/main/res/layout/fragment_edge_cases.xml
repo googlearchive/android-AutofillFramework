@@ -67,6 +67,7 @@
             app:labelText="@string/navigation_button_anti_pattern_credit_card_label"
             app:destinationActivityName="com.example.android.autofill.app.edgecases.CreditCardAntiPatternActivity"/>
 
+        <!--TODO finish multistep impl and show this item-->
         <com.example.android.autofill.app.view.widget.NavigationItem
             android:id="@+id/multistepSignInButton"
             android:layout_width="match_parent"
@@ -77,6 +78,7 @@
             app:labelText="@string/navigation_button_multistep_signin_label"
             app:destinationActivityName="com.example.android.autofill.app.edgecases.MultipleStepsSignInActivity"/>
 
+        <!--TODO finish multistep impl and show this item-->
         <com.example.android.autofill.app.view.widget.NavigationItem
             android:id="@+id/multistepCreditCardButton"
             android:layout_width="match_parent"

@@ -13,23 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.autofill.service.datasource;
+package com.example.android.autofill.service.data.source;
 
-import android.content.Context;
+import com.example.android.autofill.service.data.DataCallback;
+import com.example.android.autofill.service.model.DalCheck;
+import com.example.android.autofill.service.model.DalInfo;
+
+import static com.example.android.autofill.service.util.Util.DalCheckRequirement;
 
 /**
- * Helper format
- * <a href="https://developers.google.com/digital-asset-links/">Digital Asset Links</a> needs.
+ * Data source for
+ * <a href="https://developers.google.com/digital-asset-links/">Digital Asset Links</a>.
  */
 public interface DigitalAssetLinksDataSource {
 
     /**
      * Checks if the association between a web domain and a package is valid.
      */
-    boolean isValid(Context context, String webDomain, String packageName);
+    void checkValid(DalCheckRequirement dalCheckRequirement, DalInfo dalInfo,
+            DataCallback<DalCheck> dalCheckCallback);
 
     /**
      * Clears all cached data.
      */
-    void clear(Context context);
+    void clear();
 }

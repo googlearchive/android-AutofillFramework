@@ -18,6 +18,7 @@ package com.example.android.autofill.service.settings;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -36,37 +37,68 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
 
-import com.example.android.autofill.service.AutofillHints;
 import com.example.android.autofill.service.R;
-import com.example.android.autofill.service.Util;
-import com.example.android.autofill.service.datasource.SharedPrefsAutofillRepository;
-import com.example.android.autofill.service.datasource.SharedPrefsPackageVerificationRepository;
-import com.example.android.autofill.service.model.FilledAutofillFieldCollection;
+import com.example.android.autofill.service.data.AutofillDataBuilder;
+import com.example.android.autofill.service.data.DataCallback;
+import com.example.android.autofill.service.data.FakeAutofillDataBuilder;
+import com.example.android.autofill.service.data.source.DefaultFieldTypesSource;
+import com.example.android.autofill.service.data.source.PackageVerificationDataSource;
+import com.example.android.autofill.service.data.source.local.DefaultFieldTypesLocalJsonSource;
+import com.example.android.autofill.service.data.source.local.LocalAutofillDataSource;
+import com.example.android.autofill.service.data.source.local.SharedPrefsPackageVerificationRepository;
+import com.example.android.autofill.service.data.source.local.dao.AutofillDao;
+import com.example.android.autofill.service.data.source.local.db.AutofillDatabase;
+import com.example.android.autofill.service.model.DatasetWithFilledAutofillFields;
+import com.example.android.autofill.service.model.FieldTypeWithHeuristics;
+import com.example.android.autofill.service.util.AppExecutors;
+import com.example.android.autofill.service.util.Util;
+import com.google.gson.GsonBuilder;
 
-import static com.example.android.autofill.service.Util.logd;
-import static com.example.android.autofill.service.Util.logw;
+import java.util.List;
+
+import static com.example.android.autofill.service.util.Util.DalCheckRequirement.AllUrls;
+import static com.example.android.autofill.service.util.Util.DalCheckRequirement.Disabled;
+import static com.example.android.autofill.service.util.Util.DalCheckRequirement.LoginOnly;
+import static com.example.android.autofill.service.util.Util.logd;
+import static com.example.android.autofill.service.util.Util.logw;
 
 public class SettingsActivity extends AppCompatActivity {
     private static final String TAG = "SettingsActivity";
     private static final int REQUEST_CODE_SET_DEFAULT = 1;
     private AutofillManager mAutofillManager;
+    private LocalAutofillDataSource mLocalAutofillDataSource;
+    private PackageVerificationDataSource mPackageVerificationDataSource;
+    private MyPreferences mPreferences;
+    private String mPackageName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.multidataset_service_settings_activity);
+        SharedPreferences localAfDataSourceSharedPrefs =
+                getSharedPreferences(LocalAutofillDataSource.SHARED_PREF_KEY, Context.MODE_PRIVATE);
+        DefaultFieldTypesSource defaultFieldTypesSource =
+                DefaultFieldTypesLocalJsonSource.getInstance(getResources(),
+                        new GsonBuilder().create());
+        AutofillDao autofillDao = AutofillDatabase.getInstance(
+                this, defaultFieldTypesSource, new AppExecutors()).autofillDao();
+        mPackageName = getPackageName();
+        mLocalAutofillDataSource = LocalAutofillDataSource.getInstance(localAfDataSourceSharedPrefs,
+                autofillDao, new AppExecutors());
         mAutofillManager = getSystemService(AutofillManager.class);
-        final MyPreferences preferences = MyPreferences.getInstance(this);
+        mPackageVerificationDataSource =
+                SharedPrefsPackageVerificationRepository.getInstance(this);
+        mPreferences = MyPreferences.getInstance(this);
         setupSettingsSwitch(R.id.settings_auth_responses_container,
                 R.id.settings_auth_responses_label,
                 R.id.settings_auth_responses_switch,
-                preferences.isResponseAuth(),
-                (compoundButton, isResponseAuth) -> preferences.setResponseAuth(isResponseAuth));
+                mPreferences.isResponseAuth(),
+                (compoundButton, isResponseAuth) -> mPreferences.setResponseAuth(isResponseAuth));
         setupSettingsSwitch(R.id.settings_auth_datasets_container,
                 R.id.settings_auth_datasets_label,
                 R.id.settings_auth_datasets_switch,
-                preferences.isDatasetAuth(),
-                (compoundButton, isDatasetAuth) -> preferences.setDatasetAuth(isDatasetAuth));
+                mPreferences.isDatasetAuth(),
+                (compoundButton, isDatasetAuth) -> mPreferences.setDatasetAuth(isDatasetAuth));
         setupSettingsButton(R.id.settings_add_data_container,
                 R.id.settings_add_data_label,
                 R.id.settings_add_data_icon,
@@ -79,7 +111,7 @@ public class SettingsActivity extends AppCompatActivity {
                 R.id.settings_auth_credentials_label,
                 R.id.settings_auth_credentials_icon,
                 (view) -> {
-                    if (preferences.getMasterPassword() != null) {
+                    if (mPreferences.getMasterPassword() != null) {
                         buildCurrentCredentialsDialog().show();
                     } else {
                         buildNewCredentialsDialog().show();
@@ -91,29 +123,55 @@ public class SettingsActivity extends AppCompatActivity {
                 mAutofillManager.hasEnabledAutofillServices(),
                 (compoundButton, serviceSet) -> setService(serviceSet));
         RadioGroup loggingLevelContainer = findViewById(R.id.loggingLevelContainer);
-        Util.LogLevel loggingLevel = preferences.getLoggingLevel();
+        Util.LogLevel loggingLevel = mPreferences.getLoggingLevel();
         Util.setLoggingLevel(loggingLevel);
         switch (loggingLevel) {
-            case OFF:
+            case Off:
                 loggingLevelContainer.check(R.id.loggingOff);
                 break;
-            case DEBUG:
+            case Debug:
                 loggingLevelContainer.check(R.id.loggingDebug);
                 break;
-            case VERBOSE:
+            case Verbose:
                 loggingLevelContainer.check(R.id.loggingVerbose);
                 break;
         }
         loggingLevelContainer.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.loggingOff:
-                    preferences.setLoggingLevel(Util.LogLevel.OFF);
+                    mPreferences.setLoggingLevel(Util.LogLevel.Off);
                     break;
                 case R.id.loggingDebug:
-                    preferences.setLoggingLevel(Util.LogLevel.DEBUG);
+                    mPreferences.setLoggingLevel(Util.LogLevel.Debug);
                     break;
                 case R.id.loggingVerbose:
-                    preferences.setLoggingLevel(Util.LogLevel.VERBOSE);
+                    mPreferences.setLoggingLevel(Util.LogLevel.Verbose);
+                    break;
+            }
+        });
+        RadioGroup dalCheckRequirementContainer = findViewById(R.id.dalCheckRequirementContainer);
+        Util.DalCheckRequirement dalCheckRequirement = mPreferences.getDalCheckRequirement();
+        switch (dalCheckRequirement) {
+            case Disabled:
+                dalCheckRequirementContainer.check(R.id.dalDisabled);
+                break;
+            case LoginOnly:
+                dalCheckRequirementContainer.check(R.id.dalLoginOnly);
+                break;
+            case AllUrls:
+                dalCheckRequirementContainer.check(R.id.dalAllUrls);
+                break;
+        }
+        dalCheckRequirementContainer.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.dalDisabled:
+                    mPreferences.setDalCheckRequired(Disabled);
+                    break;
+                case R.id.dalLoginOnly:
+                    mPreferences.setDalCheckRequired(LoginOnly);
+                    break;
+                case R.id.dalAllUrls:
+                    mPreferences.setDalCheckRequired(AllUrls);
                     break;
             }
         });
@@ -125,10 +183,9 @@ public class SettingsActivity extends AppCompatActivity {
                 .setTitle(R.string.settings_clear_data_confirmation_title)
                 .setNegativeButton(R.string.settings_cancel, null)
                 .setPositiveButton(R.string.settings_ok, (dialog, which) -> {
-                    SharedPrefsAutofillRepository.getInstance().clear(SettingsActivity.this);
-                    SharedPrefsPackageVerificationRepository.getInstance()
-                            .clear(SettingsActivity.this);
-                    MyPreferences.getInstance(SettingsActivity.this).clearCredentials();
+                    mLocalAutofillDataSource.clear();
+                    mPackageVerificationDataSource.clear();
+                    mPreferences.clearCredentials();
                     dialog.dismiss();
                 })
                 .create();
@@ -149,35 +206,43 @@ public class SettingsActivity extends AppCompatActivity {
                 .setView(numberOfDatasetsPicker)
                 .setPositiveButton(R.string.settings_ok, (dialog, which) -> {
                     int numOfDatasets = numberOfDatasetsPicker.getValue();
-                    boolean success = buildAndSaveMockedAutofillFieldCollection(
-                            SettingsActivity.this, numOfDatasets);
-                    dialog.dismiss();
-                    if (success) {
-                        Snackbar.make(SettingsActivity.this.findViewById(R.id.settings_layout),
-                                SettingsActivity.this.getResources().getQuantityString(
-                                        R.plurals.settings_add_data_success, numOfDatasets,
-                                        numOfDatasets),
-                                Snackbar.LENGTH_SHORT).show();
-                    }
+                    mLocalAutofillDataSource.getFieldTypes(new DataCallback<List<FieldTypeWithHeuristics>>() {
+                        @Override
+                        public void onLoaded(List<FieldTypeWithHeuristics> fieldTypes) {
+                            boolean saved = buildAndSaveMockedAutofillFieldCollections(
+                                    fieldTypes, numOfDatasets);
+                            dialog.dismiss();
+                            if (saved) {
+                                Snackbar.make(findViewById(R.id.settings_layout),
+                                        getResources().getQuantityString(
+                                                R.plurals.settings_add_data_success,
+                                                numOfDatasets, numOfDatasets),
+                                        Snackbar.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onDataNotAvailable(String msg, Object... params) {
+
+                        }
+                    });
                 })
                 .create();
     }
 
-    /**
-     * Builds mock autofill data and saves it to repository.
-     */
-    private boolean buildAndSaveMockedAutofillFieldCollection(Context context, int numOfDatasets) {
+    public boolean buildAndSaveMockedAutofillFieldCollections(List<FieldTypeWithHeuristics> fieldTypes,
+            int numOfDatasets) {
         if (numOfDatasets < 0 || numOfDatasets > 10) {
             logw("Number of Datasets (%d) out of range.", numOfDatasets);
-            return false;
         }
-        for (int i = 0; i < numOfDatasets * 2; i += 2) {
-            for (int partition : AutofillHints.PARTITIONS) {
-                FilledAutofillFieldCollection filledAutofillFieldCollection =
-                        AutofillHints.getFakeFieldCollection(partition, i);
-                SharedPrefsAutofillRepository.getInstance().saveFilledAutofillFieldCollection(
-                        context, filledAutofillFieldCollection);
-            }
+        for (int i = 0; i < numOfDatasets; i++) {
+            int datasetNumber = mLocalAutofillDataSource.getDatasetNumber();
+            AutofillDataBuilder autofillDataBuilder =
+                    new FakeAutofillDataBuilder(fieldTypes, mPackageName, datasetNumber);
+            List<DatasetWithFilledAutofillFields> datasetsWithFilledAutofillFields =
+                    autofillDataBuilder.buildDatasetsByPartition(datasetNumber);
+            // Save datasets to database.
+            mLocalAutofillDataSource.saveAutofillDatasets(datasetsWithFilledAutofillFields);
         }
         return true;
     }
@@ -200,7 +265,7 @@ public class SettingsActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         String password = currentPasswordField.getText().toString();
-                        if (MyPreferences.getInstance(SettingsActivity.this).getMasterPassword()
+                        if (mPreferences.getMasterPassword()
                                 .equals(password)) {
                             buildNewCredentialsDialog().show();
                             dialog.dismiss();
@@ -220,7 +285,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .setView(newPasswordField)
                 .setPositiveButton(R.string.settings_ok, (dialog, which) -> {
                     String password = newPasswordField.getText().toString();
-                    MyPreferences.getInstance(SettingsActivity.this).setMasterPassword(password);
+                    mPreferences.setMasterPassword(password);
                     dialog.dismiss();
                 })
                 .create();
@@ -281,12 +346,12 @@ public class SettingsActivity extends AppCompatActivity {
         logd(TAG, "onActivityResult(): req=%s", requestCode);
         switch (requestCode) {
             case REQUEST_CODE_SET_DEFAULT:
-                defaultServiceSet(resultCode);
+                onDefaultServiceSet(resultCode);
                 break;
         }
     }
 
-    private void defaultServiceSet(int resultCode) {
+    private void onDefaultServiceSet(int resultCode) {
         logd(TAG, "resultCode=%d", resultCode);
         switch (resultCode) {
             case RESULT_OK:
