@@ -95,7 +95,7 @@ public class ResponseAdapter {
                 }
             }
         }
-        int saveType = 0;
+        int saveType = mClientViewMetadata.getSaveType();
         AutofillId[] autofillIds = mClientViewMetadata.getAutofillIds();
         if (autofillIds != null && autofillIds.length > 0) {
             SaveInfo saveInfo = new SaveInfo.Builder(saveType, autofillIds).build();

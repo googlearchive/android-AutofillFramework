@@ -80,12 +80,12 @@ public class ClientViewMetadataBuilder {
                 if (fieldTypeWithHints != null && fieldTypeWithHints.fieldType != null) {
                     allHints.add(hint);
                     autofillSaveType.value |= fieldTypeWithHints.fieldType.getSaveInfo();
+                    autofillIds.add(root.getAutofillId());
                 }
             }
         }
         if (root.isFocused()) {
             focusedAutofillIds.add(root.getAutofillId());
         }
-        autofillIds.add(root.getAutofillId());
     }
 }

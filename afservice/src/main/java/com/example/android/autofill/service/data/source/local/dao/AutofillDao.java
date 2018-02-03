@@ -78,7 +78,7 @@ public interface AutofillDao {
 
     @Query("SELECT DISTINCT typeName, autofillTypes, saveInfo, partition, strictExampleSet, " +
             "textTemplate, dateTemplate" +
-            " FROM FieldType, AutofillHint, ResourceIdHeuristic" +
+            " FROM FieldType, AutofillHint" +
             " WHERE FieldType.typeName = AutofillHint.fieldTypeName" +
             " AND AutofillHint.autofillHint IN (:autofillHints)" +
             " UNION " +

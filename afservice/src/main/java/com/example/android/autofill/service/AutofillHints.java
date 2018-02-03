@@ -66,9 +66,7 @@ public final class AutofillHints {
                 date = Calendar.getInstance().getTimeInMillis();
             }
         }
-        FilledAutofillField filledAutofillField = new FilledAutofillField(datasetId,
-                packageName, fieldTypeName, text, date, toggle);
-        return filledAutofillField;
+        return new FilledAutofillField(datasetId, fieldTypeName, text, date, toggle);
     }
 
     public static String getFieldTypeNameFromAutofillHints(

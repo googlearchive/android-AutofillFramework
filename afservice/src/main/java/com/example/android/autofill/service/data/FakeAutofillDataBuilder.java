@@ -44,7 +44,7 @@ public class FakeAutofillDataBuilder implements AutofillDataBuilder {
                 new ImmutableList.Builder<>();
         for (int partition : AutofillHints.PARTITIONS) {
             AutofillDataset autofillDataset = new AutofillDataset(UUID.randomUUID().toString(),
-                    "dataset-" + datasetNumber + "." + partition);
+                    "dataset-" + datasetNumber + "." + partition, mPackageName);
             DatasetWithFilledAutofillFields datasetWithFilledAutofillFields =
                     buildCollectionForPartition(autofillDataset, partition);
             if (datasetWithFilledAutofillFields != null &&

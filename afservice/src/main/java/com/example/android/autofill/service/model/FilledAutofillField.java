@@ -51,15 +51,10 @@ public class FilledAutofillField {
     @ColumnInfo(name = "fieldTypeName")
     private final String mFieldTypeName;
 
-    @NonNull
-    @ColumnInfo(name = "packageName")
-    private final String mPackageName;
-
-    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
-            @NonNull String fieldTypeName, @Nullable String textValue, @Nullable Long dateValue,
-            @Nullable Boolean toggleValue) {
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String fieldTypeName,
+                               @Nullable String textValue, @Nullable Long dateValue,
+                               @Nullable Boolean toggleValue) {
         mDatasetId = datasetId;
-        mPackageName = packageName;
         mFieldTypeName = fieldTypeName;
         mTextValue = textValue;
         mDateValue = dateValue;
@@ -67,33 +62,32 @@ public class FilledAutofillField {
     }
 
     @Ignore
-    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
+    public FilledAutofillField(@NonNull String datasetId,
             @NonNull String fieldTypeName, @Nullable String textValue, @Nullable Long dateValue) {
-        this(datasetId, packageName, fieldTypeName, textValue, dateValue, null);
+        this(datasetId, fieldTypeName, textValue, dateValue, null);
     }
 
     @Ignore
-    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
-            @NonNull String fieldTypeName, @Nullable String textValue) {
-        this(datasetId, packageName, fieldTypeName, textValue, null, null);
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String fieldTypeName,
+                               @Nullable String textValue) {
+        this(datasetId, fieldTypeName, textValue, null, null);
     }
 
     @Ignore
-    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
-            @NonNull String fieldTypeName, @Nullable Long dateValue) {
-        this(datasetId, packageName, fieldTypeName, null, dateValue, null);
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String fieldTypeName,
+                               @Nullable Long dateValue) {
+        this(datasetId, fieldTypeName, null, dateValue, null);
     }
 
     @Ignore
-    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
-            @NonNull String fieldTypeName, @Nullable Boolean toggleValue) {
-        this(datasetId, packageName, fieldTypeName, null, null, toggleValue);
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String fieldTypeName,
+                               @Nullable Boolean toggleValue) {
+        this(datasetId, fieldTypeName, null, null, toggleValue);
     }
 
     @Ignore
-    public FilledAutofillField(@NonNull String datasetId, @NonNull String packageName,
-            @NonNull String fieldTypeName) {
-        this(datasetId, packageName, fieldTypeName, null, null, null);
+    public FilledAutofillField(@NonNull String datasetId, @NonNull String fieldTypeName) {
+        this(datasetId, fieldTypeName, null, null, null);
     }
 
     @NonNull
@@ -121,11 +115,6 @@ public class FilledAutofillField {
         return mFieldTypeName;
     }
 
-    @NonNull
-    public String getPackageName() {
-        return mPackageName;
-    }
-
     public boolean isNull() {
         return mTextValue == null && mDateValue == null && mToggleValue == null;
     }
@@ -137,25 +126,21 @@ public class FilledAutofillField {
 
         FilledAutofillField that = (FilledAutofillField) o;
 
-        if (!mDatasetId.equals(that.mDatasetId)) return false;
         if (mTextValue != null ? !mTextValue.equals(that.mTextValue) : that.mTextValue != null)
             return false;
         if (mDateValue != null ? !mDateValue.equals(that.mDateValue) : that.mDateValue != null)
             return false;
         if (mToggleValue != null ? !mToggleValue.equals(that.mToggleValue) : that.mToggleValue != null)
             return false;
-        if (!mFieldTypeName.equals(that.mFieldTypeName)) return false;
-        return mPackageName.equals(that.mPackageName);
+        return mFieldTypeName.equals(that.mFieldTypeName);
     }
 
     @Override
     public int hashCode() {
-        int result = mDatasetId.hashCode();
-        result = 31 * result + (mTextValue != null ? mTextValue.hashCode() : 0);
+        int result = mTextValue != null ? mTextValue.hashCode() : 0;
         result = 31 * result + (mDateValue != null ? mDateValue.hashCode() : 0);
         result = 31 * result + (mToggleValue != null ? mToggleValue.hashCode() : 0);
         result = 31 * result + mFieldTypeName.hashCode();
-        result = 31 * result + mPackageName.hashCode();
         return result;
     }
 }

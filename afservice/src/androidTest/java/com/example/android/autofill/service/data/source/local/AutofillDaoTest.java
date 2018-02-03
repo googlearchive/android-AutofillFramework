@@ -44,7 +44,8 @@ import static org.hamcrest.Matchers.hasSize;
 @RunWith(AndroidJUnit4.class)
 public class AutofillDaoTest {
     private final AutofillDataset mDataset =
-            new AutofillDataset(UUID.randomUUID().toString(), "dataset-1");
+            new AutofillDataset(UUID.randomUUID().toString(),
+                    "dataset-1", InstrumentationRegistry.getContext().getPackageName());
     private final FilledAutofillField mUsernameField =
             new FilledAutofillField(mDataset.getId(), View.AUTOFILL_HINT_USERNAME, "login");
     private final FilledAutofillField mPasswordField =
@@ -74,7 +75,7 @@ public class AutofillDaoTest {
         datasetWithFilledAutofillFields.filledAutofillFields =
                 Arrays.asList(mUsernameField, mPasswordField);
         datasetWithFilledAutofillFields.filledAutofillFields
-                .sort(Comparator.comparing(FilledAutofillField::getFieldType));
+                .sort(Comparator.comparing(FilledAutofillField::getFieldTypeName));
 
         // When inserting a page's autofill fields.
         mDatabase.autofillDao().insertAutofillDataset(mDataset);
@@ -87,7 +88,7 @@ public class AutofillDaoTest {
         List<DatasetWithFilledAutofillFields> loadedDatasets = mDatabase.autofillDao()
                 .getDatasets(allHints);
         loadedDatasets.get(0).filledAutofillFields.sort(
-                Comparator.comparing(FilledAutofillField::getFieldType));
+                Comparator.comparing(FilledAutofillField::getFieldTypeName));
         assertThat(loadedDatasets, contains(datasetWithFilledAutofillFields));
         assertThat(loadedDatasets, hasSize(1));
     }

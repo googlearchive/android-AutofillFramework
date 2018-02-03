@@ -1,3 +1,5 @@
+Warning: This sample is currently outdated and you should reference the Java version instead.
+============================================================================================
 
 Android AutofillFramework Sample (Kotlin)
 =========================================

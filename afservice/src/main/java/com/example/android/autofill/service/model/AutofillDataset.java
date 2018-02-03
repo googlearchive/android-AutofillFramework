@@ -30,9 +30,15 @@ public class AutofillDataset {
     @ColumnInfo(name = "datasetName")
     private final String mDatasetName;
 
-    public AutofillDataset(@NonNull String id, @NonNull String datasetName) {
+    @NonNull
+    @ColumnInfo(name = "packageName")
+    private final String mPackageName;
+
+    public AutofillDataset(@NonNull String id, @NonNull String datasetName,
+                           @NonNull String packageName) {
         mId = id;
         mDatasetName = datasetName;
+        mPackageName = packageName;
     }
 
     @NonNull
@@ -45,6 +51,11 @@ public class AutofillDataset {
         return mDatasetName;
     }
 
+    @NonNull
+    public String getPackageName() {
+        return mPackageName;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -53,13 +64,15 @@ public class AutofillDataset {
         AutofillDataset that = (AutofillDataset) o;
 
         if (!mId.equals(that.mId)) return false;
-        return mDatasetName.equals(that.mDatasetName);
+        if (!mDatasetName.equals(that.mDatasetName)) return false;
+        return mPackageName.equals(that.mPackageName);
     }
 
     @Override
     public int hashCode() {
         int result = mId.hashCode();
         result = 31 * result + mDatasetName.hashCode();
+        result = 31 * result + mPackageName.hashCode();
         return result;
     }
 }

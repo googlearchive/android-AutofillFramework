@@ -56,7 +56,7 @@ public class ClientAutofillDataBuilder implements AutofillDataBuilder {
                 new ImmutableList.Builder<>();
         for (int partition : AutofillHints.PARTITIONS) {
             AutofillDataset autofillDataset = new AutofillDataset(UUID.randomUUID().toString(),
-                    "dataset-" + datasetNumber + "." + partition);
+                    "dataset-" + datasetNumber + "." + partition, mPackageName);
             DatasetWithFilledAutofillFields dataset =
                     buildDatasetForPartition(autofillDataset, partition);
             if (dataset != null && dataset.filledAutofillFields != null) {
@@ -151,7 +151,7 @@ public class ClientAutofillDataBuilder implements AutofillDataBuilder {
                 }
                 String datasetId = datasetWithFilledAutofillFields.autofillDataset.getId();
                 datasetWithFilledAutofillFields.add(new FilledAutofillField(datasetId,
-                        mPackageName, fieldType.getTypeName(), textValue, dateValue, toggleValue));
+                        fieldType.getTypeName(), textValue, dateValue, toggleValue));
             } else {
                 loge("Invalid hint: %s", hint);
             }
