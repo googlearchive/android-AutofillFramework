@@ -4,7 +4,7 @@ apply plugin: 'com.android.application'
 // keep boilerplate and common code separate from
 // the main sample code.
 List<String> dirs = [
-        'main']     // main sample code; look here for the interesting stuff.
+    'main']     // main sample code; look here for the interesting stuff.
 
 android {
     compileSdkVersion 26

@@ -13,7 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,7 +38,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.android.autofill.app.view.widget.InfoButton
+    <com.example.android.autofill.app.InfoButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -85,7 +86,7 @@
         app:layout_constraintStart_toStartOf="@id/creditCardNumberLabel"
         app:layout_constraintTop_toBottomOf="@+id/creditCardNumberLabel" />
 
-    <com.example.android.autofill.app.view.autofillable.CreditCardExpirationDateCompoundView
+    <com.example.android.autofill.app.CreditCardExpirationDateCompoundView
         android:id="@+id/creditCardExpirationView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
