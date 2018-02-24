@@ -1,11 +1,31 @@
+<!--
+ * Copyright (C) 2018 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+-->
 <resources>
     <string name="invalid_package_signature">Invalid package signature</string>
-    <string name="invalid_link_association">Could not associate web domain %1$s with app %2$s</string>
+    <string name="security_exception">Web domain security exception.</string>
+    <string name="dal_exception">DAL verification failure.</string>
     <string name="autofill_sign_in_prompt">Tap to sign in.</string>
+    <string name="autofill_manual_prompt">Tap to manually select data.</string>
+    <string name="authentication_name">Autofill Authentication</string>
+    <string name="manual_name">Manual (Auto)fill</string>
+    <string name="manual_field_picker_name">Select Field</string>
     <string name="settings_name">Autofill Settings</string>
     <string name="settings_cancel">Cancel</string>
     <string name="settings_save">Save</string>
-    <string name="settings_authenticate_responses">Authenticate responses</string>
+    <string name="settings_authenticate_responses">Authenticate Responses</string>
     <string name="settings_authenticate_datasets">Authenticate Datasets</string>
     <string name="settings_add_data_label">Add fake Autofill data</string>
     <string name="settings_add_data_title">Add Autofill Datasets</string>
@@ -21,6 +41,22 @@
     <string name="settings_clear_data_confirmation_title">Confirmation</string>
     <string name="settings_authentication_header">Authentication</string>
     <string name="settings_data_header">Data</string>
+    <string name="settings_logging_header">Logging</string>
+    <string name="settings_logging_off">Off</string>
+    <string name="settings_logging_debug">Debug</string>
+    <string name="settings_logging_verbose">Verbose</string>
+
+    <string name="settings_dal_header">DAL Check Requirement</string>
+    <string name="settings_dal_disabled">Disabled</string>
+    <string name="settings_dal_login_only">Login Credentials Only</string>
+    <string name="settings_dal_all_urls">Handle All URLs</string>
+
+    <string name="settings_enable_header">Enable/Disable</string>
+    <string name="settings_set_service">Set default Autofill service</string>
+    <string name="settings_disable_service">Disable Autofill services</string>
+    <string name="settings_autofill_disabled_message">Autofill service has been disabled.</string>
+    <string name="settings_autofill_service_set">Sample service set to default.</string>
+    <string name="settings_autofill_service_not_set">Sample service not set to default.</string>
     <string name="settings_auth_credentials_label">Update credentials</string>
     <string name="settings_auth_enter_current_password">Enter current password</string>
     <string name="settings_auth_enter_new_password">Enter new password</string>
@@ -30,7 +66,10 @@
     <string name="auth_password_label">Password</string>
     <string name="auth_cancel">Cancel</string>
     <string name="auth_login_label">Login</string>
-    <string name="settings_ok">Ok</string>
+    <string name="settings_ok">OK</string>
+    <string name="manual_dataset_name_label">Dataset Name</string>
+    <string name="manual_field_types_label">Field Types</string>
+    <string name="manual_data_picker_title">Fields for %1$s</string>
     <string-array name="month_array">
         <item>1</item>
         <item>2</item>

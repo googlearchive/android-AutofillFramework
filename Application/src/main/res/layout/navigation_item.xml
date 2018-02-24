@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +14,8 @@
  * limitations under the License.
 -->
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto"
-       xmlns:tools="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/navigation_item_layout"
@@ -51,7 +50,7 @@
                 tools:text="@string/navigation_button_edittext_login_label" />
         </android.support.v7.widget.CardView>
 
-        <com.example.android.autofill.app.InfoButton
+        <com.example.android.autofill.app.view.widget.InfoButton
             android:id="@+id/infoButton"
             android:layout_width="wrap_content"
             android:layout_height="0dp"

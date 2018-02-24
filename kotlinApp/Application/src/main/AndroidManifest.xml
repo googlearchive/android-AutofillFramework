@@ -75,7 +75,7 @@
         <service
             android:name=".multidatasetservice.MyAutofillService"
             android:label="Multi-Dataset Autofill Service"
-            android:permission="android.permission.BIND_AUTOFILL">
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE" >
             <meta-data
                 android:name="android.autofill"
                 android:resource="@xml/multidataset_service" />

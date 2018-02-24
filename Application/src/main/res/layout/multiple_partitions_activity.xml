@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.android.autofill.app.InfoButton
+    <com.example.android.autofill.app.view.widget.InfoButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,19 +49,19 @@
         app:layout_constraintStart_toEndOf="@+id/multiple_partitions_header"
         app:layout_constraintTop_toTopOf="@+id/multiple_partitions_header" />
 
-    <com.example.android.autofill.app.ScrollableCustomVirtualView
+    <com.example.android.autofill.app.view.autofillable.ScrollableCustomVirtualView
         android:id="@+id/custom_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/multiple_partitions_height"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:paddingTop="@dimen/spacing_large"
-        android:paddingStart="@dimen/spacing_large"
         android:paddingEnd="@dimen/spacing_large"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_large"
+        app:internalTextSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/multiple_partitions_header"
-        app:internalTextSize="34sp"/>
+        app:layout_constraintTop_toBottomOf="@+id/multiple_partitions_header" />
 
     <TextView
         android:id="@+id/clear"

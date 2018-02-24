@@ -20,29 +20,43 @@ import android.app.assist.AssistStructure;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.service.autofill.Dataset;
 import android.service.autofill.FillResponse;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.example.android.autofill.service.datasource.SharedPrefsAutofillRepository;
-import com.example.android.autofill.service.model.FilledAutofillFieldCollection;
+import com.example.android.autofill.service.data.ClientViewMetadata;
+import com.example.android.autofill.service.data.ClientViewMetadataBuilder;
+import com.example.android.autofill.service.data.DataCallback;
+import com.example.android.autofill.service.data.adapter.DatasetAdapter;
+import com.example.android.autofill.service.data.adapter.ResponseAdapter;
+import com.example.android.autofill.service.data.source.DefaultFieldTypesSource;
+import com.example.android.autofill.service.data.source.local.DefaultFieldTypesLocalJsonSource;
+import com.example.android.autofill.service.data.source.local.DigitalAssetLinksRepository;
+import com.example.android.autofill.service.data.source.local.LocalAutofillDataSource;
+import com.example.android.autofill.service.data.source.local.dao.AutofillDao;
+import com.example.android.autofill.service.data.source.local.db.AutofillDatabase;
+import com.example.android.autofill.service.model.DatasetWithFilledAutofillFields;
+import com.example.android.autofill.service.model.FieldTypeWithHeuristics;
 import com.example.android.autofill.service.settings.MyPreferences;
+import com.example.android.autofill.service.util.AppExecutors;
+import com.google.gson.GsonBuilder;
 
 import java.util.HashMap;
+import java.util.List;
 
 import static android.view.autofill.AutofillManager.EXTRA_ASSIST_STRUCTURE;
 import static android.view.autofill.AutofillManager.EXTRA_AUTHENTICATION_RESULT;
-import static com.example.android.autofill.service.CommonUtil.EXTRA_DATASET_NAME;
-import static com.example.android.autofill.service.CommonUtil.EXTRA_FOR_RESPONSE;
-import static com.example.android.autofill.service.CommonUtil.TAG;
+import static com.example.android.autofill.service.util.Util.EXTRA_DATASET_NAME;
+import static com.example.android.autofill.service.util.Util.EXTRA_FOR_RESPONSE;
+import static com.example.android.autofill.service.util.Util.logw;
+
 
 /**
  * This Activity controls the UI for logging in to the Autofill service.
@@ -54,20 +68,28 @@ public class AuthActivity extends AppCompatActivity {
     // Unique id for dataset intents.
     private static int sDatasetPendingIntentId = 0;
 
+    private LocalAutofillDataSource mLocalAutofillDataSource;
+    private DigitalAssetLinksRepository mDalRepository;
     private EditText mMasterPassword;
+    private DatasetAdapter mDatasetAdapter;
+    private ResponseAdapter mResponseAdapter;
+    private ClientViewMetadata mClientViewMetadata;
+    private String mPackageName;
     private Intent mReplyIntent;
+    private MyPreferences mPreferences;
 
-    static IntentSender getAuthIntentSenderForResponse(Context context) {
+    public static IntentSender getAuthIntentSenderForResponse(Context context) {
         final Intent intent = new Intent(context, AuthActivity.class);
-        return PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
-                .getIntentSender();
+        return PendingIntent.getActivity(context, 0, intent,
+                PendingIntent.FLAG_CANCEL_CURRENT).getIntentSender();
     }
 
-    static IntentSender getAuthIntentSenderForDataset(Context context, String datasetName) {
-        final Intent intent = new Intent(context, AuthActivity.class);
+    public static IntentSender getAuthIntentSenderForDataset(Context originContext,
+            String datasetName) {
+        Intent intent = new Intent(originContext, AuthActivity.class);
         intent.putExtra(EXTRA_DATASET_NAME, datasetName);
         intent.putExtra(EXTRA_FOR_RESPONSE, false);
-        return PendingIntent.getActivity(context, ++sDatasetPendingIntentId, intent,
+        return PendingIntent.getActivity(originContext, ++sDatasetPendingIntentId, intent,
                 PendingIntent.FLAG_CANCEL_CURRENT).getIntentSender();
     }
 
@@ -75,33 +97,35 @@ public class AuthActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.multidataset_service_auth_activity);
+        SharedPreferences sharedPreferences =
+                getSharedPreferences(LocalAutofillDataSource.SHARED_PREF_KEY, Context.MODE_PRIVATE);
+        DefaultFieldTypesSource defaultFieldTypesSource =
+                DefaultFieldTypesLocalJsonSource.getInstance(getResources(),
+                        new GsonBuilder().create());
+        AutofillDao autofillDao = AutofillDatabase.getInstance(this,
+                defaultFieldTypesSource, new AppExecutors()).autofillDao();
+        mLocalAutofillDataSource = LocalAutofillDataSource.getInstance(sharedPreferences,
+                autofillDao, new AppExecutors());
+        mDalRepository = DigitalAssetLinksRepository.getInstance(getPackageManager());
         mMasterPassword = findViewById(R.id.master_password);
-        findViewById(R.id.login).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-
-        });
-        findViewById(R.id.cancel).setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onFailure();
-                AuthActivity.this.finish();
-            }
+        mPackageName = getPackageName();
+        mPreferences = MyPreferences.getInstance(this);
+        findViewById(R.id.login).setOnClickListener((view) -> login());
+        findViewById(R.id.cancel).setOnClickListener((view) -> {
+            onFailure();
+            AuthActivity.this.finish();
         });
     }
 
     private void login() {
         Editable password = mMasterPassword.getText();
-        if (password.toString()
-                .equals(MyPreferences.getInstance(AuthActivity.this).getMasterPassword())) {
+        String correctPassword = MyPreferences.getInstance(AuthActivity.this).getMasterPassword();
+        if (password.toString().equals(correctPassword)) {
             onSuccess();
         } else {
             Toast.makeText(this, "Password incorrect", Toast.LENGTH_SHORT).show();
             onFailure();
         }
-        finish();
     }
 
     @Override
@@ -115,7 +139,7 @@ public class AuthActivity extends AppCompatActivity {
     }
 
     private void onFailure() {
-        Log.w(TAG, "Failed auth.");
+        logw("Failed auth.");
         mReplyIntent = null;
     }
 
@@ -123,22 +147,74 @@ public class AuthActivity extends AppCompatActivity {
         Intent intent = getIntent();
         boolean forResponse = intent.getBooleanExtra(EXTRA_FOR_RESPONSE, true);
         AssistStructure structure = intent.getParcelableExtra(EXTRA_ASSIST_STRUCTURE);
-        StructureParser parser = new StructureParser(getApplicationContext(), structure);
-        parser.parseForFill();
-        AutofillFieldMetadataCollection autofillFields = parser.getAutofillFields();
-        int saveTypes = autofillFields.getSaveType();
+        ClientParser clientParser = new ClientParser(structure);
         mReplyIntent = new Intent();
-        HashMap<String, FilledAutofillFieldCollection> clientFormDataMap =
-                SharedPrefsAutofillRepository.getInstance().getFilledAutofillFieldCollection
-                        (this, autofillFields.getFocusedHints(), autofillFields.getAllHints());
-        if (forResponse) {
-            setResponseIntent(AutofillHelper.newResponse
-                    (this, false, autofillFields, clientFormDataMap));
-        } else {
-            String datasetName = intent.getStringExtra(EXTRA_DATASET_NAME);
-            setDatasetIntent(AutofillHelper.newDataset
-                    (this, autofillFields, clientFormDataMap.get(datasetName), false));
-        }
+        mLocalAutofillDataSource.getFieldTypeByAutofillHints(
+                new DataCallback<HashMap<String, FieldTypeWithHeuristics>>() {
+            @Override
+            public void onLoaded(HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutofillHint) {
+                ClientViewMetadataBuilder builder = new ClientViewMetadataBuilder(clientParser,
+                        fieldTypesByAutofillHint);
+                mClientViewMetadata = builder.buildClientViewMetadata();
+                mDatasetAdapter = new DatasetAdapter(clientParser);
+                mResponseAdapter = new ResponseAdapter(AuthActivity.this,
+                        mClientViewMetadata, mPackageName, mDatasetAdapter);
+                if (forResponse) {
+                    fetchAllDatasetsAndSetIntent(fieldTypesByAutofillHint);
+                } else {
+                    String datasetName = intent.getStringExtra(EXTRA_DATASET_NAME);
+                    fetchDatasetAndSetIntent(fieldTypesByAutofillHint, datasetName);
+                }
+            }
+
+            @Override
+            public void onDataNotAvailable(String msg, Object... params) {
+
+            }
+        });
+    }
+
+    private void fetchDatasetAndSetIntent(
+            HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutofillHint, String datasetName) {
+        mLocalAutofillDataSource.getAutofillDataset(mClientViewMetadata.getAllHints(),
+                datasetName, new DataCallback<DatasetWithFilledAutofillFields>() {
+                    @Override
+                    public void onLoaded(DatasetWithFilledAutofillFields dataset) {
+                        String datasetName = dataset.autofillDataset.getDatasetName();
+                        RemoteViews remoteViews = RemoteViewsHelper.viewsWithNoAuth(
+                                mPackageName, datasetName);
+                        setDatasetIntent(mDatasetAdapter.buildDataset(fieldTypesByAutofillHint,
+                                dataset, remoteViews));
+                        finish();
+                    }
+
+                    @Override
+                    public void onDataNotAvailable(String msg, Object... params) {
+                        logw(msg, params);
+                        finish();
+                    }
+                });
+    }
+
+    private void fetchAllDatasetsAndSetIntent(
+            HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutofillHint) {
+        mLocalAutofillDataSource.getAutofillDatasets(mClientViewMetadata.getAllHints(),
+                new DataCallback<List<DatasetWithFilledAutofillFields>>() {
+                    @Override
+                    public void onLoaded(List<DatasetWithFilledAutofillFields> datasets) {
+                        boolean datasetAuth = mPreferences.isDatasetAuth();
+                        FillResponse fillResponse = mResponseAdapter.buildResponse(
+                                fieldTypesByAutofillHint, datasets, datasetAuth);
+                        setResponseIntent(fillResponse);
+                        finish();
+                    }
+
+                    @Override
+                    public void onDataNotAvailable(String msg, Object... params) {
+                        logw(msg, params);
+                        finish();
+                    }
+                });
     }
 
     private void setResponseIntent(FillResponse fillResponse) {

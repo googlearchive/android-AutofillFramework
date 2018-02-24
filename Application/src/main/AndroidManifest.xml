@@ -18,7 +18,7 @@
     android:versionCode="1"
     android:versionName="1.0">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -31,45 +31,26 @@
             android:taskAffinity=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.example.android.autofill.app.StandardSignInActivity"
-            android:taskAffinity=".StandardSignInActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.StandardAutoCompleteSignInActivity"
-            android:taskAffinity=".StandardAutoCompleteSignInActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.VirtualSignInActivity"
-            android:taskAffinity=".VirtualSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.StandardSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.StandardAutoCompleteSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.VirtualSignInActivity" />
         <activity android:name="com.example.android.autofill.app.WelcomeActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.CreditCardActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.CreditCardSpinnersActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.EmailComposeActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.CreditCardCompoundViewActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.CreditCardDatePickerActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.CreditCardAntiPatternActivity" />
         <activity
-            android:name="com.example.android.autofill.app.CreditCardActivity"
-            android:taskAffinity=".CreditCardActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.CreditCardSpinnersActivity"
-            android:taskAffinity=".CreditCardSpinnersActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.EmailComposeActivity"
-            android:taskAffinity=".EmailComposeActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.CreditCardCompoundViewActivity"
-            android:taskAffinity=".CreditCardCompoundViewActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.CreditCardDatePickerActivity"
-            android:taskAffinity=".CreditCardDatePickerActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.CreditCardAntiPatternActivity"
-            android:taskAffinity=".CreditCardAntiPatternActivity" />
-        <activity
-            android:name="com.example.android.autofill.app.MultiplePartitionsActivity"
-            android:taskAffinity=".MultiplePartitionsActivity"
+            android:name="com.example.android.autofill.app.edgecases.MultiplePartitionsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name="com.example.android.autofill.app.WebViewSignInActivity"
-            android:taskAffinity=".WebViewSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.WebViewSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsCreditCardActivity" />
+
     </application>
 
 </manifest>

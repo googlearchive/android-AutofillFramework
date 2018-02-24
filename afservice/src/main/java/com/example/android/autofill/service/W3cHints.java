@@ -16,50 +16,6 @@
 package com.example.android.autofill.service;
 
 public final class W3cHints {
-
-    // Supported W3C autofill tokens (https://html.spec.whatwg.org/multipage/forms.html#autofill)
-    public static final String HONORIFIC_PREFIX = "honorific-prefix";
-    public static final String NAME = "name";
-    public static final String GIVEN_NAME = "given-name";
-    public static final String ADDITIONAL_NAME = "additional-name";
-    public static final String FAMILY_NAME = "family-name";
-    public static final String HONORIFIC_SUFFIX = "honorific-suffix";
-    public static final String USERNAME = "username";
-    public static final String NEW_PASSWORD = "new-password";
-    public static final String CURRENT_PASSWORD = "current-password";
-    public static final String ORGANIZATION_TITLE = "organization-title";
-    public static final String ORGANIZATION = "organization";
-    public static final String STREET_ADDRESS = "street-address";
-    public static final String ADDRESS_LINE1 = "address-line1";
-    public static final String ADDRESS_LINE2 = "address-line2";
-    public static final String ADDRESS_LINE3 = "address-line3";
-    public static final String ADDRESS_LEVEL4 = "address-level4";
-    public static final String ADDRESS_LEVEL3 = "address-level3";
-    public static final String ADDRESS_LEVEL2 = "address-level2";
-    public static final String ADDRESS_LEVEL1 = "address-level1";
-    public static final String COUNTRY = "country";
-    public static final String COUNTRY_NAME = "country-name";
-    public static final String POSTAL_CODE = "postal-code";
-    public static final String CC_NAME = "cc-name";
-    public static final String CC_GIVEN_NAME = "cc-given-name";
-    public static final String CC_ADDITIONAL_NAME = "cc-additional-name";
-    public static final String CC_FAMILY_NAME = "cc-family-name";
-    public static final String CC_NUMBER = "cc-number";
-    public static final String CC_EXPIRATION = "cc-exp";
-    public static final String CC_EXPIRATION_MONTH = "cc-exp-month";
-    public static final String CC_EXPIRATION_YEAR = "cc-exp-year";
-    public static final String CC_CSC = "cc-csc";
-    public static final String CC_TYPE = "cc-type";
-    public static final String TRANSACTION_CURRENCY = "transaction-currency";
-    public static final String TRANSACTION_AMOUNT = "transaction-amount";
-    public static final String LANGUAGE = "language";
-    public static final String BDAY = "bday";
-    public static final String BDAY_DAY = "bday-day";
-    public static final String BDAY_MONTH = "bday-month";
-    public static final String BDAY_YEAR = "bday-year";
-    public static final String SEX = "sex";
-    public static final String URL = "url";
-    public static final String PHOTO = "photo";
     // Optional W3C prefixes
     public static final String PREFIX_SECTION = "section-";
     public static final String SHIPPING = "shipping";

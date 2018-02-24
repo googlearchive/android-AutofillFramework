@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
  * Copyright (C) 2017 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +16,8 @@
 
 <resources>
     <string name="app_name">Autofill Sample</string>
+    <string name="edge_cases_page_title">Edge Cases</string>
+    <string name="common_cases_page_title">Common Cases</string>
     <string name="navigation_button_custom_virtual_view_login_label">Sample Login Using a Custom Virtual View</string>
     <string name="navigation_button_credit_card_label">Sample Credit Card Check Out Using EditTexts</string>
     <string name="navigation_button_spinners_credit_card_label">Sample Credit Card Check Out Using Spinners</string>
@@ -28,6 +29,8 @@
     <string name="navigation_button_multiple_partitions_label">Sample Page with Multiple Data Partitions</string>
     <string name="navigation_button_web_view_login_label">Sample Login Using a WebView</string>
     <string name="navigation_button_anti_pattern_credit_card_label">Sample Credit Card Anti Pattern</string>
+    <string name="navigation_button_multistep_signin_label">Multi-Step Sign In</string>
+    <string name="navigation_button_multistep_cc_label">Multi-Step Credit Card Check Out</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
     <string name="welcome_text">Success!</string>
@@ -117,6 +120,14 @@
         activities use.
     </string>
 
+    <string name="multi_step_signin_info">
+        <!--TODO-->
+    </string>
+
+    <string name="multi_step_cc_info">
+        <!--TODO-->
+    </string>
+
     <string name="partition_credentials">Credentials</string>
     <string name="partition_credit_card">Credit Card</string>
 
@@ -126,6 +137,14 @@
     <string name="message_autofill_readonly">Ignoring autofill on read-only field %1$s</string>
     <string name="message_autofill_invalid">INVALID</string>
     <string name="message_credit_card_expiration_type">Representing expiration dates as %1$s</string>
+
+    <string name="message_finished">Finished</string>
+    <string name="message_showing_step">Showing step %1$d</string>
+    <string name="message_step_description">%1$s: %2$s</string>
+
+    <string name="previous_label">Prev</string>
+    <string name="next_label">Next</string>
+    <string name="finish_label">Finish</string>
 
     <plurals name="welcome_page_countdown">
         <item quantity="one">Automatically return to main page in %d second.</item>

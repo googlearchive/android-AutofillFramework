@@ -13,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -37,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.android.autofill.app.InfoButton
+    <com.example.android.autofill.app.view.widget.InfoButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,15 +48,15 @@
         app:layout_constraintStart_toEndOf="@+id/custom_virtual_login_header"
         app:layout_constraintTop_toTopOf="@+id/custom_virtual_login_header" />
 
-    <com.example.android.autofill.app.CustomVirtualView
+    <com.example.android.autofill.app.view.autofillable.CustomVirtualView
         android:id="@+id/custom_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/custom_view_height"
-        android:paddingTop="@dimen/spacing_large"
-        android:paddingStart="@dimen/spacing_large"
-        android:paddingEnd="@dimen/spacing_large"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:paddingEnd="@dimen/spacing_large"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/custom_virtual_login_header" />

@@ -13,8 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/authLayout"
     android:layout_width="match_parent"
@@ -40,7 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.example.android.autofill.app.InfoButton
+    <com.example.android.autofill.app.view.widget.InfoButton
         android:id="@+id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,7 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/creditCardNumberLabel" />
 
-    <com.example.android.autofill.app.CreditCardExpirationDatePickerView
+    <com.example.android.autofill.app.view.autofillable.CreditCardExpirationDatePickerView
         android:id="@+id/creditCardExpirationView"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -110,9 +109,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_large"
         android:importantForAutofill="no"
-        android:text="@string/credit_card_security_code_label"
         android:labelFor="@+id/creditCardSecurityCode"
         android:paddingEnd="@dimen/padding_normal"
+        android:text="@string/credit_card_security_code_label"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/creditCardExpirationView" />
 
@@ -124,8 +123,8 @@
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:autofillHints="creditCardSecurityCode"
-        android:inputType="number"
         android:ems="6"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/creditCardSecurityCodeLabel"
         app:layout_constraintStart_toEndOf="@+id/creditCardSecurityCodeLabel"
         app:layout_constraintTop_toTopOf="@+id/creditCardSecurityCodeLabel" />

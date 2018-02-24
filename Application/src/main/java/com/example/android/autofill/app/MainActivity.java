@@ -13,129 +13,66 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package com.example.android.autofill.app;
 
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
+
+import com.example.android.autofill.app.commoncases.CommonCasesFragment;
+import com.example.android.autofill.app.edgecases.EdgeCasesFragment;
 
 /**
  * This is used to launch sample activities that showcase autofill.
  */
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (launchTrampolineActivity()) {
-            return;
-        }
-
         setContentView(R.layout.activity_main);
-        NavigationItem loginEditTexts = findViewById(R.id.standardViewSignInButton);
-        NavigationItem loginCustomVirtual = findViewById(R.id.virtualViewSignInButton);
-        NavigationItem creditCard = findViewById(R.id.creditCardButton);
-        NavigationItem creditCardSpinners = findViewById(R.id.creditCardSpinnersButton);
-        NavigationItem loginAutoComplete = findViewById(R.id.standardLoginWithAutoCompleteButton);
-        NavigationItem emailCompose = findViewById(R.id.emailComposeButton);
-        NavigationItem creditCardCompoundView = findViewById(R.id.creditCardCompoundViewButton);
-        NavigationItem creditCardDatePicker = findViewById(R.id.creditCardDatePickerButton);
-        NavigationItem creditCardAntiPatternPicker = findViewById(R.id.creditCardAntiPatternButton);
-        NavigationItem multiplePartitions = findViewById(R.id.multiplePartitionsButton);
-        NavigationItem loginWebView = findViewById(R.id.webviewSignInButton);
-        loginEditTexts.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(StandardSignInActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        loginCustomVirtual.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(VirtualSignInActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        creditCard.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(CreditCardActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        creditCardSpinners.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(CreditCardSpinnersActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        loginAutoComplete.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(StandardAutoCompleteSignInActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        emailCompose.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(EmailComposeActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        creditCardCompoundView.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(CreditCardCompoundViewActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        creditCardDatePicker.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(CreditCardDatePickerActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        creditCardAntiPatternPicker.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(CreditCardAntiPatternActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        multiplePartitions.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(MultiplePartitionsActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
-        loginWebView.setNavigationButtonClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(WebViewSignInActivity.getStartActivityIntent(MainActivity.this));
-            }
-        });
+        ViewPager viewPager = findViewById(R.id.pager);
+        PagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this);
+        viewPager.setAdapter(pagerAdapter);
+        TabLayout tabLayout = findViewById(R.id.sliding_tabs);
+        tabLayout.setupWithViewPager(viewPager);
     }
 
-    private boolean launchTrampolineActivity() {
-        Intent intent = getIntent();
-        if (intent != null) {
-            String target = intent.getStringExtra("target");
-            if (target != null) {
-                Log.i(TAG, "trampolining into " + target + " instead");
-                try {
-                    Intent newIntent = new Intent(this,
-                            Class.forName("com.example.android.autofill.app." + target));
-                    newIntent.putExtras(intent);
-                    newIntent.removeExtra("target");
-                    getApplicationContext().startActivity(newIntent);
-                    finish();
-                    return true;
-                } catch (Exception e) {
-                    Log.e(TAG, "Error launching " + target, e);
-                }
-            }
+    /**
+     * A simple pager adapter that holds 2 Fragments.
+     */
+    private static class ScreenSlidePagerAdapter extends FragmentPagerAdapter {
+        private BaseMainFragment[] fragments = new BaseMainFragment[]{new CommonCasesFragment(),
+                new EdgeCasesFragment()};
+
+        private Context mContext;
+
+        public ScreenSlidePagerAdapter(FragmentManager fm, Context context) {
+            super(fm);
+            mContext = context;
         }
-        return false;
+
+        @Override
+        public Fragment getItem(int position) {
+            return fragments[position];
+        }
+
+        @Override
+        public int getCount() {
+            return fragments.length;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mContext.getString(fragments[position].getPageTitleResId());
+        }
     }
 }

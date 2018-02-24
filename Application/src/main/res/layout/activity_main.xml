@@ -13,118 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
 -->
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <android.support.design.widget.TabLayout
+        android:id="@+id/sliding_tabs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/activity_vertical_margin"
-        android:paddingEnd="@dimen/activity_horizontal_margin"
-        android:paddingStart="@dimen/activity_horizontal_margin"
-        android:paddingTop="@dimen/activity_vertical_margin">
+        app:tabMode="fixed" />
 
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/standardViewSignInButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_red_dark"
-            app:infoText="@string/edittext_login_info"
-            app:itemLogo="@drawable/ic_edittexts_logo_24dp"
-            app:labelText="@string/navigation_button_edittext_login_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/standardLoginWithAutoCompleteButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_blue_dark"
-            app:infoText="@string/autocomplete_login_info"
-            app:itemLogo="@drawable/ic_autocomplete_logo_24dp"
-            app:labelText="@string/navigation_button_autocomplete_login_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/virtualViewSignInButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_green_dark"
-            app:infoText="@string/custom_virtual_login_info"
-            app:itemLogo="@drawable/ic_custom_virtual_logo_24dp"
-            app:labelText="@string/navigation_button_custom_virtual_view_login_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/webviewSignInButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_green_dark"
-            app:infoText="@string/webview_login_info"
-            app:itemLogo="@drawable/ic_web_black_24dp"
-            app:labelText="@string/navigation_button_web_view_login_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/creditCardSpinnersButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_orange_dark"
-            app:infoText="@string/spinners_credit_card_info"
-            app:itemLogo="@drawable/ic_spinners_logo_24dp"
-            app:labelText="@string/navigation_button_spinners_credit_card_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/creditCardCompoundViewButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_blue_light"
-            app:infoText="@string/compound_view_credit_card_info"
-            app:itemLogo="@drawable/ic_view_module_black_24dp"
-            app:labelText="@string/navigation_button_compound_view_credit_card_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/creditCardDatePickerButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_blue_light"
-            app:infoText="@string/date_picker_credit_card_info"
-            app:itemLogo="@drawable/ic_view_module_black_24dp"
-            app:labelText="@string/navigation_button_date_picker_credit_card_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/emailComposeButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_purple"
-            app:infoText="@string/email_compose_info"
-            app:itemLogo="@drawable/ic_email_black_24dp"
-            app:labelText="@string/navigation_button_email_compose_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/multiplePartitionsButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_green_dark"
-            app:infoText="@string/multiple_partitions"
-            app:itemLogo="@drawable/ic_custom_virtual_logo_24dp"
-            app:labelText="@string/navigation_button_multiple_partitions_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/creditCardButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_orange_dark"
-            app:infoText="@string/credit_card_info"
-            app:itemLogo="@drawable/ic_spinners_logo_24dp"
-            app:labelText="@string/navigation_button_credit_card_label" />
-
-        <com.example.android.autofill.app.NavigationItem
-            android:id="@+id/creditCardAntiPatternButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:imageColor="@android:color/holo_orange_dark"
-            app:infoText="@string/anti_pattern_credit_card_info"
-            app:itemLogo="@drawable/ic_spinners_logo_24dp"
-            app:labelText="@string/navigation_button_anti_pattern_credit_card_label" />
-    </LinearLayout>
-</ScrollView>
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
