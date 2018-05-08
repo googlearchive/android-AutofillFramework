@@ -388,8 +388,20 @@
         3
       ],
       "fakeData": {
-        "dateTemplate": "curr_time",
-        "strictExampleSet": []
+        "strictExampleSet": [
+          "2000",
+          "1995",
+          "1990",
+          "1985",
+          "1980",
+          "1975",
+          "1970",
+          "1965",
+          "1960",
+          "1955",
+          "1950",
+          "1945"
+        ]
       },
       "partition": 0,
       "saveInfo": 0,

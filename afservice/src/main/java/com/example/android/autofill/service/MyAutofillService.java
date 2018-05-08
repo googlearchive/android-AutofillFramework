@@ -147,15 +147,7 @@ public class MyAutofillService extends AutofillService {
     private void fetchDataAndGenerateResponse(
             HashMap<String, FieldTypeWithHeuristics> fieldTypesByAutofillHint, boolean responseAuth,
             boolean datasetAuth, boolean manual, FillCallback callback) {
-        if (manual) {
-            IntentSender sender = ManualActivity.getManualIntentSenderForResponse(this);
-            RemoteViews remoteViews = RemoteViewsHelper.viewsWithNoAuth(getPackageName(),
-                    getString(R.string.autofill_manual_prompt));
-            FillResponse response = mResponseAdapter.buildManualResponse(sender, remoteViews);
-            if (response != null) {
-                callback.onSuccess(response);
-            }
-        } else if (responseAuth) {
+        if (responseAuth) {
             // If the entire Autofill Response is authenticated, AuthActivity is used
             // to generate Response.
             IntentSender sender = AuthActivity.getAuthIntentSenderForResponse(this);
@@ -170,9 +162,22 @@ public class MyAutofillService extends AutofillService {
                     new DataCallback<List<DatasetWithFilledAutofillFields>>() {
                         @Override
                         public void onLoaded(List<DatasetWithFilledAutofillFields> datasets) {
-                            FillResponse response = mResponseAdapter.buildResponse(
-                                    fieldTypesByAutofillHint, datasets, datasetAuth);
-                            callback.onSuccess(response);
+                            if ((datasets == null || datasets.isEmpty()) && manual) {
+                                IntentSender sender = ManualActivity
+                                        .getManualIntentSenderForResponse(MyAutofillService.this);
+                                RemoteViews remoteViews = RemoteViewsHelper.viewsWithNoAuth(
+                                        getPackageName(),
+                                        getString(R.string.autofill_manual_prompt));
+                                FillResponse response = mResponseAdapter.buildManualResponse(sender,
+                                        remoteViews);
+                                if (response != null) {
+                                    callback.onSuccess(response);
+                                }
+                            } else {
+                                FillResponse response = mResponseAdapter.buildResponse(
+                                        fieldTypesByAutofillHint, datasets, datasetAuth);
+                                callback.onSuccess(response);
+                            }
                         }
 
                         @Override

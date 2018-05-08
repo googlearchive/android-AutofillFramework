@@ -20,10 +20,12 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.support.annotation.ColorRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.os.BuildCompat;
 import android.support.v7.widget.CardView;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -54,6 +56,15 @@ public class NavigationItem extends FrameLayout {
         super(context, attrs, defStyleAttr, defStyleRes);
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.NavigationItem,
                 defStyleAttr, defStyleRes);
+        int activityMinSdk = typedArray.getInteger(R.styleable.NavigationItem_minSdk, 26);
+
+        // TODO: Remove BuildCompat.isAtLeastP() check when API 28 is finalized.
+        int deviceMinSdk = BuildCompat.isAtLeastP() ? 28 : Build.VERSION.SDK_INT;
+        if (deviceMinSdk < activityMinSdk) {
+            // If device's SDK is lower than the minSdk specified by the NavigationItem, hide it.
+            setVisibility(View.GONE);
+            return;
+        }
         String labelText = typedArray.getString(R.styleable.NavigationItem_labelText);
         String infoText = typedArray.getString(R.styleable.NavigationItem_infoText);
         Drawable logoDrawable = typedArray.getDrawable(R.styleable.NavigationItem_itemLogo);

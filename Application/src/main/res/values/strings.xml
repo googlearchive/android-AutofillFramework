@@ -26,6 +26,7 @@
     <string name="navigation_button_email_compose_label">Sample Email Compose Using EditTexts</string>
     <string name="navigation_button_compound_view_credit_card_label">Sample Credit Card Check Out Using Compound Views</string>
     <string name="navigation_button_date_picker_credit_card_label">Sample Credit Card Check Out Using Date Picker</string>
+    <string name="navigation_button_recycler_view_label">Sample Credit Card Form Using RecyclerView</string>
     <string name="navigation_button_multiple_partitions_label">Sample Page with Multiple Data Partitions</string>
     <string name="navigation_button_web_view_login_label">Sample Login Using a WebView</string>
     <string name="navigation_button_anti_pattern_credit_card_label">Sample Credit Card Anti Pattern</string>
@@ -102,6 +103,11 @@
         to input the credit card\'s expiration date and an EditText to input the credit card number.
         While the EditText is optimized out of the box for autofill, this example shows how to
         use it to autofill a date field.
+    </string>
+    <string name="recycler_view_info">
+        This is a sample form that has a list of fields in a RecyclerView. It demos the new APIs in
+        API 28 that allow you to dynamically change the AutofillId associated with a View. This is
+        needed when Views are being recycled, as they are in a RecyclerView.
     </string>
     <string name="multiple_partitions">
         This is a sample page that contains multiple partitions (login credentials, address,
@@ -201,4 +207,18 @@
         <item>27</item>
     </string-array>
 
+    <string name="recycler_view_label_name">Name</string>
+    <string name="recycler_view_label_birthday_month">Birthday Month</string>
+    <string name="recycler_view_label_birthday_year">Birthday Year</string>
+    <string name="recycler_view_label_email">Email</string>
+    <string name="recycler_view_label_phone">Telephone</string>
+    <string name="recycler_view_label_tel_extension">Tel. Extension</string>
+    <string name="recycler_view_label_cc_number">CC Number</string>
+    <string name="recycler_view_label_cc_sc">CSC</string>
+    <string name="recycler_view_label_cc_exp_month">CC Exp Month</string>
+    <string name="recycler_view_label_cc_exp_year">CC Exp Year</string>
+    <string name="recycler_view_label_address_line_1">Address Line 1</string>
+    <string name="recycler_view_label_address_line_2">Address Line 2</string>
+    <string name="recycler_view_label_address_line_3">Address Line 3</string>
+    <string name="recycler_view_label_postal_code">Postal Code</string>
 </resources>

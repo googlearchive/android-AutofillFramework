@@ -50,7 +50,7 @@
         <activity android:name="com.example.android.autofill.app.commoncases.WebViewSignInActivity" />
         <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsSignInActivity" />
         <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsCreditCardActivity" />
-
+        <activity android:name="com.example.android.autofill.app.commoncases.RecyclerViewActivity" />
     </application>
 
 </manifest>

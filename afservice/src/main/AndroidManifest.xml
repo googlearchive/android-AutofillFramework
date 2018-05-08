@@ -26,6 +26,25 @@
             </intent-filter>
         </service>
 
+        <service
+            android:name=".simple.BasicService"
+            android:label="Basic Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE">
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".simple.BasicHeuristicsService"
+            android:label="Basic Heuristics Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE">
+
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+
         <activity
             android:name=".AuthActivity"
             android:taskAffinity=".AuthActivity"

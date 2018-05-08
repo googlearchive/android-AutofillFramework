@@ -96,5 +96,16 @@
             app:itemLogo="@drawable/ic_view_module_black_24dp"
             app:labelText="@string/navigation_button_date_picker_credit_card_label"
             app:destinationActivityName="com.example.android.autofill.app.commoncases.CreditCardDatePickerActivity" />
+
+        <com.example.android.autofill.app.view.widget.NavigationItem
+            android:id="@+id/recyclerViewButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageColor="@android:color/holo_orange_light"
+            app:infoText="@string/recycler_view_info"
+            app:itemLogo="@drawable/ic_format_list_bulleted_black_24dp"
+            app:labelText="@string/navigation_button_recycler_view_label"
+            app:destinationActivityName="com.example.android.autofill.app.commoncases.RecyclerViewActivity"
+            app:minSdk="28"/>
     </LinearLayout>
 </ScrollView>
