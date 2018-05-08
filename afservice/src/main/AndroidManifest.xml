@@ -39,7 +39,9 @@
             android:name=".simple.BasicHeuristicsService"
             android:label="Basic Heuristics Autofill Service"
             android:permission="android.permission.BIND_AUTOFILL_SERVICE">
-
+            <meta-data
+                android:name="android.autofill"
+                android:resource="@xml/basic_heuristics_service"/>
             <intent-filter>
                 <action android:name="android.service.autofill.AutofillService" />
             </intent-filter>
