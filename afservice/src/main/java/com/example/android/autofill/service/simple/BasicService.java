@@ -31,7 +31,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.util.ArrayMap;
 import android.util.Log;
-import android.view.View;
 import android.view.autofill.AutofillId;
 import android.view.autofill.AutofillValue;
 import android.widget.RemoteViews;
@@ -54,7 +53,7 @@ import java.util.Map.Entry;
  * it lacks fundamental security requirements such as data partitioning and package verification
  * &mdashthese requirements are fullfilled by {@link MyAutofillService}.
  */
-public class BasicService extends AutofillService {
+public final class BasicService extends AutofillService {
 
     private static final String TAG = "BasicService";
 
@@ -89,9 +88,9 @@ public class BasicService extends AutofillService {
             for (Entry<String, AutofillId> field : fields.entrySet()) {
                 String hint = field.getKey();
                 AutofillId id = field.getValue();
-                String value = hint + i;
-                // We're simple - our dataset values are hardcoded as "hintN" (for example,
-                // "username1", "username2") and they're displayed as such, except if they're a
+                String value = i + "-" + hint;
+                // We're simple - our dataset values are hardcoded as "N-hint" (for example,
+                // "1-username", "2-username") and they're displayed as such, except if they're a
                 // password
                 String displayValue = hint.contains("password") ? "password for #" + i : value;
                 RemoteViews presentation = newDatasetPresentation(packageName, displayValue);
@@ -142,17 +141,18 @@ public class BasicService extends AutofillService {
      */
     private void addAutofillableFields(@NonNull Map<String, AutofillId> fields,
             @NonNull ViewNode node) {
-        int type = node.getAutofillType();
-        // We're simple, we just autofill text fields.
-        if (type == View.AUTOFILL_TYPE_TEXT) {
-            String hint = getHint(node);
+        String[] hints = node.getAutofillHints();
+        if (hints != null) {
+            // We're simple, we only care about the first hint
+            String hint = hints[0].toLowerCase();
+
             if (hint != null) {
                 AutofillId id = node.getAutofillId();
                 if (!fields.containsKey(hint)) {
-                    Log.v(TAG, "Setting hint " + hint + " on " + id);
+                    Log.v(TAG, "Setting hint '" + hint + "' on " + id);
                     fields.put(hint, id);
                 } else {
-                    Log.v(TAG, "Ignoring hint " + hint + " on " + id
+                    Log.v(TAG, "Ignoring hint '" + hint + "' on " + id
                             + " because it was already set");
                 }
             }
@@ -164,29 +164,11 @@ public class BasicService extends AutofillService {
     }
 
     /**
-     * Gets the autofill hint associated with the given node.
-     *
-     * <p>By default it just return the first entry on the node's
-     * {@link ViewNode#getAutofillHints() autofillHints} (when available), but subclasses could
-     * extend it to use heuristics when the app developer didn't explicitly provide these hints.
-     *
-     */
-    @Nullable
-    protected String getHint(@NonNull ViewNode node) {
-        String[] hints = node.getAutofillHints();
-        if (hints == null) return null;
-
-        // We're simple, we only care about the first hint
-        String hint = hints[0].toLowerCase();
-        return hint;
-    }
-
-    /**
      * Helper method to get the {@link AssistStructure} associated with the latest request
      * in an autofill context.
      */
     @NonNull
-    private static AssistStructure getLatestAssistStructure(@NonNull FillRequest request) {
+    static AssistStructure getLatestAssistStructure(@NonNull FillRequest request) {
         List<FillContext> fillContexts = request.getFillContexts();
         return fillContexts.get(fillContexts.size() - 1).getStructure();
     }
@@ -195,7 +177,7 @@ public class BasicService extends AutofillService {
      * Helper method to create a dataset presentation with the given text.
      */
     @NonNull
-    private static RemoteViews newDatasetPresentation(@NonNull String packageName,
+    static RemoteViews newDatasetPresentation(@NonNull String packageName,
             @NonNull CharSequence text) {
         RemoteViews presentation =
                 new RemoteViews(packageName, R.layout.multidataset_service_list_item);

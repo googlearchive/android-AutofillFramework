@@ -38,6 +38,16 @@
             app:destinationActivityName="com.example.android.autofill.app.commoncases.StandardAutoCompleteSignInActivity"/>
 
         <com.example.android.autofill.app.view.widget.NavigationItem
+            android:id="@+id/virtualViewSignInButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageColor="@android:color/holo_green_dark"
+            app:infoText="@string/custom_virtual_compat_mode_login_info"
+            app:itemLogo="@drawable/ic_custom_virtual_logo_24dp"
+            app:labelText="@string/navigation_button_custom_virtual_view_compat_mode_login_label"
+            app:destinationActivityName="com.example.android.autofill.app.edgecases.VirtualCompatModeSignInActivity" />
+
+        <com.example.android.autofill.app.view.widget.NavigationItem
             android:id="@+id/multiplePartitionsButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,5 +98,16 @@
             app:itemLogo="@drawable/ic_spinners_logo_24dp"
             app:labelText="@string/navigation_button_multistep_cc_label"
             app:destinationActivityName="com.example.android.autofill.app.edgecases.MultipleStepsCreditCardActivity"/>
+
+        <com.example.android.autofill.app.view.widget.NavigationItem
+            android:id="@+id/badViewStructureAntiPatternButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageColor="@android:color/holo_red_dark"
+            app:infoText="@string/anti_pattern_bad_view_structure_info"
+            app:itemLogo="@drawable/ic_disabled_black_24dp"
+            app:labelText="@string/navigation_button_anti_pattern_bad_view_structure_label"
+            app:destinationActivityName="com.example.android.autofill.app.antipatterns.BadViewStructureCreationSignInActivity"/>
+
     </LinearLayout>
 </ScrollView>

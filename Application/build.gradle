@@ -7,7 +7,7 @@ List<String> dirs = [
         'main']     // main sample code; look here for the interesting stuff.
 
 android {
-    compileSdkVersion "android-P"
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 26

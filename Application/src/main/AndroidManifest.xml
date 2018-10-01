@@ -25,7 +25,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/AppTheme">
         <activity
             android:name="com.example.android.autofill.app.MainActivity"
             android:taskAffinity=".MainActivity">
@@ -37,6 +37,7 @@
         <activity android:name="com.example.android.autofill.app.commoncases.StandardSignInActivity" />
         <activity android:name="com.example.android.autofill.app.commoncases.StandardAutoCompleteSignInActivity" />
         <activity android:name="com.example.android.autofill.app.commoncases.VirtualSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.VirtualCompatModeSignInActivity" />
         <activity android:name="com.example.android.autofill.app.WelcomeActivity" />
         <activity android:name="com.example.android.autofill.app.edgecases.CreditCardActivity" />
         <activity android:name="com.example.android.autofill.app.commoncases.CreditCardSpinnersActivity" />
@@ -51,6 +52,8 @@
         <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsSignInActivity" />
         <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsCreditCardActivity" />
         <activity android:name="com.example.android.autofill.app.commoncases.RecyclerViewActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.BadViewStructureCreationSignInActivity" />
+
     </application>
 
 </manifest>

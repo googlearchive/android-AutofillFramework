@@ -14,7 +14,16 @@
  * limitations under the License.
 -->
 
-<autofill-service xmlns:android="http://schemas.android.com/apk/res/android">
+<!-- TODO(b/114236837): use its own Settings Activity -->
+<autofill-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:settingsActivity="com.example.android.autofill.service.settings.SettingsActivity">
+
+  <!-- sample app -->
+  <compatibility-package
+    android:name="com.example.android.autofill.app"
+    android:maxLongVersionCode="10000000000"/>
+
+  <!-- well-known browswers, alphabetical order -->
   <compatibility-package
     android:name="com.android.chrome"
     android:maxLongVersionCode="10000000000"/>
@@ -47,6 +56,9 @@
     android:maxLongVersionCode="10000000000"/>
   <compatibility-package
     android:name="com.sec.android.app.sbrowser.beta"
+    android:maxLongVersionCode="10000000000"/>
+  <compatibility-package
+    android:name="org.chromium.chrome"
     android:maxLongVersionCode="10000000000"/>
   <compatibility-package
     android:name="org.mozilla.fennec_aurora"

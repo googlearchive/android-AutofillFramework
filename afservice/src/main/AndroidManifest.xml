@@ -36,12 +36,12 @@
         </service>
 
         <service
-            android:name=".simple.BasicHeuristicsService"
-            android:label="Basic Heuristics Autofill Service"
+            android:name=".simple.HeuristicsService"
+            android:label="Heuristics Autofill Service"
             android:permission="android.permission.BIND_AUTOFILL_SERVICE">
             <meta-data
                 android:name="android.autofill"
-                android:resource="@xml/basic_heuristics_service"/>
+                android:resource="@xml/heuristics_service"/>
             <intent-filter>
                 <action android:name="android.service.autofill.AutofillService" />
             </intent-filter>
@@ -50,6 +50,11 @@
         <activity
             android:name=".AuthActivity"
             android:taskAffinity=".AuthActivity"
+            android:label="@string/authentication_name" />
+
+        <activity
+            android:name=".simple.SimpleAuthActivity"
+            android:taskAffinity=".simple.SimpleAuthActivity"
             android:label="@string/authentication_name" />
 
         <activity
