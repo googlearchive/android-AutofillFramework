@@ -109,5 +109,44 @@
             app:labelText="@string/navigation_button_anti_pattern_bad_view_structure_label"
             app:destinationActivityName="com.example.android.autofill.app.antipatterns.BadViewStructureCreationSignInActivity"/>
 
+        <com.example.android.autofill.app.view.widget.NavigationItem
+            android:id="@+id/multistepSignInAntiPatternButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageColor="@android:color/holo_red_dark"
+            app:infoText="@string/anti_pattern_multistep_signin_info"
+            app:itemLogo="@drawable/ic_disabled_black_24dp"
+            app:labelText="@string/navigation_button_anti_pattern_multistep_signin_label"
+            app:destinationActivityName="com.example.android.autofill.app.antipatterns.UsernameOnlyActivity"/>
+
+        <com.example.android.autofill.app.view.widget.NavigationItem
+            android:id="@+id/hintlessSignInAntiPatternButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageColor="@android:color/holo_red_dark"
+            app:infoText="@string/anti_pattern_hintless_signin_info"
+            app:itemLogo="@drawable/ic_disabled_black_24dp"
+            app:labelText="@string/navigation_button_anti_pattern_hintless_signin_label"
+            app:destinationActivityName="com.example.android.autofill.app.antipatterns.HintlessSignInActivity"/>
+
+        <com.example.android.autofill.app.view.widget.NavigationItem
+            android:id="@+id/callbacklessSignInAntiPatternButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageColor="@android:color/holo_red_dark"
+            app:infoText="@string/anti_pattern_callbackless_autocomplete_login_info"
+            app:itemLogo="@drawable/ic_disabled_black_24dp"
+            app:labelText="@string/navigation_button_anti_pattern_callbackless_autocomplete_login_label"
+            app:destinationActivityName="com.example.android.autofill.app.antipatterns.CallbackLessAutoCompleteSignInActivity"/>
+
+        <com.example.android.autofill.app.view.widget.NavigationItem
+            android:id="@+id/standardLoginWithCustomThemeButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:imageColor="@android:color/holo_blue_dark"
+            app:infoText="@string/custom_theme_login_info"
+            app:itemLogo="@drawable/ic_autocomplete_logo_24dp"
+            app:labelText="@string/navigation_button_custom_theme_login_label"
+            app:destinationActivityName="com.example.android.autofill.app.edgecases.CustomThemeSignInActivity"/>
     </LinearLayout>
 </ScrollView>

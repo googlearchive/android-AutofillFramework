@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.autofill.service"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+
+        <!--
+    Declare AutofillService implementation; only needed for a small number of apps that will
+    be implementing an AutofillService. Framework parses meta-data and sets the service's
+    Settings Activity based on what the meta-data resource points to.
+        -->
+        <service
+            android:name="com.example.android.autofill.service.MyAutofillService"
+            android:label="Multi-Dataset Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE" >
+            <meta-data
+                android:name="android.autofill"
+                android:resource="@xml/multidataset_service" />
+
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.example.android.autofill.service.simple.BasicService"
+            android:label="Basic Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE" >
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.example.android.autofill.service.simple.DebugService"
+            android:label="Debug Autofill Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE" >
+            <meta-data
+                android:name="android.autofill"
+                android:resource="@xml/debug_service" />
+
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+        <service
+            android:name="com.example.android.autofill.service.simple.MultiStepsService"
+            android:label="Multiple-steps Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE" >
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.example.android.autofill.service.AuthActivity"
+            android:label="@string/authentication_name"
+            android:taskAffinity=".AuthActivity" />
+        <activity
+            android:name="com.example.android.autofill.service.simple.SimpleAuthActivity"
+            android:label="@string/authentication_name"
+            android:taskAffinity=".simple.SimpleAuthActivity" />
+        <activity
+            android:name="com.example.android.autofill.service.ManualActivity"
+            android:label="@string/manual_name"
+            android:taskAffinity=".ManualActivity" />
+        <activity
+            android:name="com.example.android.autofill.service.ManualFieldPickerActivity"
+            android:label="@string/manual_field_picker_name"
+            android:taskAffinity=".ManualActivity" />
+
+        <!--
+        Including launcher icon for Autofill Settings to convenience. Not necessary for a
+        real service.
+        -->
+        <activity
+            android:name="com.example.android.autofill.service.settings.SettingsActivity"
+            android:exported="true"
+            android:label="@string/settings_name"
+            android:taskAffinity=".settings.SettingsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

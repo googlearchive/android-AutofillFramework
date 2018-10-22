@@ -36,12 +36,21 @@
         </service>
 
         <service
-            android:name=".simple.HeuristicsService"
-            android:label="Heuristics Autofill Service"
+            android:name=".simple.DebugService"
+            android:label="Debug Autofill Service"
             android:permission="android.permission.BIND_AUTOFILL_SERVICE">
             <meta-data
                 android:name="android.autofill"
-                android:resource="@xml/heuristics_service"/>
+                android:resource="@xml/debug_service"/>
+            <intent-filter>
+                <action android:name="android.service.autofill.AutofillService" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".simple.MultiStepsService"
+            android:label="Multiple-steps Service"
+            android:permission="android.permission.BIND_AUTOFILL_SERVICE">
             <intent-filter>
                 <action android:name="android.service.autofill.AutofillService" />
             </intent-filter>

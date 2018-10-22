@@ -29,6 +29,7 @@ public class MyPreferences {
     private static final String MASTER_PASSWORD_KEY = "master_password";
     private static final String LOGGING_LEVEL = "logging_level";
     private static final String DAL_CHECK_REQUIRED = "dal_check_required";
+    private static final String NUMBER_DATASETS = "number_datasets";
     private static MyPreferences sInstance;
     private final SharedPreferences mPrefs;
 
@@ -106,5 +107,13 @@ public class MyPreferences {
 
     public void setDalCheckRequired(Util.DalCheckRequirement level) {
         mPrefs.edit().putInt(DAL_CHECK_REQUIRED, level.ordinal()).apply();
+    }
+
+    public int getNumberDatasets(int defaultNumber) {
+        return mPrefs.getInt(NUMBER_DATASETS, defaultNumber);
+    }
+
+    public void setNumberDatasets(int number) {
+        mPrefs.edit().putInt(NUMBER_DATASETS, number).apply();
     }
 }

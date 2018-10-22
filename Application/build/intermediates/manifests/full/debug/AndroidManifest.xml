@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2017 The Android Open Source Project
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.autofill.app"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="26"
+        android:targetSdkVersion="28" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.android.autofill.app.MainActivity"
+            android:taskAffinity=".MainActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.android.autofill.app.commoncases.StandardSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.StandardAutoCompleteSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.VirtualSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.VirtualCompatModeSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.WelcomeActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.CreditCardActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.CreditCardSpinnersActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.EmailComposeActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.CreditCardCompoundViewActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.CreditCardDatePickerActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.CreditCardAntiPatternActivity" />
+        <activity
+            android:name="com.example.android.autofill.app.edgecases.MultiplePartitionsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name="com.example.android.autofill.app.commoncases.WebViewSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsCreditCardActivity" />
+        <activity android:name="com.example.android.autofill.app.commoncases.RecyclerViewActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.BadViewStructureCreationSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.UsernameOnlyActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.PasswordOnlyActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.HintlessSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.CallbackLessAutoCompleteSignInActivity" />
+        <activity
+            android:name="com.example.android.autofill.app.edgecases.CustomThemeSignInActivity"
+            android:theme="@style/CustomAutofilledHighlightTheme" />
+    </application>
+
+</manifest>

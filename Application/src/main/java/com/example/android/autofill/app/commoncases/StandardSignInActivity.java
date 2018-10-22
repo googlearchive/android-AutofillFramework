@@ -36,7 +36,7 @@ public class StandardSignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.login_activity);
+        setContentView(getContentView());
         mUsernameEditText = findViewById(R.id.usernameField);
         mPasswordEditText = findViewById(R.id.passwordField);
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
@@ -55,6 +55,10 @@ public class StandardSignInActivity extends AppCompatActivity {
                 resetFields();
             }
         });
+    }
+
+    protected int getContentView() {
+        return R.layout.login_activity;
     }
 
     private void resetFields() {

@@ -206,6 +206,7 @@ public class SettingsActivity extends AppCompatActivity {
                 .setView(numberOfDatasetsPicker)
                 .setPositiveButton(R.string.settings_ok, (dialog, which) -> {
                     int numOfDatasets = numberOfDatasetsPicker.getValue();
+                    mPreferences.setNumberDatasets(numOfDatasets);
                     mLocalAutofillDataSource.getFieldTypes(new DataCallback<List<FieldTypeWithHeuristics>>() {
                         @Override
                         public void onLoaded(List<FieldTypeWithHeuristics> fieldTypes) {

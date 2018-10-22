@@ -53,7 +53,12 @@
         <activity android:name="com.example.android.autofill.app.edgecases.MultipleStepsCreditCardActivity" />
         <activity android:name="com.example.android.autofill.app.commoncases.RecyclerViewActivity" />
         <activity android:name="com.example.android.autofill.app.antipatterns.BadViewStructureCreationSignInActivity" />
-
+        <activity android:name="com.example.android.autofill.app.antipatterns.UsernameOnlyActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.PasswordOnlyActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.HintlessSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.antipatterns.CallbackLessAutoCompleteSignInActivity" />
+        <activity android:name="com.example.android.autofill.app.edgecases.CustomThemeSignInActivity"
+                  android:theme="@style/CustomAutofilledHighlightTheme" />
     </application>
 
 </manifest>

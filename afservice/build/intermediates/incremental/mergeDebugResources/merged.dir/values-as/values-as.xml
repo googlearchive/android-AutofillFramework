@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"গৃহ পৃষ্ঠালৈ যাওক"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"ওপৰলৈ যাওক"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"অধিক বিকল্প"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"সম্পন্ন কৰা হ\'ল"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"সকলো চাওক"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"এটা এপ্ বাছনি কৰক"</string>
+    <string msgid="7723749260725869598" name="abc_search_hint">"অনুসন্ধান কৰক…"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"প্ৰশ্ন মচক"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"সন্ধান কৰিব খোজা প্ৰশ্ন"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"সন্ধান কৰক"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"প্ৰশ্ন দাখিল কৰক"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"কণ্ঠধ্বনিৰ যোগেৰে সন্ধান কৰক"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"ইয়াৰ জৰিয়তে শ্বেয়াৰ কৰক"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"সংকুচিত কৰক"</string>
+</resources>

@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "/usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/build/intermediates/incremental/mergeReleaseResources/merged.dir/values-gu/values-gu.xml",
+            "map": [
+                {
+                    "source": "/usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha1.aar/c12d176b3f70cb9d7d97ab1a7fc04d43/res/values-gu/values-gu.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "20",
+                        "startColumns": "4",
+                        "startOffsets": "1937",
+                        "endColumns": "100",
+                        "endOffsets": "2033"
+                    }
+                },
+                {
+                    "source": "/usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha1.aar/c52ca99d1b4c59b7e6994bdb1fd54ff5/res/values-gu/values-gu.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,214,318,425,512,613,736,813,891,971,1077,1179,1276,1385,1484,1594,1754,1857",
+                        "endColumns": "108,103,106,86,100,122,76,77,79,105,101,96,108,98,109,159,102,79",
+                        "endOffsets": "209,313,420,507,608,731,808,886,966,1072,1174,1271,1380,1479,1589,1749,1852,1932"
+                    }
+                }
+            ]
+        }
+    ]
+}

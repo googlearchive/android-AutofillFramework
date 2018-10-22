@@ -76,7 +76,7 @@ public class SimpleAuthActivity extends Activity {
                 fields.put(hints[i], (AutofillId) ids[i]);
             }
             FillResponse response =
-                    HeuristicsService.createResponse(this, fields, 1, authenticateDatasets);
+                    DebugService.createResponse(this, fields, 1, authenticateDatasets);
             replyIntent.putExtra(EXTRA_AUTHENTICATION_RESULT, response);
 
         }

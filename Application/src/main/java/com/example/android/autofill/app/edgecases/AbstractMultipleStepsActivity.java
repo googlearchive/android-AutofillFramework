@@ -20,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.autofill.AutofillManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -134,6 +135,10 @@ abstract class AbstractMultipleStepsActivity extends AppCompatActivity {
         mStatus.setText(message.toString());
         mContainer.removeAllViews();
         mFinished = true;
+        AutofillManager afm = getSystemService(AutofillManager.class);
+        if (afm != null) {
+            afm.commit();
+        }
         updateButtons();
     }
 

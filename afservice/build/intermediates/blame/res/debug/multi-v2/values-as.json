@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "/usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/build/intermediates/incremental/mergeDebugResources/merged.dir/values-as/values-as.xml",
+            "map": [
+                {
+                    "source": "/usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha1.aar/c52ca99d1b4c59b7e6994bdb1fd54ff5/res/values-as/values-as.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,163,262,369,465,567,686,775,877,992,1095,1204,1323,1443",
+                        "endColumns": "107,98,106,95,101,118,88,101,114,102,108,118,119,102",
+                        "endOffsets": "158,257,364,460,562,681,770,872,987,1090,1199,1318,1438,1541"
+                    }
+                }
+            ]
+        }
+    ]
+}

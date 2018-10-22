@@ -1,0 +1,396 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:1-93:12
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:1-93:12
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:1-93:12
+MERGED from [com.android.support:design:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/fb10a891f738041ada1eec864272e57b/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/538cba63a63ba31edb151163bdd58aab/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/fa8121e8b986637a9fafeb031669c63d/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/a25418ec2d32ea151dc0e8d5637495ae/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/a0c27aaf765603c5e4d9189826f08458/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/3cda311b16a9287e84525c86d5a225c0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/b20876f88eb58de3b34c9f12ba65522b/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/4ed838da082bea47d7f849bc4f1f810f/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/488f57f50ed5eaf1158bc28ea0e9960b/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/01913d3b145bc6377d93ef1482469909/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/80e115d89202557af4517dfa6ef22d26/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/87a9865f6e7f20bc2cc13cf5a785e369/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/910f2bd7c9b47476c7e48acbaa9bde08/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/79d57c8567118b8e7b09a3a7e1ae0e3f/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/e4d3c28527aa14f74864434da1b95486/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/aa22faf9d738bd50e60f093dac37515c/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/9281c0f55d221dbe64ff72f306fc06a3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/067bcccccc4bc6e4ee285e95b7a70a4d/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/e0972c2311b92dc2e7874c0bfb6c01d6/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:appcompat-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha1.aar/c52ca99d1b4c59b7e6994bdb1fd54ff5/AndroidManifest.xml:17:1-23:12
+MERGED from [android.arch.persistence.room:runtime:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4ce6409b8db517fb8f3ab4424daa7fe2/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a501df837b0068fcfc4a248e6ad5424d/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:3.0.1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/espresso-idling-resource-3.0.1.aar/01e0679fc0d53803453995b9975ea0ac/AndroidManifest.xml:17:1-21:12
+MERGED from [com.android.support:support-fragment:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0-alpha1.aar/e8bdb183556b7a82fdf006063bb96696/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0-alpha1.aar/521839070a963840fb33545a8fa9c119/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha1.aar/8acbac3b8e9425031b2afeeaaae44575/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/e80df4c3db2451ec2849c79662c21be3/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/c18d5e9d4d465155ce29eba8e27f8705/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/5ea0ab823cc3508dbbe53391b7000c47/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/8cd9ae2f5870074c96ff1059f8822a77/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-core-ui:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0-alpha1.aar/3b9fd680b8f322d1965b366d55ae3a0a/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/9620f648bfd0afdcf682d3c6066a03b7/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:support-core-utils:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0-alpha1.aar/4aa507225542cd0bd9e95e730e0ba934/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0-alpha1.aar/bfe2c15e4b7d6334ed8fc8e762ea4318/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.persistence:db-framework:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/db-framework-1.0.0.aar/5a26b73eee31f1f0f8bc980cee8a48cf/AndroidManifest.xml:17:1-24:12
+MERGED from [android.arch.persistence:db:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/db-1.0.0.aar/6d73d81e75f5d75595714538166b83ee/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:transition:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha1.aar/b5f13c65572d18d6058fe7ac70ad64bc/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:loader:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/loader-28.0.0-alpha1.aar/ba0d38b48ad2afdfd60d28478e0f068d/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:viewpager:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0-alpha1.aar/cf5106f90fd3b92f4dc532b2ddfc3999/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0-alpha1.aar/7e3989c56d60561d5d7bf7858e511d8f/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:drawerlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0-alpha1.aar/5550bd83885acddbacd9d16af1f570a4/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0-alpha1.aar/8eef2327f7d9fd39b531dca2fae543f1/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:customview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/customview-28.0.0-alpha1.aar/06896d7c1b7b5c78ee78b8ef90864dac/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0-alpha1.aar/a5b556f7c4415741af6d2ab21007cb37/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0-alpha1.aar/296c54ab7736aabcccd8ee7f8965ef14/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:support-compat:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha1.aar/c12d176b3f70cb9d7d97ab1a7fc04d43/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/26632e6c1b4980a69da08087443ebab8/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/6302b5886850627761e2f846572e2be8/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/f453112e29fbf4fc8eaf7b865fbccf6c/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/accf709444aa47bc88ec6df45abf70b5/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:documentfile:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0-alpha1.aar/dcfcf1459bb7dfd82cda6b1b86dbb5d8/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0-alpha1.aar/8fdaf1be1e1cc70aa4da2d565861e393/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:print:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/print-28.0.0-alpha1.aar/a6f21f84b3788b3c04aac80e206e3367/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:interpolator:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0-alpha1.aar/b0a8b1d7b4e729bfd12f51b81618d69c/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:cursoradapter:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0-alpha1.aar/82cd515bfe3a18760a9f6f558812c337/AndroidManifest.xml:17:1-23:12
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha1.aar/ad694e76763a4aa093d597254f1946af/AndroidManifest.xml:17:1-23:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/1ed0fd684bd3e7e835be4210d50b1d64/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/5e00e3d4b880a7fcd5504e727702671e/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/5c15cc2ceaf75f5a1e4e7a9f6d770497/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7b57939752d94e71d7ae72cf3e48335c/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/04c013e3789b786479431a821cb57230/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/777e0f50f42b0de413d95f4aab92a6f8/AndroidManifest.xml:17:1-24:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0b982e146a582774feca8c1cd5daddcd/AndroidManifest.xml:17:1-22:12
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:1-93:12
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:1-93:12
+	package
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:2:5-51
+	android:versionName
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:1-93:12
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:1-93:12
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:4:5-67
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:6:5-92:19
+MERGED from [com.android.support:design:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/fb10a891f738041ada1eec864272e57b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/fb10a891f738041ada1eec864272e57b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/538cba63a63ba31edb151163bdd58aab/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/538cba63a63ba31edb151163bdd58aab/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/fa8121e8b986637a9fafeb031669c63d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/fa8121e8b986637a9fafeb031669c63d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/a25418ec2d32ea151dc0e8d5637495ae/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/a25418ec2d32ea151dc0e8d5637495ae/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/a0c27aaf765603c5e4d9189826f08458/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/a0c27aaf765603c5e4d9189826f08458/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/3cda311b16a9287e84525c86d5a225c0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/3cda311b16a9287e84525c86d5a225c0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/b20876f88eb58de3b34c9f12ba65522b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/b20876f88eb58de3b34c9f12ba65522b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/4ed838da082bea47d7f849bc4f1f810f/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/4ed838da082bea47d7f849bc4f1f810f/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/488f57f50ed5eaf1158bc28ea0e9960b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/488f57f50ed5eaf1158bc28ea0e9960b/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/01913d3b145bc6377d93ef1482469909/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/01913d3b145bc6377d93ef1482469909/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/80e115d89202557af4517dfa6ef22d26/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/80e115d89202557af4517dfa6ef22d26/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/87a9865f6e7f20bc2cc13cf5a785e369/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/87a9865f6e7f20bc2cc13cf5a785e369/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/910f2bd7c9b47476c7e48acbaa9bde08/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/910f2bd7c9b47476c7e48acbaa9bde08/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/79d57c8567118b8e7b09a3a7e1ae0e3f/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/79d57c8567118b8e7b09a3a7e1ae0e3f/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/e4d3c28527aa14f74864434da1b95486/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/e4d3c28527aa14f74864434da1b95486/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/aa22faf9d738bd50e60f093dac37515c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/aa22faf9d738bd50e60f093dac37515c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/9281c0f55d221dbe64ff72f306fc06a3/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/9281c0f55d221dbe64ff72f306fc06a3/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/067bcccccc4bc6e4ee285e95b7a70a4d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/067bcccccc4bc6e4ee285e95b7a70a4d/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/e0972c2311b92dc2e7874c0bfb6c01d6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/e0972c2311b92dc2e7874c0bfb6c01d6/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a501df837b0068fcfc4a248e6ad5424d/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a501df837b0068fcfc4a248e6ad5424d/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/e80df4c3db2451ec2849c79662c21be3/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/e80df4c3db2451ec2849c79662c21be3/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/c18d5e9d4d465155ce29eba8e27f8705/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/c18d5e9d4d465155ce29eba8e27f8705/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/5ea0ab823cc3508dbbe53391b7000c47/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/5ea0ab823cc3508dbbe53391b7000c47/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/8cd9ae2f5870074c96ff1059f8822a77/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/8cd9ae2f5870074c96ff1059f8822a77/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/9620f648bfd0afdcf682d3c6066a03b7/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/9620f648bfd0afdcf682d3c6066a03b7/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/26632e6c1b4980a69da08087443ebab8/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/26632e6c1b4980a69da08087443ebab8/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/6302b5886850627761e2f846572e2be8/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/6302b5886850627761e2f846572e2be8/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/f453112e29fbf4fc8eaf7b865fbccf6c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/f453112e29fbf4fc8eaf7b865fbccf6c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/accf709444aa47bc88ec6df45abf70b5/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/accf709444aa47bc88ec6df45abf70b5/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7b57939752d94e71d7ae72cf3e48335c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7b57939752d94e71d7ae72cf3e48335c/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/04c013e3789b786479431a821cb57230/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/04c013e3789b786479431a821cb57230/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/777e0f50f42b0de413d95f4aab92a6f8/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/777e0f50f42b0de413d95f4aab92a6f8/AndroidManifest.xml:22:5-20
+	android:supportsRtl
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:9:9-35
+	android:icon
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:8:9-43
+	android:allowBackup
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:7:9-35
+	android:theme
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:10:9-40
+service#com.example.android.autofill.service.MyAutofillService
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:16:9-27:19
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:18:13-59
+	android:permission
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:19:13-74
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:17:13-46
+meta-data#android.autofill
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:20:13-22:64
+	android:resource
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:22:17-61
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:21:17-48
+intent-filter#android.service.autofill.AutofillService
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:24:13-26:29
+action#android.service.autofill.AutofillService
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:25:17-83
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:25:25-80
+service#com.example.android.autofill.service.simple.BasicService
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:29:9-36:19
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:31:13-51
+	android:permission
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:32:13-74
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:30:13-48
+service#com.example.android.autofill.service.simple.DebugService
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:38:9-48:19
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:40:13-51
+	android:permission
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:41:13-74
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:39:13-48
+service#com.example.android.autofill.service.simple.MultiStepsService
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:50:9-57:19
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:52:13-51
+	android:permission
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:53:13-74
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:51:13-53
+activity#com.example.android.autofill.service.AuthActivity
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:59:9-62:59
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:62:13-56
+	android:taskAffinity
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:61:13-49
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:60:13-41
+activity#com.example.android.autofill.service.simple.SimpleAuthActivity
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:64:9-67:59
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:67:13-56
+	android:taskAffinity
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:66:13-62
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:65:13-54
+activity#com.example.android.autofill.service.ManualActivity
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:69:9-72:51
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:72:13-48
+	android:taskAffinity
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:71:13-51
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:70:13-43
+activity#com.example.android.autofill.service.ManualFieldPickerActivity
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:74:9-77:64
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:77:13-61
+	android:taskAffinity
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:76:13-51
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:75:13-54
+activity#com.example.android.autofill.service.settings.SettingsActivity
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:81:9-90:20
+	android:label
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:84:13-50
+	android:exported
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:83:13-36
+	android:taskAffinity
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:85:13-62
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:82:13-54
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:86:13-89:29
+action#android.intent.action.MAIN
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:87:17-69
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:87:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:88:17-77
+	android:name
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml:88:27-74
+uses-sdk
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+MERGED from [com.android.support:design:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/fb10a891f738041ada1eec864272e57b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha1.aar/fb10a891f738041ada1eec864272e57b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/538cba63a63ba31edb151163bdd58aab/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomappbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomappbar-28.0.0-alpha1.aar/538cba63a63ba31edb151163bdd58aab/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/fa8121e8b986637a9fafeb031669c63d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-theme:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-theme-28.0.0-alpha1.aar/fa8121e8b986637a9fafeb031669c63d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/a25418ec2d32ea151dc0e8d5637495ae/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-transformation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-transformation-28.0.0-alpha1.aar/a25418ec2d32ea151dc0e8d5637495ae/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/a0c27aaf765603c5e4d9189826f08458/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-widget:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-widget-28.0.0-alpha1.aar/a0c27aaf765603c5e4d9189826f08458/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/3cda311b16a9287e84525c86d5a225c0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomsheet:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomsheet-28.0.0-alpha1.aar/3cda311b16a9287e84525c86d5a225c0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/b20876f88eb58de3b34c9f12ba65522b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-dialog:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-dialog-28.0.0-alpha1.aar/b20876f88eb58de3b34c9f12ba65522b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/4ed838da082bea47d7f849bc4f1f810f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-button:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-button-28.0.0-alpha1.aar/4ed838da082bea47d7f849bc4f1f810f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/488f57f50ed5eaf1158bc28ea0e9960b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-card:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-card-28.0.0-alpha1.aar/488f57f50ed5eaf1158bc28ea0e9960b/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/01913d3b145bc6377d93ef1482469909/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-chip:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-chip-28.0.0-alpha1.aar/01913d3b145bc6377d93ef1482469909/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/80e115d89202557af4517dfa6ef22d26/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-internal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-internal-28.0.0-alpha1.aar/80e115d89202557af4517dfa6ef22d26/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/87a9865f6e7f20bc2cc13cf5a785e369/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-bottomnavigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-bottomnavigation-28.0.0-alpha1.aar/87a9865f6e7f20bc2cc13cf5a785e369/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/910f2bd7c9b47476c7e48acbaa9bde08/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-floatingactionbutton:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-floatingactionbutton-28.0.0-alpha1.aar/910f2bd7c9b47476c7e48acbaa9bde08/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/79d57c8567118b8e7b09a3a7e1ae0e3f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-navigation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-navigation-28.0.0-alpha1.aar/79d57c8567118b8e7b09a3a7e1ae0e3f/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/e4d3c28527aa14f74864434da1b95486/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-resources:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-resources-28.0.0-alpha1.aar/e4d3c28527aa14f74864434da1b95486/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/aa22faf9d738bd50e60f093dac37515c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-tabs:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-tabs-28.0.0-alpha1.aar/aa22faf9d738bd50e60f093dac37515c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/9281c0f55d221dbe64ff72f306fc06a3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-textfield:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-textfield-28.0.0-alpha1.aar/9281c0f55d221dbe64ff72f306fc06a3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/067bcccccc4bc6e4ee285e95b7a70a4d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-typography:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-typography-28.0.0-alpha1.aar/067bcccccc4bc6e4ee285e95b7a70a4d/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/e0972c2311b92dc2e7874c0bfb6c01d6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-shape:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-shape-28.0.0-alpha1.aar/e0972c2311b92dc2e7874c0bfb6c01d6/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha1.aar/c52ca99d1b4c59b7e6994bdb1fd54ff5/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha1.aar/c52ca99d1b4c59b7e6994bdb1fd54ff5/AndroidManifest.xml:21:5-44
+MERGED from [android.arch.persistence.room:runtime:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4ce6409b8db517fb8f3ab4424daa7fe2/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.persistence.room:runtime:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/4ce6409b8db517fb8f3ab4424daa7fe2/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a501df837b0068fcfc4a248e6ad5424d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a501df837b0068fcfc4a248e6ad5424d/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:3.0.1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/espresso-idling-resource-3.0.1.aar/01e0679fc0d53803453995b9975ea0ac/AndroidManifest.xml:19:3-70
+MERGED from [com.android.support.test.espresso:espresso-idling-resource:3.0.1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/espresso-idling-resource-3.0.1.aar/01e0679fc0d53803453995b9975ea0ac/AndroidManifest.xml:19:3-70
+MERGED from [com.android.support:support-fragment:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0-alpha1.aar/e8bdb183556b7a82fdf006063bb96696/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:support-fragment:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-fragment-28.0.0-alpha1.aar/e8bdb183556b7a82fdf006063bb96696/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0-alpha1.aar/521839070a963840fb33545a8fa9c119/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-28.0.0-alpha1.aar/521839070a963840fb33545a8fa9c119/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha1.aar/8acbac3b8e9425031b2afeeaaae44575/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-28.0.0-alpha1.aar/8acbac3b8e9425031b2afeeaaae44575/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/e80df4c3db2451ec2849c79662c21be3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-animation:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-animation-28.0.0-alpha1.aar/e80df4c3db2451ec2849c79662c21be3/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/c18d5e9d4d465155ce29eba8e27f8705/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-coordinatorlayout-28.0.0-alpha1.aar/c18d5e9d4d465155ce29eba8e27f8705/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/5ea0ab823cc3508dbbe53391b7000c47/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-expandable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-expandable-28.0.0-alpha1.aar/5ea0ab823cc3508dbbe53391b7000c47/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/8cd9ae2f5870074c96ff1059f8822a77/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-stateful:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-stateful-28.0.0-alpha1.aar/8cd9ae2f5870074c96ff1059f8822a77/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0-alpha1.aar/3b9fd680b8f322d1965b366d55ae3a0a/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-core-ui-28.0.0-alpha1.aar/3b9fd680b8f322d1965b366d55ae3a0a/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/9620f648bfd0afdcf682d3c6066a03b7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-ripple:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-ripple-28.0.0-alpha1.aar/9620f648bfd0afdcf682d3c6066a03b7/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0-alpha1.aar/4aa507225542cd0bd9e95e730e0ba934/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-core-utils-28.0.0-alpha1.aar/4aa507225542cd0bd9e95e730e0ba934/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0-alpha1.aar/bfe2c15e4b7d6334ed8fc8e762ea4318/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-28.0.0-alpha1.aar/bfe2c15e4b7d6334ed8fc8e762ea4318/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.persistence:db-framework:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/db-framework-1.0.0.aar/5a26b73eee31f1f0f8bc980cee8a48cf/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.persistence:db-framework:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/db-framework-1.0.0.aar/5a26b73eee31f1f0f8bc980cee8a48cf/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.persistence:db:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/db-1.0.0.aar/6d73d81e75f5d75595714538166b83ee/AndroidManifest.xml:20:5-22:41
+MERGED from [android.arch.persistence:db:1.0.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/db-1.0.0.aar/6d73d81e75f5d75595714538166b83ee/AndroidManifest.xml:20:5-22:41
+MERGED from [com.android.support:transition:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha1.aar/b5f13c65572d18d6058fe7ac70ad64bc/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:transition:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/transition-28.0.0-alpha1.aar/b5f13c65572d18d6058fe7ac70ad64bc/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:loader:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/loader-28.0.0-alpha1.aar/ba0d38b48ad2afdfd60d28478e0f068d/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:loader:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/loader-28.0.0-alpha1.aar/ba0d38b48ad2afdfd60d28478e0f068d/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:viewpager:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0-alpha1.aar/cf5106f90fd3b92f4dc532b2ddfc3999/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:viewpager:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/viewpager-28.0.0-alpha1.aar/cf5106f90fd3b92f4dc532b2ddfc3999/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0-alpha1.aar/7e3989c56d60561d5d7bf7858e511d8f/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/coordinatorlayout-28.0.0-alpha1.aar/7e3989c56d60561d5d7bf7858e511d8f/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0-alpha1.aar/5550bd83885acddbacd9d16af1f570a4/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/drawerlayout-28.0.0-alpha1.aar/5550bd83885acddbacd9d16af1f570a4/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0-alpha1.aar/8eef2327f7d9fd39b531dca2fae543f1/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/slidingpanelayout-28.0.0-alpha1.aar/8eef2327f7d9fd39b531dca2fae543f1/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:customview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/customview-28.0.0-alpha1.aar/06896d7c1b7b5c78ee78b8ef90864dac/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:customview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/customview-28.0.0-alpha1.aar/06896d7c1b7b5c78ee78b8ef90864dac/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0-alpha1.aar/a5b556f7c4415741af6d2ab21007cb37/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/swiperefreshlayout-28.0.0-alpha1.aar/a5b556f7c4415741af6d2ab21007cb37/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0-alpha1.aar/296c54ab7736aabcccd8ee7f8965ef14/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/asynclayoutinflater-28.0.0-alpha1.aar/296c54ab7736aabcccd8ee7f8965ef14/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:support-compat:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha1.aar/c12d176b3f70cb9d7d97ab1a7fc04d43/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:support-compat:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/support-compat-28.0.0-alpha1.aar/c12d176b3f70cb9d7d97ab1a7fc04d43/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/26632e6c1b4980a69da08087443ebab8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-canvas:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-canvas-28.0.0-alpha1.aar/26632e6c1b4980a69da08087443ebab8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/6302b5886850627761e2f846572e2be8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal-cardview:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-cardview-28.0.0-alpha1.aar/6302b5886850627761e2f846572e2be8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/f453112e29fbf4fc8eaf7b865fbccf6c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-circularreveal:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-circularreveal-28.0.0-alpha1.aar/f453112e29fbf4fc8eaf7b865fbccf6c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/accf709444aa47bc88ec6df45abf70b5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-drawable:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-drawable-28.0.0-alpha1.aar/accf709444aa47bc88ec6df45abf70b5/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0-alpha1.aar/dcfcf1459bb7dfd82cda6b1b86dbb5d8/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:documentfile:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/documentfile-28.0.0-alpha1.aar/dcfcf1459bb7dfd82cda6b1b86dbb5d8/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0-alpha1.aar/8fdaf1be1e1cc70aa4da2d565861e393/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/localbroadcastmanager-28.0.0-alpha1.aar/8fdaf1be1e1cc70aa4da2d565861e393/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:print:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/print-28.0.0-alpha1.aar/a6f21f84b3788b3c04aac80e206e3367/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:print:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/print-28.0.0-alpha1.aar/a6f21f84b3788b3c04aac80e206e3367/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:interpolator:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0-alpha1.aar/b0a8b1d7b4e729bfd12f51b81618d69c/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:interpolator:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/interpolator-28.0.0-alpha1.aar/b0a8b1d7b4e729bfd12f51b81618d69c/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0-alpha1.aar/82cd515bfe3a18760a9f6f558812c337/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/cursoradapter-28.0.0-alpha1.aar/82cd515bfe3a18760a9f6f558812c337/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha1.aar/ad694e76763a4aa093d597254f1946af/AndroidManifest.xml:21:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/cardview-v7-28.0.0-alpha1.aar/ad694e76763a4aa093d597254f1946af/AndroidManifest.xml:21:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/1ed0fd684bd3e7e835be4210d50b1d64/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/livedata-core-1.1.0.aar/1ed0fd684bd3e7e835be4210d50b1d64/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/5e00e3d4b880a7fcd5504e727702671e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/5e00e3d4b880a7fcd5504e727702671e/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/5c15cc2ceaf75f5a1e4e7a9f6d770497/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/runtime-1.1.0.aar/5c15cc2ceaf75f5a1e4e7a9f6d770497/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7b57939752d94e71d7ae72cf3e48335c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-color:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-color-28.0.0-alpha1.aar/7b57939752d94e71d7ae72cf3e48335c/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/04c013e3789b786479431a821cb57230/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-math:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-math-28.0.0-alpha1.aar/04c013e3789b786479431a821cb57230/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/777e0f50f42b0de413d95f4aab92a6f8/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design-snackbar:28.0.0-alpha1] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/design-snackbar-28.0.0-alpha1.aar/777e0f50f42b0de413d95f4aab92a6f8/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0b982e146a582774feca8c1cd5daddcd/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] /usr/local/google/home/benweiss/.gradle/caches/transforms-1/files-1.1/viewmodel-1.1.0.aar/0b982e146a582774feca8c1cd5daddcd/AndroidManifest.xml:20:5-44
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+		ADDED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml
+		INJECTED from /usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/src/main/AndroidManifest.xml

@@ -19,6 +19,10 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="CustomAutofilledHighlightTheme" parent="AppTheme">
+        <item name="android:autofilledHighlight">@drawable/custom_autofilled_highlight</item>
+    </style>
+
     <style name="CustomDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">
         <item name="android:datePickerStyle">@style/MyDatePickerStyle</item>
     </style>

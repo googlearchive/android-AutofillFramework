@@ -34,6 +34,10 @@
     <string name="navigation_button_anti_pattern_bad_view_structure_label">Bad View Structure Creation Anti Pattern</string>
     <string name="navigation_button_multistep_signin_label">Multi-Step Sign In</string>
     <string name="navigation_button_multistep_cc_label">Multi-Step Credit Card Check Out</string>
+    <string name="navigation_button_anti_pattern_multistep_signin_label">Multi-Step Sign In Anti Pattern</string>
+    <string name="navigation_button_anti_pattern_hintless_signin_label">Hintless Sign In Anti Pattern</string>
+    <string name="navigation_button_anti_pattern_callbackless_autocomplete_login_label">Auto Complete without Autofill Integration Anti Pattern</string>
+    <string name="navigation_button_custom_theme_login_label">Sign In Using Custom Theme</string>
     <string name="username_label">Username</string>
     <string name="password_label">Password</string>
     <string name="welcome_text">Success!</string>
@@ -136,12 +140,27 @@
         structure is created onStart() instead of onCreate(), which causes autofill to misbehave
         when the autofill service requires authentication.
     </string>
+    <string name="anti_pattern_hintless_signin_info">This is a sample login page that uses standard EditTexts
+        from the UI toolkit, but without annotating them with android:autofillHints.
+    </string>
 
     <string name="multi_step_signin_info">
         <!--TODO-->
     </string>
 
     <string name="multi_step_cc_info">
+        <!--TODO-->
+    </string>
+
+    <string name="anti_pattern_multistep_signin_info">
+        <!--TODO-->
+    </string>
+
+    <string name="anti_pattern_callbackless_autocomplete_login_info">
+        <!--TODO-->
+    </string>
+
+    <string name="custom_theme_login_info">
         <!--TODO-->
     </string>
 
@@ -169,8 +188,7 @@
     </plurals>
 
     <string-array name="mock_autocomplete_sign_in_suggestions">
-        <item>user-1</item>
-        <item>user-2</item>
+        <item>app_provided_user</item>
     </string-array>
 
     <string-array name="month_array">
