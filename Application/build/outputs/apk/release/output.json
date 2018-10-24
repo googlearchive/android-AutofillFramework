@@ -1,1 +1,1 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1},"path":"Application-release-unsigned.apk","properties":{"packageId":"com.example.android.autofill.app","split":"","minSdkVersion":"26"}}]
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0","enabled":true,"outputFile":"Application-release-unsigned.apk","fullName":"release","baseName":"release"},"path":"Application-release-unsigned.apk","properties":{}}]

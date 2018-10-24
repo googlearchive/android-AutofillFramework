@@ -20,9 +20,7 @@ import java.lang.String;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import javax.annotation.Generated;
 
-@Generated("android.arch.persistence.room.RoomProcessor")
 public class AutofillDatabase_Impl extends AutofillDatabase {
   private volatile AutofillDao _autofillDao;
 

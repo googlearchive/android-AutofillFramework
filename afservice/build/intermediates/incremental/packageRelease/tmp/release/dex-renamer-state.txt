@@ -1,0 +1,4 @@
+#Wed Oct 24 14:59:32 BST 2018
+base.0=/usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/afservice/build/intermediates/transforms/dexMerger/release/0
+path.0=classes.dex
+renamed.0=classes.dex

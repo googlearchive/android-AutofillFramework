@@ -1,1 +1,1 @@
-[{"outputType":{"type":"PROCESSED_RES"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1},"path":"resources-debug.ap_","properties":{"packageId":"com.example.android.autofill.service","split":"","minSdkVersion":"26"}}]
+[{"outputType":{"type":"PROCESSED_RES"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0","enabled":true,"outputFile":"afservice-debug.apk","fullName":"debug","baseName":"debug"},"path":"resources-debug.ap_","properties":{"packageId":"com.example.android.autofill.service","split":"","minSdkVersion":"26"}}]

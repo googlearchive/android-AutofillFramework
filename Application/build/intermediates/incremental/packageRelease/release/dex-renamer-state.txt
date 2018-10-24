@@ -1,4 +1,0 @@
-#Mon Oct 22 18:16:31 BST 2018
-base.0=/usr/local/google/home/benweiss/Android/pi-dev/developers/build/prebuilts/gradle/AutofillFramework/Application/build/intermediates/transforms/dex/release/0
-path.0=classes.dex
-renamed.0=classes.dex

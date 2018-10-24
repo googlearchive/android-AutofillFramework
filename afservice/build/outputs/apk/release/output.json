@@ -1,1 +1,1 @@
-[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1},"path":"afservice-release-unsigned.apk","properties":{"packageId":"com.example.android.autofill.service","split":"","minSdkVersion":"26"}}]
+[{"outputType":{"type":"APK"},"apkInfo":{"type":"MAIN","splits":[],"versionCode":1,"versionName":"1.0","enabled":true,"outputFile":"afservice-release-unsigned.apk","fullName":"release","baseName":"release"},"path":"afservice-release-unsigned.apk","properties":{}}]

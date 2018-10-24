@@ -27,9 +27,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
-import javax.annotation.Generated;
 
-@Generated("android.arch.persistence.room.RoomProcessor")
 public class AutofillDao_Impl implements AutofillDao {
   private final RoomDatabase __db;
 
